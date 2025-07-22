@@ -7,32 +7,85 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      padding: 50px;
       background: #f9f9f9;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    /* NAVIGATION */
+    nav {
+      background-color: #fff;
+      border-bottom: 1px solid #ddd;
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      width: 100%;
+      z-index: 999;
+    }
+    .nav-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+    }
+    .nav-container a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      font-size: 16px;
+    }
+    .nav-container a:hover {
+      color: #00b894;
+    }
+
+    .content {
       max-width: 800px;
       margin: auto;
+      padding: 60px 20px;
       line-height: 1.6;
     }
+
     h1 {
       color: #2e2e2e;
     }
-    a {
-      display: inline-block;
-      margin-top: 20px;
-      text-decoration: none;
-      color: #00b894;
-      font-weight: bold;
+
+    p {
+      font-size: 1.1em;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    .footer {
+      margin-top: 60px;
+      color: gray;
     }
   </style>
 </head>
 <body>
-  <h1>About PeachtreeChat</h1>
-  <p>PeachtreeChat is an Atlanta-based AI chatbot company focused on helping small businesses—like salons, real estate agents, and law firms—automate their customer interactions.</p>
 
-  <p>Founded with the belief that local businesses deserve the same cutting-edge tools as big tech, PeachtreeChat offers no-code, intelligent chatbots tailored to your needs.</p>
+  <!-- Navigation Bar -->
+  <nav>
+    <div class="nav-container">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="mailto:info@peachtreechat.com">Contact</a>
+    </div>
+  </nav>
 
-  <p>Our mission is to save business owners time, improve client experience, and boost conversions—all through simple, smart automation.</p>
+  <!-- Page Content -->
+  <div class="content">
+    <h1>About PeachtreeChat</h1>
+    <p>PeachtreeChat is an Atlanta-based AI chatbot company focused on helping small businesses—like salons, real estate agents, and law firms—automate their customer interactions.</p>
 
-  <a href="index.html">← Back to Home</a>
+    <p>Founded with the belief that local businesses deserve the same cutting-edge tools as big tech, PeachtreeChat offers no-code, intelligent chatbots tailored to your needs.</p>
+
+    <p>Our mission is to save business owners time, improve client experience, and boost conversions—all through simple, smart automation.</p>
+
+    <div class="footer">
+      <p>&copy; 2025 PeachtreeChat. All rights reserved.</p>
+    </div>
+  </div>
+
 </body>
 </html>
