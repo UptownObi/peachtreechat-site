@@ -5,13 +5,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PeachtreeChat</title>
+
+  <!-- Google Font: Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Poppins', Arial, sans-serif;
       background: #f9f9f9;
       margin: 0;
       padding: 0;
       text-align: center;
+      color: #2e2e2e;
     }
 
     nav {
@@ -41,33 +46,76 @@
     .nav-links a {
       margin-left: 30px;
       text-decoration: none;
-      color: #333;
-      font-weight: bold;
+      color: #2e2e2e;
+      font-weight: 600;
       font-size: 16px;
+      transition: color 0.2s ease;
     }
 
     .nav-links a:hover {
-      color: #00b894;
+      color: #FF914D;
     }
 
     .main {
       padding: 60px 20px;
     }
 
+    h1 {
+      font-size: 40px;
+      font-weight: 700;
+      color: #2e2e2e;
+    }
+
+    h2, h3 {
+      color: #FF914D;
+      font-weight: 600;
+    }
+
     .cta {
       margin: 20px 10px;
       display: inline-block;
-      background-color: #00b894;
+      background-color: #FF914D;
       color: white;
       padding: 12px 24px;
       text-decoration: none;
       border-radius: 8px;
-      font-weight: bold;
+      font-weight: 600;
+      transition: background-color 0.2s ease;
+    }
+
+    .cta:hover {
+      background-color: #e6762b;
+    }
+
+    .services {
+      margin-top: 60px;
+    }
+
+    .service-card {
+      max-width: 250px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease;
+    }
+
+    .service-card:hover {
+      transform: scale(1.02);
     }
 
     .footer {
       margin-top: 60px;
       color: gray;
+    }
+
+    input, textarea {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #e6762b;
     }
   </style>
 </head>
@@ -99,26 +147,26 @@
     <a href="about.html" class="cta">About Us</a>
 
     <!-- Services Section -->
-    <div class="services" style="margin-top: 60px;">
-      <h2 style="color:#2e2e2e;">What We Offer</h2>
+    <div class="services">
+      <h2>What We Offer</h2>
       <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-top: 30px;">
 
-        <div style="max-width: 250px; background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+        <div class="service-card">
           <h3>Salon Chatbots</h3>
           <p>Automate appointment booking, common questions, and seasonal promotions for salons and spas.</p>
         </div>
 
-        <div style="max-width: 250px; background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+        <div class="service-card">
           <h3>Real Estate Assistants</h3>
           <p>Capture buyer/seller leads, schedule showings, and provide listings info 24/7 through chat.</p>
         </div>
 
-        <div style="max-width: 250px; background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+        <div class="service-card">
           <h3>Legal Intake Bots</h3>
           <p>Help law firms qualify clients with pre-screening questions and smart forms.</p>
         </div>
 
-        <div style="max-width: 250px; background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+        <div class="service-card">
           <h3>Custom Integrations</h3>
           <p>Connect to Google Forms, CRMs, booking systems, and more with custom chatbot workflows.</p>
         </div>
@@ -132,7 +180,7 @@
       <form action="https://formspree.io/f/xzzvegwy" method="POST" style="max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px;">
         <input type="email" name="email" placeholder="Your email" required style="padding: 10px; font-size: 16px;" />
         <textarea name="message" placeholder="Your message" rows="5" required style="padding: 10px; font-size: 16px;"></textarea>
-        <button type="submit" style="background-color: #00b894; color: white; border: none; padding: 10px 20px; font-size: 16px; cursor: pointer;">Send</button>
+        <button type="submit" style="background-color: #FF914D; color: white; border: none; padding: 10px 20px; font-size: 16px; cursor: pointer;">Send</button>
       </form>
     </section>
 
