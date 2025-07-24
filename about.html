@@ -49,11 +49,12 @@
       color: #2e2e2e;
       font-weight: 600;
       font-size: 16px;
-      transition: color 0.2s ease;
+      transition: all 0.3s ease;
     }
 
     .nav-links a:hover {
       color: #FF914D;
+      transform: scale(1.05);
     }
 
     /* MAIN CONTENT */
@@ -64,6 +65,16 @@
       padding: 50px 30px;
       border-radius: 12px;
       box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 1s ease-out forwards;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     h1 {
@@ -78,6 +89,20 @@
       color: #555;
       line-height: 1.8;
       margin-bottom: 20px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: slideUp 0.8s ease forwards;
+    }
+
+    p:nth-of-type(1) { animation-delay: 0.3s; }
+    p:nth-of-type(2) { animation-delay: 0.5s; }
+    p:nth-of-type(3) { animation-delay: 0.7s; }
+
+    @keyframes slideUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .footer {
