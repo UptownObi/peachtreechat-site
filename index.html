@@ -49,26 +49,57 @@
       color: #2e2e2e;
       font-weight: 600;
       font-size: 16px;
-      transition: color 0.2s ease;
+      transition: all 0.3s ease;
     }
 
     .nav-links a:hover {
       color: #FF914D;
+      transform: scale(1.05);
     }
 
     .main {
       padding: 60px 20px;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeIn 1s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     h1 {
       font-size: 40px;
       font-weight: 700;
       color: #2e2e2e;
+      margin-bottom: 20px;
     }
 
     h2, h3 {
       color: #FF914D;
       font-weight: 600;
+    }
+
+    p {
+      font-size: 18px;
+      color: #555;
+      margin-bottom: 15px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: slideUp 0.8s ease forwards;
+    }
+
+    p:nth-of-type(1) { animation-delay: 0.2s; }
+    p:nth-of-type(2) { animation-delay: 0.4s; }
+
+    @keyframes slideUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .cta {
@@ -80,15 +111,20 @@
       text-decoration: none;
       border-radius: 8px;
       font-weight: 600;
-      transition: background-color 0.2s ease;
+      transition: all 0.3s ease;
     }
 
     .cta:hover {
       background-color: #e6762b;
+      transform: translateY(-2px);
     }
 
     .services {
       margin-top: 60px;
+    }
+
+    .services h2 {
+      margin-bottom: 20px;
     }
 
     .service-card {
@@ -97,16 +133,27 @@
       padding: 20px;
       border-radius: 10px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      transition: transform 0.2s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: slideUp 0.8s ease forwards;
     }
 
     .service-card:hover {
-      transform: scale(1.02);
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
     }
+
+    .service-card:nth-of-type(1) { animation-delay: 0.3s; }
+    .service-card:nth-of-type(2) { animation-delay: 0.5s; }
+    .service-card:nth-of-type(3) { animation-delay: 0.7s; }
+    .service-card:nth-of-type(4) { animation-delay: 0.9s; }
 
     .footer {
       margin-top: 60px;
+      padding-bottom: 40px;
       color: gray;
+      font-size: 14px;
     }
 
     input, textarea {
@@ -114,8 +161,34 @@
       border-radius: 5px;
     }
 
+    button[type="submit"] {
+      background-color: #FF914D;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
     button[type="submit"]:hover {
       background-color: #e6762b;
+    }
+
+    @media (max-width: 600px) {
+      .nav-container {
+        flex-direction: column;
+        height: auto;
+      }
+
+      .nav-links {
+        margin-top: 10px;
+      }
+
+      .nav-links a {
+        display: block;
+        margin: 10px 0;
+      }
     }
   </style>
 </head>
@@ -180,7 +253,7 @@
       <form action="https://formspree.io/f/xzzvegwy" method="POST" style="max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px;">
         <input type="email" name="email" placeholder="Your email" required style="padding: 10px; font-size: 16px;" />
         <textarea name="message" placeholder="Your message" rows="5" required style="padding: 10px; font-size: 16px;"></textarea>
-        <button type="submit" style="background-color: #FF914D; color: white; border: none; padding: 10px 20px; font-size: 16px; cursor: pointer;">Send</button>
+        <button type="submit">Send</button>
       </form>
     </section>
 
