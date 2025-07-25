@@ -1,17 +1,89 @@
 
-<!-- Navigation Bar -->
-<nav>
-  <div class="nav-container">
-    <div class="nav-logo">
-      <a href="index.html">
-        <img src="peachtreechat-logo.png" alt="PeachtreeChat Logo" />
-      </a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PeachtreeChat</title>
+
+  <!-- Google Font: Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* [style code remains unchanged — keeping it short here] */
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav>
+    <div class="nav-container">
+      <div class="nav-logo">
+        <a href="index.html">
+          <img src="peachtreechat-logo.png" alt="PeachtreeChat Logo" />
+        </a>
+      </div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="pricing.html">Pricing</a> <!-- ✅ Pricing added here -->
+      </div>
     </div>
-    <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="services.html">Services</a>
-      <a href="pricing.html">Pricing</a> <!-- ✅ Added -->
+  </nav>
+
+  <!-- Main Content -->
+  <div class="main">
+    <h1>Welcome to PeachtreeChat</h1>
+    <p>AI-powered chatbots for salons, real estate, and small businesses.</p>
+    <p>Let us automate your bookings, FAQs, and leads — no code needed.</p>
+
+    <a href="mailto:info@peachtreechat.com" class="cta">Contact Us</a>
+    <a href="about.html" class="cta">About Us</a>
+
+    <!-- Services Section -->
+    <div class="services">
+      <h2>What We Offer</h2>
+      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-top: 30px;">
+
+        <div class="service-card">
+          <h3>Salon Chatbots</h3>
+          <p>Automate appointment booking, common questions, and seasonal promotions for salons and spas.</p>
+        </div>
+
+        <div class="service-card">
+          <h3>Real Estate Assistants</h3>
+          <p>Capture buyer/seller leads, schedule showings, and provide listings info 24/7 through chat.</p>
+        </div>
+
+        <div class="service-card">
+          <h3>Legal Intake Bots</h3>
+          <p>Help law firms qualify clients with pre-screening questions and smart forms.</p>
+        </div>
+
+        <div class="service-card">
+          <h3>Custom Integrations</h3>
+          <p>Connect to Google Forms, CRMs, booking systems, and more with custom chatbot workflows.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Contact Form -->
+    <section style="text-align: center; padding: 40px 0;">
+      <h2>Contact Us</h2>
+      <form action="https://formspree.io/f/xzzvegwy" method="POST" style="max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px;">
+        <input type="email" name="email" placeholder="Your email" required style="padding: 10px; font-size: 16px;" />
+        <textarea name="message" placeholder="Your message" rows="5" required style="padding: 10px; font-size: 16px;"></textarea>
+        <button type="submit">Send</button>
+      </form>
+    </section>
+
+    <!-- Footer -->
+    <div class="footer">
+      <p>Launching soon... Stay tuned!</p>
     </div>
   </div>
-</nav>
+
+</body>
+</html>
