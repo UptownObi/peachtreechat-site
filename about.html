@@ -36,6 +36,7 @@
       justify-content: space-between;
       align-items: center;
       height: 80px;
+      flex-wrap: wrap;
     }
 
     .nav-logo img {
@@ -43,8 +44,15 @@
       object-fit: contain;
     }
 
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 10px;
+    }
+
     .nav-links a {
-      margin-left: 30px;
       text-decoration: none;
       color: #2e2e2e;
       font-weight: 600;
@@ -106,8 +114,8 @@
     }
 
     .founder-photo {
-      max-width: 200px;
-      border-radius: 100px;
+      width: 200px;
+      border-radius: 12px;
       margin-bottom: 20px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
@@ -121,19 +129,32 @@
       border-top: 1px solid #eee;
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 28px;
+      }
+
       .nav-container {
         flex-direction: column;
         height: auto;
       }
 
-      .nav-links {
-        margin-top: 10px;
+      .nav-links a {
+        font-size: 14px;
+        margin: 8px;
       }
 
-      .nav-links a {
-        display: block;
-        margin: 10px 0;
+      .content {
+        padding: 30px 20px;
+        margin: 40px 10px;
+      }
+
+      p {
+        font-size: 16px;
+      }
+
+      .founder-photo {
+        width: 150px;
       }
     }
   </style>
@@ -141,40 +162,3 @@
 <body>
 
   <!-- Navigation Bar -->
-  <nav>
-    <div class="nav-container">
-      <div class="nav-logo">
-        <a href="index.html">
-          <img src="peachtreechat-logo.png" alt="PeachtreeChat Logo" />
-        </a>
-      </div>
-      <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="services.html">Services</a>
-        <a href="pricing.html">Pricing</a> 
-        <a href="mailto:info@peachtreechat.com">Contact</a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Page Content -->
-  <div class="content">
-    <h1>About PeachtreeChat</h1>
-
-   <img src="your-photo.jpg" alt="Founder of PeachtreeChat" style="width: 200px; border-radius: 12px; margin-bottom: 20px;" />
-
-    <p>PeachtreeChat is an Atlanta-based AI chatbot company focused on helping small businesses—like salons, real estate agents, and law firms—automate their customer interactions.</p>
-
-    <p>Founded with the belief that local businesses deserve the same cutting-edge tools as big tech, PeachtreeChat offers no-code, intelligent chatbots tailored to your needs.</p>
-
-    <p>Our mission is to save business owners time, improve client experience, and boost conversions—all through simple, smart automation.</p>
-  </div>
-
-  <!-- Footer -->
-  <div class="footer">
-    <p>&copy; 2025 PeachtreeChat. All rights reserved.</p>
-  </div>
-
-</body>
-</html>
