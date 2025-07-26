@@ -1,268 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PeachtreeChat</title>
+<!-- ...everything before remains the same... -->
 
-  <!-- Google Font: Poppins -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+<!-- Contact Form -->
+<section style="text-align: center; padding: 40px 0;">
+  <h2>Contact Us</h2>
+  <form action="https://formspree.io/f/xzzvegwy" method="POST" style="max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px;">
+    <input type="email" name="email" placeholder="Your email" required style="padding: 10px; font-size: 16px;" />
+    <textarea name="message" placeholder="Your message" rows="5" required style="padding: 10px; font-size: 16px;"></textarea>
+    <button type="submit">Send</button>
+  </form>
+</section>
 
-  <style>
-    body {
-      font-family: 'Poppins', Arial, sans-serif;
-      background: #f9f9f9;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-      color: #2e2e2e;
-    }
-
-    nav {
-      background-color: #fff;
-      border-bottom: 1px solid #ddd;
-      padding: 12px 20px;
-      position: sticky;
-      top: 0;
-      width: 100%;
-      z-index: 999;
-    }
-
-    .nav-container {
-      max-width: 1000px;
-      margin: auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 80px;
-    }
-
-    .nav-logo img {
-      height: 110px;
-      object-fit: contain;
-    }
-
-    .nav-links a {
-      margin-left: 30px;
-      text-decoration: none;
-      color: #2e2e2e;
-      font-weight: 600;
-      font-size: 16px;
-      transition: all 0.3s ease;
-    }
-
-    .nav-links a:hover {
-      color: #FF914D;
-      transform: scale(1.05);
-    }
-
-    .main {
-      padding: 60px 20px;
-      opacity: 0;
-      transform: translateY(30px);
-      animation: fadeIn 1s ease forwards;
-    }
-
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    h1 {
-      font-size: 40px;
-      font-weight: 700;
-      color: #2e2e2e;
-      margin-bottom: 20px;
-    }
-
-    h2, h3 {
-      color: #FF914D;
-      font-weight: 600;
-    }
-
-    p {
-      font-size: 18px;
-      color: #555;
-      margin-bottom: 15px;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: slideUp 0.8s ease forwards;
-    }
-
-    p:nth-of-type(1) { animation-delay: 0.2s; }
-    p:nth-of-type(2) { animation-delay: 0.4s; }
-
-    @keyframes slideUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .cta {
-      margin: 20px 10px;
-      display: inline-block;
-      background-color: #FF914D;
-      color: white;
-      padding: 12px 24px;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: 600;
-      transition: all 0.3s ease;
-    }
-
-    .cta:hover {
-      background-color: #e6762b;
-      transform: translateY(-2px);
-    }
-
-    .services {
-      margin-top: 60px;
-    }
-
-    .services h2 {
-      margin-bottom: 20px;
-    }
-
-    .service-card {
-      max-width: 250px;
-      background: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      opacity: 0;
-      transform: translateY(30px);
-      animation: slideUp 0.8s ease forwards;
-    }
-
-    .service-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-    }
-
-    .service-card:nth-of-type(1) { animation-delay: 0.3s; }
-    .service-card:nth-of-type(2) { animation-delay: 0.5s; }
-    .service-card:nth-of-type(3) { animation-delay: 0.7s; }
-    .service-card:nth-of-type(4) { animation-delay: 0.9s; }
-
-    .footer {
-      margin-top: 60px;
-      padding-bottom: 40px;
-      color: gray;
-      font-size: 14px;
-    }
-
-    input, textarea {
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-
-    button[type="submit"] {
-      background-color: #FF914D;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    button[type="submit"]:hover {
-      background-color: #e6762b;
-    }
-
-    @media (max-width: 600px) {
-      .nav-container {
-        flex-direction: column;
-        height: auto;
-      }
-
-      .nav-links {
-        margin-top: 10px;
-      }
-
-      .nav-links a {
-        display: block;
-        margin: 10px 0;
-      }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- Navigation Bar -->
-  <nav>
-    <div class="nav-container">
-      <div class="nav-logo">
-        <a href="index.html">
-          <img src="peachtreechat-logo.png" alt="PeachtreeChat Logo" />
-        </a>
-      </div>
-      <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="services.html">Services</a>
-        <a href="pricing.html">Pricing</a>
-        <a href="mailto:info@peachtreechat.com">Contact</a>   
-      </div>
+<!-- FAQ Section -->
+<section style="background: #fff; padding: 50px 20px; margin-top: 40px;">
+  <h2 style="color: #FF914D; margin-bottom: 30px;">Frequently Asked Questions</h2>
+  <div style="max-width: 900px; margin: auto; text-align: left;">
+    <div style="margin-bottom: 25px;">
+      <h3 style="margin-bottom: 10px;">🤖 What industries do you support?</h3>
+      <p>We support salons, real estate, legal firms, and custom setups for local businesses.</p>
     </div>
-  </nav>
-
-  <!-- Main Content -->
-  <div class="main">
-    <h1>Welcome to PeachtreeChat</h1>
-    <p>AI-powered chatbots for salons, real estate, and small businesses.</p>
-    <p>Let us automate your bookings, FAQs, and leads — no code needed.</p>
-
-    <a href="mailto:info@peachtreechat.com" class="cta">Contact Us</a>
-    <a href="about.html" class="cta">About Us</a>
-
-    <!-- Services Section -->
-    <div class="services">
-      <h2>What We Offer</h2>
-      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-top: 30px;">
-
-        <div class="service-card">
-          <h3>Salon Chatbots</h3>
-          <p>Automate appointment booking, common questions, and seasonal promotions for salons and spas.</p>
-        </div>
-
-        <div class="service-card">
-          <h3>Real Estate Assistants</h3>
-          <p>Capture buyer/seller leads, schedule showings, and provide listings info 24/7 through chat.</p>
-        </div>
-
-        <div class="service-card">
-          <h3>Legal Intake Bots</h3>
-          <p>Help law firms qualify clients with pre-screening questions and smart forms.</p>
-        </div>
-
-        <div class="service-card">
-          <h3>Custom Integrations</h3>
-          <p>Connect to Google Forms, CRMs, booking systems, and more with custom chatbot workflows.</p>
-        </div>
-
-      </div>
+    <div style="margin-bottom: 25px;">
+      <h3 style="margin-bottom: 10px;">💬 Can I customize the chatbot questions?</h3>
+      <p>Absolutely! You can fully customize your chatbot’s flow, messages, and logic to suit your business.</p>
     </div>
-
-    <!-- Contact Form -->
-    <section style="text-align: center; padding: 40px 0;">
-      <h2>Contact Us</h2>
-      <form action="https://formspree.io/f/xzzvegwy" method="POST" style="max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px;">
-        <input type="email" name="email" placeholder="Your email" required style="padding: 10px; font-size: 16px;" />
-        <textarea name="message" placeholder="Your message" rows="5" required style="padding: 10px; font-size: 16px;"></textarea>
-        <button type="submit">Send</button>
-      </form>
-    </section>
-
-    <!-- Footer -->
-    <div class="footer">
-      <p>Launching soon... Stay tuned!</p>
+    <div style="margin-bottom: 25px;">
+      <h3 style="margin-bottom: 10px;">📲 Can I embed this on my website?</h3>
+      <p>Yes! Our chatbots can be added to your site with just one line of code.</p>
+    </div>
+    <div style="margin-bottom: 25px;">
+      <h3 style="margin-bottom: 10px;">📦 Is there a free trial or demo?</h3>
+      <p>You can request a walkthrough demo by contacting us via email.</p>
     </div>
   </div>
+</section>
+
+<!-- Footer -->
+<div class="footer">
+  <p>Launching soon... Stay tuned!</p>
+</div>
 
 </body>
 </html>
