@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PeachtreeChat</title>
 
+  <!-- SEO basics -->
+  <meta name="description" content="PeachtreeChat builds AI chatbots for salons, real estate, and small businesses. Capture leads, book appointments, and answer FAQs 24/7 with PeachIQ.">
+
   <!-- Google Font: Poppins -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
 
@@ -26,6 +29,7 @@
       top: 0;
       width: 100%;
       z-index: 999;
+      box-shadow: 0 2px 12px rgba(0,0,0,.06);
     }
 
     .nav-container {
@@ -64,10 +68,7 @@
     }
 
     @keyframes fadeIn {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     h1 {
@@ -95,10 +96,7 @@
     p:nth-of-type(2) { animation-delay: 0.4s; }
 
     @keyframes slideUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .cta {
@@ -165,24 +163,33 @@
       transition: background-color 0.3s ease;
     }
 
-    button[type="submit"]:hover {
-      background-color: #e6762b;
+    button[type="submit"]:hover { background-color: #e6762b; }
+
+    /* Leave space for chat launcher on desktop */
+    @media (min-width: 900px){
+      .main { padding-bottom: 120px; }
     }
 
     @media (max-width: 600px) {
-      .nav-container {
-        flex-direction: column;
-        height: auto;
-      }
+      .nav-container { flex-direction: column; height: auto; }
+      .nav-links { margin-top: 10px; }
+      .nav-links a { display: block; margin: 10px 0; }
+      .main { padding: 32px 16px 96px; }
+      h1 { font-size: 32px; }
+      .cta { padding:10px 18px; }
+    }
 
-      .nav-links {
-        margin-top: 10px;
-      }
-
-      .nav-links a {
-        display: block;
-        margin: 10px 0;
-      }
+    /* Trusted by styles */
+    .trust-logos{
+      display:flex; flex-wrap:wrap; justify-content:center; align-items:center;
+      gap:36px; max-width:1100px; margin:0 auto; padding:0 16px;
+    }
+    .trust-logos svg{
+      height:44px; filter:grayscale(100%) opacity(.72); transition:.25s ease;
+    }
+    .trust-logos svg:hover{ filter:grayscale(0%) opacity(1); }
+    .trust-logos text{
+      font-family:Poppins, Arial, sans-serif; font-weight:600; font-size:18px; fill:#444;
     }
   </style>
 </head>
@@ -212,21 +219,70 @@
     <a href="mailto:info@peachtreechat.com" class="cta">Contact Us</a>
     <a href="about.html" class="cta">About Us</a>
 
-   <section style="max-width:1200px; margin:40px auto; text-align:center;">
-  <h2 style="color:#FF914D; margin-bottom:12px;">🎥 Watch PeachIQ in Action</h2>
-  <p style="color:#555; margin:0 0 20px;">
-    See how it captures leads, schedules showings, and answers questions 24/7.
-  </p>
+    <!-- Demo: Real Estate Chatbot -->
+    <section style="max-width:1200px; margin:40px auto; text-align:center;">
+      <h2 style="color:#FF914D; margin-bottom:12px;">🎥 Watch PeachIQ in Action</h2>
+      <p style="color:#555; margin:0 0 20px;">
+        See how it captures leads, schedules showings, and answers questions 24/7.
+      </p>
 
-  <video autoplay muted loop playsinline preload="metadata"
-         onloadedmetadata="this.playbackRate=0.1" 
-         style="max-width:100%; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,0.08)">
-    <source src="PeachIQ_RealEstate_Demo.mp4" type="video/mp4">
-<!-- Trusted By (self-contained, no external image links) -->
-<section style="padding:32px 0 10px; text-align:center;">
-  <h3 style="color:#333; margin-bottom:18px; letter-spacing:.2px;">Trusted by Small Businesses Nationwide</h3>
+      <video autoplay muted loop playsinline preload="metadata"
+             onloadedmetadata="this.playbackRate=0.5"
+             style="max-width:100%; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,0.08)">
+        <source src="PeachIQ_RealEstate_Demo.mp4" type="video/mp4">
+      </video>
+    </section>
 
-<div class="services">
+    <!-- Trusted By (inline SVG — no external links) -->
+    <section style="padding:32px 0 10px; text-align:center;">
+      <h3 style="color:#333; margin-bottom:18px; letter-spacing:.2px;">
+        Trusted by Small Businesses Nationwide
+      </h3>
+      <div class="trust-logos">
+        <!-- Salon Co -->
+        <svg viewBox="0 0 180 60" role="img" aria-label="Salon Co">
+          <rect x="0" y="0" width="180" height="60" rx="10" fill="#f5f5f5"/>
+          <circle cx="30" cy="30" r="12" fill="#d9d9d9"/>
+          <rect x="48" y="22" width="16" height="16" rx="3" fill="#d9d9d9"/>
+          <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">Salon Co</text>
+        </svg>
+
+        <!-- Atlanta Realty -->
+        <svg viewBox="0 0 180 60" role="img" aria-label="Atlanta Realty">
+          <rect width="180" height="60" rx="10" fill="#f5f5f5"/>
+          <polygon points="20,40 40,22 60,40" fill="#d9d9d9"/>
+          <rect x="28" y="34" width="24" height="10" fill="#d9d9d9"/>
+          <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">Atlanta Realty</text>
+        </svg>
+
+        <!-- Smith Law Group -->
+        <svg viewBox="0 0 180 60" role="img" aria-label="Smith Law Group">
+          <rect width="180" height="60" rx="10" fill="#f5f5f5"/>
+          <rect x="20" y="18" width="10" height="24" fill="#d9d9d9"/>
+          <rect x="34" y="18" width="10" height="24" fill="#d9d9d9"/>
+          <rect x="20" y="44" width="24" height="4" fill="#d9d9d9"/>
+          <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">Smith Law Group</text>
+        </svg>
+
+        <!-- Bright Day Spa -->
+        <svg viewBox="0 0 180 60" role="img" aria-label="Bright Day Spa">
+          <rect width="180" height="60" rx="10" fill="#f5f5f5"/>
+          <circle cx="30" cy="30" r="14" fill="#ffdcae"/>
+          <path d="M20,30 Q30,18 40,30" stroke="#d9d9d9" stroke-width="3" fill="none"/>
+          <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">Bright Day Spa</text>
+        </svg>
+
+        <!-- Tech Solutions -->
+        <svg viewBox="0 0 180 60" role="img" aria-label="Tech Solutions">
+          <rect width="180" height="60" rx="10" fill="#f5f5f5"/>
+          <rect x="18" y="20" width="30" height="20" rx="4" fill="#d9d9d9"/>
+          <circle cx="55" cy="30" r="3" fill="#bfbfbf"/>
+          <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">Tech Solutions</text>
+        </svg>
+      </div>
+    </section>
+
+    <div class="services">
       <h2>What We Offer</h2>
       <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-top: 30px;">
         <div class="service-card">
@@ -284,19 +340,20 @@
       <p>Launching soon... Stay tuned!</p>
     </div>
   </div>
-<script>
-  window.watsonAssistantChatOptions = {
-    integrationID: "2a77a767-a4d1-4520-99d4-9bcf6d300a94", // The ID of this integration.
-    region: "au-syd", // The region your integration is hosted in.
-    serviceInstanceID: "d849b711-b43c-4ded-b8f9-d942366c3ea2", // The ID of your service instance.
-    onLoad: async (instance) => { await instance.render(); }
-  };
-  setTimeout(function(){
-    const t=document.createElement('script');
-    t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
-    document.head.appendChild(t);
-  });
-</script>
+
+  <!-- IBM Watsonx Assistant Chatbot Embed -->
+  <script>
+    window.watsonAssistantChatOptions = {
+      integrationID: "2a77a767-a4d1-4520-99d4-9bcf6d300a94",
+      region: "au-syd",
+      serviceInstanceID: "d849b711-b43c-4ded-b8f9-d942366c3ea2",
+      onLoad: async (instance) => { await instance.render(); }
+    };
+    setTimeout(function(){
+      const t=document.createElement('script');
+      t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+      document.head.appendChild(t);
+    });
+  </script>
 </body>
 </html>
-
