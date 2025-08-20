@@ -9,12 +9,23 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
 
   <style>
+    :root{
+      --brand:#FF914D;
+      --brand-dark:#e6762b;
+      --text:#2e2e2e;
+      --muted:#555;
+      --card:#fff;
+      --bg:#f9f9f9;
+    }
+
+    *{box-sizing:border-box}
+
     body {
       font-family: 'Poppins', sans-serif;
-      background: #f9f9f9;
+      background: var(--bg);
       margin: 0;
       padding: 0;
-      color: #2e2e2e;
+      color: var(--text);
       text-align: center;
     }
 
@@ -34,7 +45,6 @@
       flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
-      height: auto;
     }
 
     .nav-logo img {
@@ -52,15 +62,12 @@
 
     .nav-links a {
       text-decoration: none;
-      color: #2e2e2e;
+      color: var(--text);
       font-weight: 600;
       font-size: 16px;
       transition: color 0.2s ease;
     }
-
-    .nav-links a:hover {
-      color: #FF914D;
-    }
+    .nav-links a:hover { color: var(--brand); }
 
     .main {
       padding: 60px 20px;
@@ -71,12 +78,12 @@
     h1 {
       font-size: 36px;
       margin-bottom: 10px;
-      color: #FF914D;
+      color: var(--brand);
     }
 
     p {
       font-size: 18px;
-      color: #555;
+      color: var(--muted);
     }
 
     .pricing-container {
@@ -88,60 +95,104 @@
     }
 
     .pricing-card {
-      background: #fff;
-      border-radius: 12px;
+      position: relative;
+      background: var(--card);
+      border-radius: 16px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.08);
       padding: 30px;
       width: 300px;
       max-width: 90vw;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid #eee;
+      text-align: left;
     }
 
     .pricing-card:hover {
-      transform: scale(1.03);
-      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.15);
     }
 
     .pricing-card h3 {
-      color: #2e2e2e;
-      margin-bottom: 10px;
+      color: var(--text);
+      margin: 0 0 10px;
       font-size: 22px;
+      text-align:left;
     }
 
     .price {
-      font-size: 28px;
-      color: #FF914D;
-      font-weight: bold;
-      margin: 10px 0;
+      font-size: 30px;
+      color: var(--brand);
+      font-weight: 700;
+      margin: 8px 0 4px;
+    }
+
+    .per {
+      font-size: 13px;
+      color: #888;
+      margin-bottom: 10px;
+      display:block;
     }
 
     ul {
       list-style: none;
       padding: 0;
-      text-align: left;
-      margin: 20px 0;
+      margin: 18px 0 0;
     }
 
     ul li {
-      padding: 6px 0;
+      padding: 10px 0;
       border-bottom: 1px solid #eee;
       font-size: 15px;
+      line-height: 1.45;
     }
 
     .cta {
       display: inline-block;
       margin-top: 20px;
-      background-color: #FF914D;
+      background-color: var(--brand);
       color: white;
-      padding: 10px 20px;
-      border-radius: 6px;
+      padding: 12px 20px;
+      border-radius: 8px;
       text-decoration: none;
-      font-weight: 600;
-      transition: background-color 0.2s ease;
+      font-weight: 700;
+      transition: background-color 0.2s ease, transform .15s ease;
+      text-align:center;
+    }
+    .cta:hover { background-color: var(--brand-dark); transform: translateY(-1px); }
+
+    /* FEATURED (Growth) */
+    .pricing-card.featured{
+      border: 2px solid var(--brand);
+      background:
+        radial-gradient(120% 90% at 0% 0%, rgba(255,145,77,0.10), transparent 55%),
+        #ffffff;
+      box-shadow: 0 14px 30px rgba(255,145,77,0.25);
+      transform: translateY(-6px);
+    }
+    .pricing-card.featured:hover{
+      transform: translateY(-10px);
     }
 
-    .cta:hover {
-      background-color: #e6762b;
+    /* Ribbon */
+    .ribbon{
+      position:absolute;
+      top:14px; right:-48px;
+      background: var(--brand);
+      color:#fff;
+      padding:8px 70px;
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:.4px;
+      transform: rotate(45deg);
+      box-shadow: 0 6px 14px rgba(255,145,77,.35);
+      text-transform: uppercase;
+    }
+
+    /* Center CTAs inside cards */
+    .pricing-card .cta-wrap{
+      margin-top: 18px;
+      display:flex;
+      justify-content:center;
     }
 
     .footer {
@@ -149,32 +200,16 @@
       padding-bottom: 40px;
       color: gray;
       font-size: 14px;
+      text-align:center;
     }
 
     @media (max-width: 600px) {
-      h1 {
-        font-size: 28px;
-      }
-
-      .pricing-card {
-        padding: 20px;
-      }
-
-      .nav-container {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .nav-links {
-        flex-direction: column;
-        align-items: center;
-        gap: 12px;
-        margin-top: 10px;
-      }
-
-      .nav-links a {
-        font-size: 15px;
-      }
+      h1 { font-size: 28px; }
+      .pricing-card { padding: 22px; }
+      .nav-container { flex-direction: column; align-items: center; }
+      .nav-links { flex-direction: column; align-items: center; gap: 12px; margin-top: 10px; }
+      .nav-links a { font-size: 15px; }
+      .ribbon{ right:-58px; } /* keep ribbon visible on small screens */
     }
   </style>
 </head>
@@ -192,7 +227,7 @@
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="services.html">Services</a>
-        <a href="pricing.html">Pricing</a> 
+        <a href="pricing.html" aria-current="page">Pricing</a> 
       </div>
     </div>
   </nav>
@@ -207,29 +242,33 @@
       <!-- Starter Plan -->
       <div class="pricing-card">
         <h3>Starter</h3>
-        <div class="price">$99/mo</div>
+        <div class="price">$99<span class="per">/mo</span></div>
         <ul>
           <li>Basic chatbot setup (no custom integrations)</li>
           <li>1 industry template</li>
           <li>Website embed widget (basic installation guide)</li>
           <li>Email support (no live chat support)</li>
         </ul>
-        <a href="mailto:info@peachtreechat.com" class="cta">Get Started</a>
+        <div class="cta-wrap">
+          <a href="mailto:info@peachtreechat.com" class="cta">Get Started</a>
+        </div>
       </div>
 
-      <!-- Growth Plan -->
-      <div class="pricing-card">
+      <!-- Growth Plan (FEATURED) -->
+      <div class="pricing-card featured" aria-label="Most popular plan">
+        <div class="ribbon">Most Popular</div>
         <h3>Growth</h3>
-        <div class="price">$199
-/mo</div>
+        <div class="price">$199<span class="per">/mo</span></div>
         <ul>
-          <li>Advanced chatbot flows(multi-step, booking flows, FAQs)</li>
-          <li>Advanced customization for your buisiness</li>
-          <li>Live chat handoffs & analytics dashboard (real-time client handoff + performance tracking)</li>
-          <li>Priority support (email & chat)</li>
-          <li>Monthly optimization review (you or your team do a check -in/tune-up)</li>
+          <li>Advanced chatbot flows (multi-step, booking flows, FAQs)</li>
+          <li>Advanced customization for your business</li>
+          <li>Live chat handoffs &amp; analytics dashboard (real-time handoff + performance tracking)</li>
+          <li>Priority support (email &amp; chat)</li>
+          <li>Monthly optimization review (your team or ours handles tune-ups)</li>
         </ul>
-        <a href="mailto:info@peachtreechat.com" class="cta">Upgrade</a>
+        <div class="cta-wrap">
+          <a href="mailto:info@peachtreechat.com" class="cta">Upgrade</a>
+        </div>
       </div>
 
       <!-- Enterprise Plan -->
@@ -237,15 +276,17 @@
         <h3>Enterprise</h3>
         <div class="price">Custom</div>
         <ul>
-          <li>Custom chatbot strategy & design (flows built specifically for your business model)</li>
-          <li>CRM/API integrations(HubSpot, Salesforce, booking software, POS systems)</li>
-          <li>Multi-locations support (chains or franchises with shared + location-specific bots)</li>
-          <li>Full white-glove onboarding (you set everything up for them, no DIY)</li>
-          <li>Dedicated account manager (point of contact for support + strategy)</li>
-          <li> Advanced analytics & reporting (custom KPIs, conversion tracking, monthly reports)
-          <li>Priority 24/7 support(chat + phone, guaranteed responmse within 3 hours)</li>
+          <li>Custom chatbot strategy &amp; design (flows built for your business model)</li>
+          <li>CRM/API integrations (HubSpot, Salesforce, booking software, POS)</li>
+          <li>Multi-location support (chains or franchises; shared + location-specific bots)</li>
+          <li>White-glove onboarding (we set up everything; no DIY)</li>
+          <li>Dedicated account manager (single point of contact for support + strategy)</li>
+          <li>Advanced analytics &amp; reporting (custom KPIs, conversion tracking, monthly reports)</li>
+          <li>Priority 24/7 support (chat + phone; guaranteed response within 3 hours)</li>
         </ul>
-        <a href="mailto:info@peachtreechat.com" class="cta">Request Quote</a>
+        <div class="cta-wrap">
+          <a href="mailto:info@peachtreechat.com" class="cta">Request Quote</a>
+        </div>
       </div>
 
     </div>
@@ -258,4 +299,3 @@
 
 </body>
 </html>
-
