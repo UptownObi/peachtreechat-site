@@ -2,270 +2,314 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Services | PeachtreeChat</title>
 
-  <!-- Google Font (Optional for consistency) -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
 
   <style>
-    body {
-      font-family: 'Poppins', Arial, sans-serif;
-      background: #f9f9f9;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-      color: #2e2e2e;
+    :root{
+      --brand:#FF914D;
+      --brand-dark:#e6762b;
+      --text:#2e2e2e;
+      --muted:#555;
+      --bg:#f9f9f9;
+      --card:#fff;
+      --border:#eee;
+    }
+    *{box-sizing:border-box}
+
+    body{
+      font-family:'Poppins',Arial,sans-serif;
+      background:var(--bg);
+      margin:0;
+      color:var(--text);
+      text-align:center;
     }
 
-    nav {
-      background-color: #fff;
-      border-bottom: 1px solid #ddd;
-      padding: 12px 20px;
-      position: sticky;
-      top: 0;
-      width: 100%;
-      z-index: 999;
+    /* NAV */
+    nav{
+      background:#fff;
+      border-bottom:1px solid #ddd;
+      padding:12px 20px;
+      position:sticky;top:0;z-index:999;
+    }
+    .nav-container{
+      max-width:1000px;margin:auto;
+      display:flex;flex-wrap:wrap;
+      justify-content:space-between;align-items:center;
+    }
+    .nav-logo img{height:80px;object-fit:contain}
+    .nav-links{display:flex;gap:20px;flex-wrap:wrap;justify-content:center;margin-top:10px}
+    .nav-links a{color:var(--text);font-weight:600;text-decoration:none;transition:.2s}
+    .nav-links a:hover{color:var(--brand)}
+
+    /* MAIN */
+    .main{max-width:1000px;margin:auto;padding:50px 20px}
+    h1{font-size:34px;margin:0 0 10px;color:var(--brand)}
+    .lead{color:var(--muted);margin-bottom:28px}
+
+    /* SERVICES GRID */
+    .services-grid{
+      display:grid;
+      grid-template-columns:repeat(12,1fr);
+      gap:22px;
+      margin-top:10px;
+    }
+    .service-card{
+      grid-column:span 12;
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:16px;
+      box-shadow:0 6px 16px rgba(0,0,0,.06);
+      padding:26px 22px;
+      text-align:left;
+      position:relative;
+      transition:transform .25s ease, box-shadow .25s ease;
+    }
+    .service-card:hover{transform:translateY(-4px);box-shadow:0 14px 28px rgba(0,0,0,.12)}
+    .service-head{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+    .icon{
+      width:40px;height:40px;border-radius:50%;
+      display:grid;place-items:center;
+      background:rgba(255,145,77,.12);
+      color:var(--brand);font-size:20px;font-weight:700;
+      flex:0 0 40px;
+    }
+    .service-title{margin:0;font-size:22px;color:var(--brand)}
+    .service-meta{margin:8px 0 0;color:#777;font-size:14px}
+
+    .service-card ul{margin:14px 0 0;padding-left:18px}
+    .service-card li{color:#444;margin:8px 0;line-height:1.55}
+
+    .cta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+    .btn{
+      display:inline-block;padding:10px 16px;border-radius:10px;
+      font-weight:700;text-decoration:none;transition:.15s;
+    }
+    .btn-primary{background:var(--brand);color:#fff}
+    .btn-primary:hover{background:var(--brand-dark);transform:translateY(-1px)}
+    .btn-ghost{border:1px solid var(--brand);color:var(--brand);background:#fff}
+    .btn-ghost:hover{background:rgba(255,145,77,.08)}
+
+    /* FEATURED SERVICE (Salon) */
+    .service-card.featured{
+      border:2px solid var(--brand);
+      background:
+        radial-gradient(120% 90% at 0% 0%, rgba(255,145,77,.10), transparent 60%),
+        #fff;
+      box-shadow:0 18px 34px rgba(255,145,77,.25);
+    }
+    .ribbon{
+      position:absolute;top:14px;right:-42px;
+      transform:rotate(45deg);
+      background:var(--brand);color:#fff;
+      font-size:11px;font-weight:800;letter-spacing:.4px;
+      padding:6px 60px;text-transform:uppercase;
+      box-shadow:0 8px 18px rgba(255,145,77,.35);
     }
 
-    .nav-container {
-      max-width: 1000px;
-      margin: auto;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      height: auto;
+    /* Responsive grid columns */
+    @media (min-width:700px){
+      .service-card{grid-column:span 6}
+      .service-card.featured{grid-column:span 12}
+    }
+    @media (min-width:980px){
+      .service-card{grid-column:span 6}
+      .service-card.featured{grid-column:span 12}
     }
 
-    .nav-logo img {
-      height: 80px;
-      object-fit: contain;
+    /* TESTIMONIALS */
+    .testimonials{
+      margin-top:44px;padding:38px 18px;background:#fff;border:1px solid var(--border);
+      border-radius:16px;
     }
-
-    .nav-links {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-      margin-top: 10px;
+    .testimonials h2{color:var(--brand);margin:0 0 16px}
+    .t-grid{
+      display:grid;gap:16px;
+      grid-template-columns:repeat(3,1fr);
     }
-
-    .nav-links a {
-      text-decoration: none;
-      color: #2e2e2e;
-      font-weight: 600;
-      font-size: 16px;
-      transition: all 0.3s ease;
+    .t-card{
+      background:#f4f4f6;border:1px solid var(--border);border-radius:12px;
+      padding:18px;text-align:left;box-shadow:0 4px 10px rgba(0,0,0,.04);
     }
+    .t-quote{font-style:italic;color:#444;margin:0 0 10px}
+    .t-author{font-weight:700;color:#333}
 
-    .nav-links a:hover {
-      color: #FF914D;
-    }
-
-    .main {
-      padding: 40px 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
-
-    h1 {
-      font-size: 32px;
-      color: #FF914D;
-      margin-bottom: 30px;
-    }
-
-    .section {
-      background: #fff;
-      padding: 30px 20px;
-      margin: 20px 0;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      text-align: left;
-    }
-
-    .section h2 {
-      color: #FF914D;
-      margin-bottom: 15px;
-    }
-
-    .section ul {
-      padding-left: 20px;
-    }
-
-    .section li {
-      margin-bottom: 10px;
-      line-height: 1.6;
-      color: #555;
-    }
-
-    /* Testimonials Section */
-    .testimonials {
-      background: #fff;
-      padding: 50px 20px;
-      margin-top: 40px;
-      border-top: 1px solid #eee;
-    }
-
-    .testimonials h2 {
-      font-size: 28px;
-      color: #FF914D;
-      margin-bottom: 30px;
-    }
-
-    .testimonial-card {
-      max-width: 600px;
-      margin: 20px auto;
-      background: #f4f4f4;
-      padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    }
-
-    .testimonial-card p {
-      font-style: italic;
-      color: #444;
-      margin-bottom: 10px;
-    }
-
-    .testimonial-card h4 {
-      font-weight: 600;
-      color: #333;
-    }
-
-    .footer {
-      margin-top: 60px;
-      padding: 30px 0;
-      color: gray;
-      font-size: 14px;
-    }
-
-    @media (max-width: 600px) {
-      .nav-container {
-        flex-direction: column;
-        align-items: center;
+    /* Mobile carousel for testimonials */
+    @media (max-width:700px){
+      .t-grid{
+        display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;
+        -webkit-overflow-scrolling:touch;padding-bottom:6px;
       }
-
-      .nav-links {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .nav-links a {
-        margin: 8px 0;
-        font-size: 15px;
-      }
-
-      .main {
-        padding: 30px 15px;
-      }
-
-      h1 {
-        font-size: 26px;
-      }
-
-      .section {
-        padding: 20px 15px;
-      }
-
-      .section h2 {
-        font-size: 20px;
-      }
-
-      .section li {
-        font-size: 15px;
-      }
-
-      .testimonial-card {
-        padding: 20px;
-      }
+      .t-card{min-width:85%;scroll-snap-align:center}
     }
+
+    /* STICKY MOBILE CTA */
+    .sticky-cta{
+      display:none;
+      position:fixed;left:0;right:0;bottom:0;
+      background:#101010; color:#fff;
+      padding:12px 14px;
+      box-shadow:0 -8px 18px rgba(0,0,0,.28);
+      z-index:999;
+    }
+    .sticky-cta .inner{
+      max-width:1000px;margin:auto;
+      display:flex;align-items:center;justify-content:space-between;gap:10px;
+    }
+    .sticky-cta .btn-primary{padding:10px 14px;border-radius:8px}
+    @media (max-width:600px){ .sticky-cta{display:block} }
+
+    /* Footer */
+    .footer{margin:60px 0 80px;color:gray;font-size:14px}
   </style>
 </head>
 <body>
+
+  <!-- NAV -->
   <nav>
     <div class="nav-container">
       <div class="nav-logo">
         <a href="index.html">
-          <img src="peachtreechat-logo.png" alt="PeachtreeChat Logo" />
+          <img src="peachtreechat-logo.png" alt="PeachtreeChat Logo"/>
         </a>
       </div>
       <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
-        <a href="services.html">Services</a>
+        <a href="services.html" aria-current="page">Services</a>
         <a href="pricing.html">Pricing</a>
       </div>
     </div>
   </nav>
 
-  <div class="main">
+  <main class="main">
     <h1>Our Services</h1>
+    <p class="lead">AI chatbots tailored to your industry to book more clients, save time, and scale support.</p>
 
-    <div class="section">
-      <h2>Salon Chatbots</h2>
-      <ul>
-        <li><strong>Use Case:</strong> Schedule haircuts, answer seasonal promos, reduce front-desk workload.</li>
-        <li><strong>Features:</strong> Auto-reminders, FAQs, promotional banners.</li>
-        <li><strong>Pricing:</strong> Starting at $49/month</li>
-        <li><strong>FAQ:</strong> “Can it sync with my booking system?” – Yes!</li>
-      </ul>
-    </div>
+    <section class="services-grid">
 
-    <div class="section">
-      <h2>Real Estate Assistants</h2>
-      <ul>
-        <li><strong>Use Case:</strong> Capture leads, schedule home tours, deliver 24/7 listing info.</li>
-        <li><strong>Features:</strong> Lead capture forms, zip code filters, contact routing.</li>
-        <li><strong>Pricing:</strong> Starting at $69/month</li>
-        <li><strong>FAQ:</strong> “Can it connect to MLS or IDX?” – Integrations available.</li>
-      </ul>
-    </div>
+      <!-- FEATURED: Salon -->
+      <article class="service-card featured" aria-label="Best for salons">
+        <div class="ribbon">Best for Salons</div>
+        <div class="service-head">
+          <div class="icon">💇‍♀️</div>
+          <div>
+            <h2 class="service-title">Salon Chatbots</h2>
+            <p class="service-meta">Boost bookings • Reduce front-desk workload • Run promos</p>
+          </div>
+        </div>
+        <ul>
+          <li><strong>Use Case:</strong> Schedule haircuts, handle seasonal promos, reduce phone time.</li>
+          <li><strong>Features:</strong> Auto-reminders, FAQs, promotional banners, no-show reduction.</li>
+          <li><strong>Pricing:</strong> Starting at $49/month</li>
+          <li><strong>FAQ:</strong> Syncs with most booking systems.</li>
+        </ul>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="mailto:info@peachtreechat.com?subject=Salon%20Chatbot%20Demo">Get a Demo</a>
+          <a class="btn btn-ghost" href="pricing.html">See Pricing</a>
+        </div>
+      </article>
 
-    <div class="section">
-      <h2>Legal Intake Bots</h2>
-      <ul>
-        <li><strong>Use Case:</strong> Qualify clients with intake forms before consultations.</li>
-        <li><strong>Features:</strong> Conditional questions, email summaries, data security.</li>
-        <li><strong>Pricing:</strong> Starting at $79/month</li>
-        <li><strong>FAQ:</strong> “Is it HIPAA compliant?” – Not at this time.</li>
-      </ul>
-    </div>
+      <!-- Real Estate -->
+      <article class="service-card">
+        <div class="service-head">
+          <div class="icon">🏡</div>
+          <div>
+            <h2 class="service-title">Real Estate Assistants</h2>
+            <p class="service-meta">Capture leads • Schedule tours • 24/7 listing info</p>
+          </div>
+        </div>
+        <ul>
+          <li><strong>Use Case:</strong> Capture leads, book tours, answer listing questions 24/7.</li>
+          <li><strong>Features:</strong> Lead forms, ZIP filters, smart routing to agents.</li>
+          <li><strong>Pricing:</strong> Starting at $69/month</li>
+          <li><strong>FAQ:</strong> MLS/IDX integrations available.</li>
+        </ul>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="mailto:info@peachtreechat.com?subject=Real%20Estate%20Chatbot%20Demo">Get a Demo</a>
+          <a class="btn btn-ghost" href="pricing.html">See Pricing</a>
+        </div>
+      </article>
 
-    <div class="section">
-      <h2>Custom Integrations</h2>
-      <ul>
-        <li><strong>Use Case:</strong> Tailor a chatbot to your unique business process or CRM.</li>
-        <li><strong>Features:</strong> API integration, webhook support, custom scripts.</li>
-        <li><strong>Pricing:</strong> Custom quote</li>
-        <li><strong>FAQ:</strong> “Can I embed this on my website?” – Yes, with one line of code.</li>
-      </ul>
-    </div>
+      <!-- Legal -->
+      <article class="service-card">
+        <div class="service-head">
+          <div class="icon">⚖️</div>
+          <div>
+            <h2 class="service-title">Legal Intake Bots</h2>
+            <p class="service-meta">Qualify clients • Automate intake • Reduce wait time</p>
+          </div>
+        </div>
+        <ul>
+          <li><strong>Use Case:</strong> Pre-qualify clients with structured intake before consults.</li>
+          <li><strong>Features:</strong> Conditional questions, email summaries, data controls.</li>
+          <li><strong>Pricing:</strong> Starting at $79/month</li>
+          <li><strong>FAQ:</strong> HIPAA not supported yet.</li>
+        </ul>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="mailto:info@peachtreechat.com?subject=Legal%20Intake%20Bot%20Demo">Get a Demo</a>
+          <a class="btn btn-ghost" href="pricing.html">See Pricing</a>
+        </div>
+      </article>
 
-    <!-- ✅ Testimonials Section -->
-    <div class="testimonials">
-      <h2>What Clients Might Say</h2>
+      <!-- Custom Integrations -->
+      <article class="service-card">
+        <div class="service-head">
+          <div class="icon">🧩</div>
+          <div>
+            <h2 class="service-title">Custom Integrations</h2>
+            <p class="service-meta">Connect to CRMs, booking tools, POS, and more</p>
+          </div>
+        </div>
+        <ul>
+          <li><strong>Use Case:</strong> Tailor a chatbot to your process or CRM.</li>
+          <li><strong>Features:</strong> APIs, webhooks, custom scripts & workflows.</li>
+          <li><strong>Pricing:</strong> Custom quote.</li>
+          <li><strong>FAQ:</strong> One-line embed for any website.</li>
+        </ul>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="mailto:info@peachtreechat.com?subject=Custom%20Integration%20Consult">Book a Consult</a>
+          <a class="btn btn-ghost" href="pricing.html">See Pricing</a>
+        </div>
+      </article>
 
-      <div class="testimonial-card">
-        <p>"PeachtreeChat completely transformed how we handle client inquiries. It’s like having a 24/7 receptionist!"</p>
-        <h4>— Hair Studio Owner</h4>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials" aria-label="Client testimonials">
+      <h2>What Clients Say</h2>
+      <div class="t-grid">
+        <figure class="t-card">
+          <blockquote class="t-quote">“PeachtreeChat completely transformed how we handle client inquiries. It’s like having a 24/7 receptionist.”</blockquote>
+          <figcaption class="t-author">— Hair Studio Owner</figcaption>
+        </figure>
+        <figure class="t-card">
+          <blockquote class="t-quote">“We’ve cut manual intake by 50%. The legal bot saves us hours each week.”</blockquote>
+          <figcaption class="t-author">— Law Office Manager</figcaption>
+        </figure>
+        <figure class="t-card">
+          <blockquote class="t-quote">“As a solo agent, the bot captures leads while I’m at showings.”</blockquote>
+          <figcaption class="t-author">— Independent Realtor</figcaption>
+        </figure>
       </div>
+    </section>
 
-      <div class="testimonial-card">
-        <p>"We’ve cut down our manual intake work by 50%. The legal bot saves us so much time."</p>
-        <h4>— Law Office Manager</h4>
-      </div>
+    <footer class="footer">
+      <p>&copy; 2025 PeachtreeChat. All rights reserved.</p>
+    </footer>
+  </main>
 
-      <div class="testimonial-card">
-        <p>"As a solo real estate agent, this chatbot captures leads even when I’m busy with showings."</p>
-        <h4>— Independent Realtor</h4>
-      </div>
-    </div>
-
-    <div class="footer">
-      <p>Need more help? 
+  <!-- Sticky mobile CTA -->
+  <div class="sticky-cta" role="region" aria-label="Contact bar">
+    <div class="inner">
+      <span>Ready to automate your client messages?</span>
+      <a class="btn btn-primary" href="mailto:info@peachtreechat.com?subject=PeachtreeChat%20Demo">Get a Demo</a>
     </div>
   </div>
+
 </body>
 </html>
 
