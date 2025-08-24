@@ -4,161 +4,128 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Contact • PeachtreeChat</title>
-  <meta name="description" content="Get in touch with PeachtreeChat — AI chatbots for salons, real estate and SMBs. Book a demo or ask a question." />
-  <meta property="og:title" content="Contact • PeachtreeChat" />
-  <meta property="og:description" content="Get in touch with PeachtreeChat — AI chatbots for salons, real estate and SMBs." />
+  <meta name="description" content="Get in touch with PeachtreeChat — AI chatbots for salons, real estate and small businesses." />
   <meta name="theme-color" content="#ff7a45" />
+  <link rel="icon" href="/favicon.png" type="image/png" />
   <style>
-    :root {
-      --peach: #ff7a45;     /* brand accent */
-      --peach-600: #ff6a2d;
-      --ink: #1f2937;       /* neutral 800 */
-      --ink-600: #374151;    /* neutral 700 */
-      --ink-400: #6b7280;    /* neutral 500 */
-      --paper: #fffaf5;      /* soft background */
-      --card: #ffffff;       /* card bg */
+    /* ===== Brand System (matches homepage) ===== */
+    :root{
+      --peach: #ff7a45; /* primary accent */
+      --peach-600:#ff6a2d;
+      --ink:#24262d;   /* body */
+      --muted:#6b7280; /* captions */
+      --paper:#fffaf5; /* subtle bg */
+      --card:#ffffff;  /* surfaces */
+      --line:#f2f2f3;  /* borders */
       --ring: rgba(255,122,69,.35);
-      --success: #16a34a;
-      --danger: #dc2626;
-      --shadow: 0 10px 20px rgba(0,0,0,.05), 0 2px 6px rgba(0,0,0,.04);
-      --radius-xl: 18px;
-      --radius-lg: 14px;
+      --shadow: 0 10px 18px rgba(21,23,28,.05), 0 2px 6px rgba(21,23,28,.04);
+      --radius-xl: 18px; --radius-lg: 14px; --radius: 12px;
     }
-    * { box-sizing: border-box; }
-    html, body { height: 100%; }
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Helvetica, Arial, sans-serif;
-      color: var(--ink);
-      background: linear-gradient(180deg, #fffefd, var(--paper));
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; color:var(--ink);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Helvetica, Arial, sans-serif;
+      background: linear-gradient(180deg,#fffefd, var(--paper));
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
     }
-    a { color: var(--peach-600); text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    a{color:var(--peach-600); text-decoration:none}
+    a:hover{text-decoration:underline}
 
-    .wrap { max-width: 1120px; margin: 0 auto; padding: 32px 20px 64px; }
+    .container{max-width:1120px; margin:0 auto; padding:0 20px}
 
-    /* header */
-    .topbar { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom: 24px; }
-    .brand { display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing: .2px; }
-    .brand-logo { width:28px; height:28px; border-radius: 8px; background: var(--peach); display:grid; place-items:center; color:#fff; font-weight:900; box-shadow: var(--shadow); }
-    .crumbs { color: var(--ink-400); font-size: 14px; }
+    /* ===== Site Header (mirrors Home/About/Services/Pricing) ===== */
+    header{position:sticky; top:0; z-index:30; backdrop-filter:saturate(180%) blur(8px); background:rgba(255,255,255,.7); border-bottom:1px solid var(--line)}
+    .nav{display:flex; align-items:center; justify-content:space-between; height:58px}
+    .brand{display:flex; gap:10px; align-items:center; font-weight:800}
+    .brand .logo{width:26px; height:26px; border-radius:8px; background:var(--peach); display:grid; place-items:center; color:#fff; box-shadow:var(--shadow)}
+    .links{display:flex; gap:20px; font-size:14px}
+    .links a{color:#444}
+    .links a.active{color:var(--peach-600); font-weight:700}
+    .cta{appearance:none; border:none; border-radius:999px; background:var(--peach); color:#fff; padding:10px 14px; font-weight:700; box-shadow:0 6px 16px rgba(255,122,69,.3); cursor:pointer}
+    .cta:hover{filter:brightness(.98)}
 
-    /* hero */
-    .hero {
-      background: radial-gradient(1200px 500px at 50% -200px, rgba(255,122,69,.15), transparent), var(--card);
-      border: 1px solid #f3f4f6;
-      border-radius: var(--radius-xl);
-      padding: 28px 28px 24px;
-      box-shadow: var(--shadow);
-    }
-    .hero h1 { margin: 0 0 8px; font-size: clamp(28px, 3vw, 36px); letter-spacing: .2px; }
-    .hero p { margin: 0; color: var(--ink-400); max-width: 70ch; }
+    /* ===== Page Hero ===== */
+    .wrap{padding:28px 0 36px}
+    .hero{background: radial-gradient(900px 400px at 50% -200px, rgba(255,122,69,.12), transparent), var(--card); border:1px solid var(--line); border-radius:var(--radius-xl); padding:28px; box-shadow:var(--shadow)}
+    .hero h1{margin:0 0 6px; font-size:clamp(28px,3vw,36px)}
+    .hero p{margin:0; color:var(--muted)}
 
-    /* grid */
-    .grid {
-      display: grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap: 24px;
-      margin-top: 22px;
-    }
-    @media (max-width: 980px) {
-      .grid { grid-template-columns: 1fr; }
-    }
+    /* ===== Layout ===== */
+    .grid{display:grid; grid-template-columns:1.15fr .85fr; gap:24px; margin-top:22px}
+    @media (max-width:980px){.grid{grid-template-columns:1fr}}
 
-    /* card */
-    .card {
-      background: var(--card);
-      border: 1px solid #f3f4f6;
-      border-radius: var(--radius-xl);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-    }
+    /* ===== Cards ===== */
+    .card{background:var(--card); border:1px solid var(--line); border-radius:var(--radius-xl); box-shadow:var(--shadow); overflow:hidden}
+    .card-body{padding:22px}
 
-    /* contact form */
-    .form { padding: 22px; }
-    .form h2 { margin: 0 0 14px; font-size: 22px; }
-    .row { display:grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-    @media (max-width: 640px) { .row { grid-template-columns: 1fr; } }
-    label { display:block; font-size: 14px; color: var(--ink-600); margin: 10px 0 6px; }
-    input, select, textarea { width:100%; padding: 12px 12px; border-radius: 12px; border:1px solid #e5e7eb; background:#fff; color:var(--ink); font-size:16px; transition: box-shadow .15s, border-color .15s; }
-    input:focus, select:focus, textarea:focus { outline: none; border-color: var(--peach); box-shadow: 0 0 0 4px var(--ring); }
-    textarea { min-height: 140px; resize: vertical; }
+    /* ===== Form ===== */
+    .row{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+    @media (max-width:640px){.row{grid-template-columns:1fr}}
+    label{display:block; font-size:14px; color:#3a3d44; margin:10px 0 6px}
+    input,select,textarea{width:100%; padding:12px; border-radius:12px; border:1px solid #e6e7ea; background:#fff; color:var(--ink); font-size:16px; transition:border-color .15s, box-shadow .15s}
+    input:focus,select:focus,textarea:focus{outline:none; border-color:var(--peach); box-shadow:0 0 0 4px var(--ring)}
+    textarea{min-height:140px; resize:vertical}
+    .hint{font-size:12px; color:var(--muted); margin-top:6px}
+    .actions{display:flex; gap:12px; align-items:center; margin-top:16px}
+    .btn{appearance:none; border:none; border-radius:999px; background:var(--peach); color:#fff; padding:12px 16px; font-weight:700; cursor:pointer; box-shadow:0 6px 16px rgba(255,122,69,.3)}
+    .btn.secondary{background:#111827}
+    .msg{display:none; margin-top:12px; font-size:14px; padding:10px 12px; border-radius:12px}
+    .msg.ok{background:#ecfdf5; color:#065f46; border:1px solid #a7f3d0}
+    .msg.err{background:#fef2f2; color:#7f1d1d; border:1px solid #fecaca}
 
-    .hint { font-size: 12px; color: var(--ink-400); margin-top: 6px; }
+    /* ===== Info Panel ===== */
+    .info-list{display:grid; gap:14px; margin-top:8px}
+    .item{display:flex; gap:12px; align-items:flex-start}
+    .icon{width:18px; height:18px; margin-top:3px; color:var(--peach-600)}
+    .muted{color:var(--muted)}
+    .hours{width:100%; border-collapse:collapse; font-size:14px}
+    .hours td{padding:6px 0; border-bottom:1px dashed #eee}
+    .map{width:100%; height:280px; border:0; display:block}
 
-    .actions { display:flex; align-items:center; gap:12px; margin-top: 18px; }
-    .btn {
-      appearance: none; border: none; cursor: pointer; font-weight: 600;
-      padding: 12px 16px; border-radius: 999px; background: var(--peach); color: #fff;
-      box-shadow: 0 6px 16px rgba(255,122,69,.3), inset 0 -1px 0 rgba(0,0,0,.05);
-      transition: transform .05s ease, filter .2s ease;
-    }
-    .btn:hover { filter: brightness(.98); }
-    .btn:active { transform: translateY(1px); }
-    .btn.secondary { background: #111827; }
-
-    .check { display:flex; gap:10px; align-items:flex-start; font-size: 14px; color: var(--ink-600); }
-    .check input { width: 18px; height: 18px; margin-top: 2px; }
-
-    .msg { display:none; margin-top: 12px; font-size: 14px; padding: 10px 12px; border-radius: 12px; }
-    .msg.ok { background: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0; }
-    .msg.err { background: #fef2f2; color: #7f1d1d; border: 1px solid #fecaca; }
-
-    /* info panel */
-    .info { display:grid; grid-template-rows: auto 1fr; }
-    .info .panel { padding: 22px; }
-    .list { display:grid; gap:14px; margin: 8px 0 0; }
-    .item { display:flex; gap:12px; align-items:flex-start; }
-    .icon { width: 18px; height: 18px; margin-top: 3px; color: var(--peach-600); }
-    .muted { color: var(--ink-400); }
-    .hours { width:100%; border-collapse: collapse; font-size: 14px; }
-    .hours td { padding: 6px 0; border-bottom: 1px dashed #eee; }
-
-    /* map */
-    .map { width:100%; height: 280px; border:0; display:block; }
-
-    /* faq */
-    details { border:1px solid #f3f4f6; border-radius: 12px; padding: 12px 14px; background:#fff; }
-    details + details { margin-top: 10px; }
-    summary { cursor:pointer; font-weight:600; }
-    summary::-webkit-details-marker { display:none; }
+    footer{border-top:1px solid var(--line); margin-top:30px; padding:22px 0; color:var(--muted); font-size:14px}
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="topbar">
+  <header>
+    <div class="container nav">
       <div class="brand">
-        <div class="brand-logo">🍑</div>
+        <div class="logo">🍑</div>
         <span>PeachtreeChat</span>
       </div>
-      <div class="crumbs">Home ▸ Contact</div>
+      <nav class="links" aria-label="Primary">
+        <a href="/" >Home</a>
+        <a href="/about.html">About</a>
+        <a href="/services.html">Services</a>
+        <a href="/pricing.html">Pricing</a>
+        <a class="active" href="/contact.html">Contact</a>
+      </nav>
+      <button class="cta" onclick="window.location.href='/contact.html#contactForm'">Get Started</button>
     </div>
+  </header>
 
+  <main class="container wrap">
     <section class="hero">
-      <h1>Let’s talk</h1>
-      <p>Questions, pricing, partnership, or a custom demo—drop us a note and we’ll reply within one business day.</p>
+      <h1>Contact PeachtreeChat</h1>
+      <p>AI chatbots for salons, real estate & SMBs. Send a note or book a quick intro — we reply within 1 business day.</p>
     </section>
 
     <section class="grid">
-      <!-- FORM CARD -->
+      <!-- FORM -->
       <div class="card">
-        <form id="contactForm" class="form" method="POST" action="https://formspree.io/f/your-id">
-          <!-- Replace the action URL with your Formspree endpoint. If you host on Netlify instead, remove the action and add data-netlify="true" name="contact" netlify-honeypot="bot-field". -->
-          <h2>Send us a message</h2>
+        <form id="contactForm" class="card-body" method="POST" action="https://formspree.io/f/your-id">
+          <h2 style="margin:0 0 14px; font-size:22px">Send us a message</h2>
           <input type="hidden" name="_subject" value="New inquiry from peachtreechat.com" />
           <div class="row">
             <div>
               <label for="name">Full name</label>
-              <input id="name" name="name" type="text" autocomplete="name" required placeholder="Jane Doe" />
+              <input id="name" name="name" type="text" required placeholder="Jane Doe" />
             </div>
             <div>
               <label for="email">Email</label>
-              <input id="email" name="email" type="email" autocomplete="email" required placeholder="you@company.com" />
+              <input id="email" name="email" type="email" required placeholder="you@company.com" />
             </div>
           </div>
-
           <div class="row">
             <div>
               <label for="phone">Phone (optional)</label>
@@ -169,7 +136,6 @@
               <input id="company" name="company" type="text" placeholder="Salon Mia" />
             </div>
           </div>
-
           <div class="row">
             <div>
               <label for="topic">Topic</label>
@@ -178,7 +144,7 @@
                 <option>Book a 60‑second demo</option>
                 <option>Start my chatbot</option>
                 <option>Pricing & plans</option>
-                <option>Partnership/Reseller</option>
+                <option>Partnership / Reseller</option>
                 <option>Something else</option>
               </select>
             </div>
@@ -193,22 +159,21 @@
               </select>
             </div>
           </div>
-
           <label for="message">Tell us a bit more</label>
           <textarea id="message" name="message" required placeholder="What are you hoping to automate? Links or examples help."></textarea>
-          <div class="hint">We reply in 1 business day. For urgent help: <a href="mailto:hello@peachtreechat.com">hello@peachtreechat.com</a></div>
+          <div class="hint">For urgent help: <a href="mailto:hello@peachtreechat.com">hello@peachtreechat.com</a></div>
 
-          <!-- honeypot (spam) -->
-          <input type="text" name="bot-field" autocomplete="off" style="position:absolute; left:-9999px; opacity:0;" tabindex="-1" aria-hidden="true" />
+          <!-- honeypot for spam bots -->
+          <input type="text" name="bot-field" autocomplete="off" style="position:absolute; left:-9999px; opacity:0" tabindex="-1" aria-hidden="true" />
 
           <div class="actions">
             <button class="btn" type="submit">Send message</button>
             <button class="btn secondary" type="button" id="demoBtn">Book 15‑min intro</button>
           </div>
 
-          <label class="check" style="margin-top:12px">
-            <input type="checkbox" id="consent" required />
-            <span>I agree to be contacted about my inquiry and confirm I’ve read the <a href="#" target="_blank" rel="noopener">Privacy Policy</a>.</span>
+          <label class="hint" style="display:flex; gap:8px; align-items:flex-start; margin-top:10px">
+            <input type="checkbox" id="consent" style="width:18px; height:18px; margin-top:2px" required>
+            <span>I agree to be contacted about my inquiry and confirm I’ve read the Privacy Policy.</span>
           </label>
 
           <div id="formOk" class="msg ok">Thanks! Your message is on its way. We’ll be in touch soon.</div>
@@ -216,111 +181,68 @@
         </form>
       </div>
 
-      <!-- INFO / MAP CARD -->
-      <div class="card info">
-        <div class="panel">
-          <h2>How to reach us</h2>
-          <div class="list">
+      <!-- INFO / MAP -->
+      <div class="card">
+        <div class="card-body">
+          <h2 style="margin:0 0 10px; font-size:22px">How to reach us</h2>
+          <div class="info-list">
             <div class="item">
               <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.86 19.86 0 0 1 2.09 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72 12.66 12.66 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11l-1.27 1.27a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.66 12.66 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              <div>
-                <div><strong>Call</strong></div>
-                <div class="muted">(470) 555‑0191</div>
-              </div>
+              <div><strong>Call</strong><div class="muted">(470) 555‑0191</div></div>
             </div>
             <div class="item">
               <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg>
-              <div>
-                <div><strong>Email</strong></div>
-                <div class="muted"><a href="mailto:hello@peachtreechat.com">hello@peachtreechat.com</a></div>
-              </div>
+              <div><strong>Email</strong><div><a href="mailto:hello@peachtreechat.com">hello@peachtreechat.com</a></div></div>
             </div>
             <div class="item">
               <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12S3 17 3 10a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              <div>
-                <div><strong>Location</strong></div>
-                <div class="muted">Atlanta, Georgia</div>
-              </div>
+              <div><strong>Location</strong><div class="muted">Atlanta, Georgia</div></div>
             </div>
           </div>
 
           <h3 style="margin:18px 0 6px">Hours</h3>
-          <table class="hours">
-            <tbody>
-              <tr><td>Mon–Fri</td><td>9:00 AM – 6:00 PM ET</td></tr>
-              <tr><td>Saturday</td><td>10:00 AM – 2:00 PM ET</td></tr>
-              <tr><td>Sunday</td><td>Closed</td></tr>
-            </tbody>
-          </table>
+          <table class="hours"><tbody>
+            <tr><td>Mon–Fri</td><td>9:00 AM – 6:00 PM ET</td></tr>
+            <tr><td>Saturday</td><td>10:00 AM – 2:00 PM ET</td></tr>
+            <tr><td>Sunday</td><td>Closed</td></tr>
+          </tbody></table>
 
           <h3 style="margin:18px 0 6px">FAQs</h3>
-          <details>
-            <summary>Do you offer a quick demo?</summary>
-            <div class="muted" style="margin-top:8px">Yes — click “Book 15‑min intro” or choose “Book a 60‑second demo” in the topic.</div>
-          </details>
-          <details>
-            <summary>Which industries do you support?</summary>
-            <div class="muted" style="margin-top:8px">Salons, real estate, legal intake, property management, and more SMB use‑cases. We can customize flows and APIs.</div>
-          </details>
+          <details><summary>Do you offer a quick demo?</summary><div class="muted" style="margin-top:8px">Yes — click “Book 15‑min intro” or choose “Book a 60‑second demo” in the topic.</div></details>
+          <details><summary>Which industries do you support?</summary><div class="muted" style="margin-top:8px">Salons, real estate, legal intake, property management, and more SMB use‑cases. We can customize flows and APIs.</div></details>
         </div>
-        <iframe class="map" loading="lazy" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13239.250838078091!2d-84.395!3d33.755!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f50463df1f3a4f%3A0x18f1c1a2b7c2b5d9!2sAtlanta%2C%20GA!5e0!3m2!1sen!2sus!4v1700000000000"></iframe>
+        <iframe class="map" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13239.250838078091!2d-84.395!3d33.755"></iframe>
       </div>
     </section>
+  </main>
 
-    <footer style="text-align:center; color:var(--ink-400); font-size:14px; margin-top:28px">
-      © <span id="yr"></span> PeachtreeChat. All rights reserved.
-    </footer>
-  </div>
+  <footer>
+    <div class="container">© <span id="yr"></span> PeachtreeChat. All rights reserved.</div>
+  </footer>
 
   <script>
-    // year
+    // keep identity consistent across pages
     document.getElementById('yr').textContent = new Date().getFullYear();
 
-    // optional: send people to your Calendly/booking page
-    document.getElementById('demoBtn').addEventListener('click', () => {
-      // TODO: replace with your booking link
+    // optional: route to Calendly
+    document.getElementById('demoBtn').addEventListener('click', ()=>{
       window.location.href = 'https://calendly.com/your-handle/intro-15';
     });
 
-    // client-side validation + async submit (Formspree)
+    // ajax submit for Formspree
     const form = document.getElementById('contactForm');
     const ok = document.getElementById('formOk');
     const err = document.getElementById('formErr');
-
-    form.addEventListener('submit', async (e) => {
+    form.addEventListener('submit', async (e)=>{
       e.preventDefault();
-
-      // basic consent check
-      const consent = document.getElementById('consent');
-      if (!consent.checked) {
-        err.style.display = 'block';
-        err.textContent = 'Please accept the consent to proceed.';
-        ok.style.display = 'none';
-        return;
+      if(!document.getElementById('consent').checked){
+        err.style.display='block'; err.textContent='Please accept the consent to proceed.'; ok.style.display='none'; return;
       }
-
-      try {
-        const data = new FormData(form);
-        const res = await fetch(form.action, {
-          method: 'POST',
-          body: data,
-          headers: { 'Accept': 'application/json' }
-        });
-        if (res.ok) {
-          ok.style.display = 'block';
-          err.style.display = 'none';
-          form.reset();
-        } else {
-          const out = await res.json().catch(() => ({}));
-          err.style.display = 'block';
-          err.innerHTML = (out.errors && out.errors.length) ? out.errors.map(e => e.message).join(', ') : 'Submission failed. Please try again.';
-          ok.style.display = 'none';
-        }
-      } catch (e2) {
-        err.style.display = 'block';
-        err.textContent = 'Network error — please try again.';
-        ok.style.display = 'none';
-      }
+      try{
+        const res = await fetch(form.action,{method:'POST', body:new FormData(form), headers:{Accept:'application/json'}});
+        if(res.ok){ ok.style.display='block'; err.style.display='none'; form.reset(); }
+        else{ const out = await res.json().catch(()=>({})); err.style.display='block'; ok.style.display='none'; err.innerHTML = (out.errors?.length? out.errors.map(x=>x.message).join(', '): 'Submission failed. Please try again.'); }
+      }catch(_e){ err.style.display='block'; ok.style.display='none'; err.textContent='Network error — please try again.'; }
     });
   </script>
 </body>
