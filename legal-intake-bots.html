@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Legal Intake Chatbots • PeachtreeChat</title>
+
+  <!-- SEO -->
+  <meta name="description" content="AI chatbots for law firms: qualify clients, collect case details, and schedule consultations 24/7 with PeachIQ." />
+
+  <!-- Google Font: Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    body { font-family: 'Poppins', Arial, sans-serif; background: #f9f9f9; margin: 0; padding: 0; text-align: center; color: #2e2e2e; }
+    nav { background-color: #fff; border-bottom: 1px solid #ddd; padding: 12px 20px; position: sticky; top: 0; width: 100%; z-index: 999; box-shadow: 0 2px 12px rgba(0,0,0,.06); }
+    .nav-container { max-width: 1000px; margin: auto; display: flex; justify-content: space-between; align-items: center; height: 80px; }
+    .nav-logo img { height: 110px; object-fit: contain; }
+    .nav-links a { margin-left: 30px; text-decoration: none; color: #2e2e2e; font-weight: 600; font-size: 16px; transition: all 0.3s ease; }
+    .nav-links a:hover { color: #FF914D; transform: scale(1.05); }
+    .nav-links a.active { color: #FF914D; }
+
+    .main { padding: 60px 20px; opacity: 0; transform: translateY(30px); animation: fadeIn 1s ease forwards; }
+    @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
+
+    h1 { font-size: 40px; font-weight: 700; color: #2e2e2e; margin-bottom: 14px; }
+    h2, h3 { color: #FF914D; font-weight: 600; }
+    p { font-size: 18px; color: #555; margin-bottom: 15px; opacity: 0; transform: translateY(20px); animation: slideUp 0.8s ease forwards; }
+    p.lead { animation-delay: .2s; }
+    p.sub { animation-delay: .4s; }
+    @keyframes slideUp { to { opacity: 1; transform: translateY(0); } }
+
+    .cta { margin: 20px 10px; display: inline-block; background-color: #FF914D; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 600; transition: all 0.3s ease; }
+    .cta:hover { background-color: #e6762b; transform: translateY(-2px); }
+
+    .section { max-width: 1100px; margin: 0 auto; }
+    .row { display:flex; flex-wrap:wrap; gap:22px; align-items:stretch; justify-content:center; max-width:1100px; margin:0 auto; }
+    .card { background:#fff; border-radius:10px; box-shadow:0 2px 5px rgba(0,0,0,0.1); padding:20px; text-align:left; flex:1 1 320px; min-width:300px; }
+
+    .features { display:flex; flex-wrap:wrap; justify-content:center; gap: 22px; margin-top: 16px; }
+    .feature { max-width: 300px; background:#fff; padding:20px; border-radius:10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); text-align:left; transition: transform .3s ease, box-shadow .3s ease; opacity:0; transform: translateY(30px); animation: slideUp .8s ease forwards; }
+    .feature:hover { transform: translateY(-5px); box-shadow: 0 6px 15px rgba(0,0,0,0.1); }
+    .feature h3 { margin: 6px 0 8px; color:#FF914D; }
+    .feature p { margin:0; opacity:1; transform:none; }
+
+    .stat { background:#fff; border-radius:10px; padding:18px 22px; box-shadow:0 2px 5px rgba(0,0,0,0.08); display:inline-block; margin:8px; min-width:220px; }
+    .stat b { font-size:28px; color:#2e2e2e; display:block; }
+    .stat span { color:#666; font-size:14px; }
+
+    .footer { margin-top: 60px; padding-bottom: 40px; color: gray; font-size: 14px; }
+
+    @media(min-width:900px){ .main{ padding-bottom:120px; } }
+    @media(max-width:600px){ .nav-container{flex-direction:column; height:auto;} .nav-links{margin-top:10px;} .nav-links a{display:block; margin:10px 0;} .main{ padding:32px 16px 96px;} h1{font-size:32px;} .cta{padding:10px 18px;} }
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <nav>
+    <div class="nav-container">
+      <div class="nav-logo">
+        <a href="index.html"><img src="peachtreechat-logo.png" alt="PeachtreeChat Logo" /></a>
+      </div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="contact.html">Contact</a>
+        <a href="salon-chatbots.html">Salon</a>
+        <a href="real-estate-chatbots.html">Real Estate</a>
+        <a class="active" href="legal-intake-bots.html">Legal</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <div class="main">
+    <!-- HERO -->
+    <section class="section" style="max-width:1000px;">
+      <h1>Legal Intake Chatbots — Qualify Clients 24/7</h1>
+      <p class="lead">PeachIQ collects case details, screens for fit, and books consultations while you’re in court or with clients.</p>
+      <p class="sub">Ideal for personal injury, criminal defense, immigration, family law & more.</p>
+      <div>
+        <a href="contact.html" class="cta">Start My Legal Bot</a>
+        <a href="#demo" class="cta">Watch Demo</a>
+      </div>
+    </section>
+
+    <!-- DEMO VIDEO -->
+    <section id="demo" class="section" style="margin-top:36px;">
+      <h2>⚖️ See PeachIQ Pre-Screen a Legal Intake</h2>
+      <p class="sub" style="margin-top:6px;">Asks case type, timeline, location, and client details — then schedules consultation.</p>
+      <video src="peachiq_legal_demo.mp4" autoplay muted loop playsinline style="max-width:100%; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,0.08); margin-top:10px;"></video>
+    </section>
+
+    <!-- PAIN POINTS / WHAT IT DOES -->
+    <section class="section" style="margin-top:40px;">
+      <div class="row">
+        <div class="card">
+          <h2 style="margin-top:0;">Why firms need this</h2>
+          <ul style="text-align:left; line-height:1.7; color:#555; padding-left:18px;">
+            <li>📞 Missed calls after hours or in court</li>
+            <li>❌ Wasting time on unqualified prospects</li>
+            <li>🕒 Intake staff overloaded with repetitive questions</li>
+            <li>📄 Missed details lead to poor follow-up</li>
+          </ul>
+          <p style="text-align:left;">PeachIQ ensures no lead slips through the cracks.</p>
+        </div>
+        <div class="card">
+          <h2 style="margin-top:0;">What it does</h2>
+          <ul style="text-align:left; line-height:1.7; color:#555; padding-left:18px;">
+            <li>📋 Collects name, contact, case type, location, timeline</li>
+            <li>✅ Screens out conflicts or irrelevant cases</li>
+            <li>🗓️ Books consultations to your calendar</li>
+            <li>💬 Answers FAQs (fees, languages, office hours)</li>
+          </ul>
+          <p style="text-align:left;">Seamless handoff to your CRM, Google Sheets, or email inbox.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES GRID -->
+    <section class="section" style="margin-top:30px;">
+      <h2>Legal-ready features</h2>
+      <div class="features">
+        <div class="feature"><h3>24/7 intake</h3><p>Capture client inquiries at night, weekends, or holidays.</p></div>
+        <div class="feature"><h3>Smart screening</h3><p>Asks key questions (injury date, charges, immigration status, etc.).</p></div>
+        <div class="feature"><h3>Conflict check</h3><p>Prevents conflicts by collecting names and parties upfront.</p></div>
+        <div class="feature"><h3>Case routing</h3><p>Routes personal injury vs. immigration vs. family law to right team.</p></div>
+        <div class="feature"><h3>FAQ answers</h3><p>Shares fees, languages, location, and office hours instantly.</p></div>
+        <div class="feature"><h3>Human handoff</h3><p>Sends hot cases to your email/SMS for immediate follow-up.</p></div>
+      </div>
+    </section>
+
+    <!-- ROI / SOCIAL PROOF -->
+    <section class="section" style="margin-top:36px;">
+      <div class="stat"><b>+30–50%</b><span>more consultations booked</span></div>
+      <div class="stat"><b>↓40%</b><span>wasted time on unqualified cases</span></div>
+      <div class="stat"><b>24/7</b><span>availability for urgent clients</span></div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section" style="margin-top:38px;">
+      <h2>Ready to streamline your intake?</h2>
+      <p class="sub">We’ll tailor the bot to your practice areas and intake process.</p>
+      <a href="contact.html" class="cta">Get My Legal Bot</a>
+      <a href="pricing.html" class="cta">See Pricing</a>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" style="background:#fff; padding: 36px 20px; margin-top: 40px; border: 1px solid #eee; border-radius:10px; text-align:left;">
+      <h2 style="text-align:center; margin-top:0;">Legal Intake FAQ</h2>
+      <div style="max-width:900px; margin: 0 auto;">
+        <div style="margin-bottom:18px;">
+          <h3 style="margin-bottom:6px;">What case types can it handle?</h3>
+          <p class="sub" style="opacity:1; transform:none;">Personal injury, criminal defense, immigration, family law, employment, and more.</p>
+        </div>
+        <div style="margin-bottom:18px;">
+          <h3 style="margin-bottom:6px;">Can it detect conflicts?</h3>
+          <p class="sub" style="opacity:1; transform:none;">Yes, it asks for opposing party names so you can run checks.</p>
+        </div>
+        <div style="margin-bottom:18px;">
+          <h3 style="margin-bottom:6px;">Is client data secure?</h3>
+          <p class="sub" style="opacity:1; transform:none;">Yes, all submissions go securely to your chosen system (email, CRM, or Sheets).</p>
+        </div>
+        <div>
+          <h3 style="margin-bottom:6px;">Can it schedule consultations?</h3>
+          <p class="sub" style="opacity:1; transform:none;">It can connect to your calendar or propose time slots for you to confirm.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer"></div>
+  </div>
+
+  <!-- IBM Watsonx Assistant Chatbot Embed -->
+  <script>
+    window.watsonAssistantChatOptions = {
+      integrationID: "2a77a767-a4d1-4520-99d4-9bcf6d300a94",
+      region: "au-syd",
+      serviceInstanceID: "d849b711-b43c-4ded-b8f9-d942366c3ea2",
+      onLoad: async (instance) => { await instance.render(); }
+    };
+    setTimeout(function(){
+      const t=document.createElement('script');
+      t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+      document.head.appendChild(t);
+    });
+  </script>
+</body>
+</html>
+
