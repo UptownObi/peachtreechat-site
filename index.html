@@ -218,17 +218,24 @@
     <a href="mailto:info@peachtreechat.com" class="cta">Contact Us</a>
     <a href="about.html" class="cta">About Us</a>
 
-    <!-- Demo: Real Estate Chatbot -->
+    <!-- Demo: Salon Chatbot -->
     <section style="max-width:1200px; margin:40px auto; text-align:center;">
-      <h2 style="color:#FF914D; margin-bottom:12px;">🎥 Watch PeachIQ in Action</h2>
+      <h2 style="color:#FF914D; margin-bottom:12px;">💇‍♀️ See PeachIQ Book a Salon Appointment</h2>
       <p style="color:#555; margin:0 0 20px;">
-        See how it captures leads, schedules showings, and answers questions 24/7.
+       Watch how it books appointments, applies promos, and confirms in seconds — 24/7.
       </p>
-      <img 
-        src="https://i.imgur.com/zdeKJmz.png" 
-        alt="PeachIQ Salon Bot Demo"
-        style="max-width:100%; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,0.08)" />
-      </section>
+
+      <!-- If the video sits next to index.html, use this src: -->
+      <!-- <source src="peachiq_salon_demo_iphone_sharp.mp4" type="video/mp4" /> -->
+
+      <video autoplay muted loop playsinline preload="metadata"
+             poster="https://i.imgur.com/zdeKJmz.png"
+             style="max-width:100%; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,0.08)">
+        <source src="assets/media/peachiq_salon_demo_iphone_sharp.mp4" type="video/mp4" />
+        <!-- Fallback image if video can't play -->
+        <img src="https://i.imgur.com/zdeKJmz.png" alt="PeachIQ Salon Bot Demo" />
+      </video>
+    </section>
 
     <!-- Trusted By (inline SVG — no external links) -->
     <section style="padding:32px 0 10px; text-align:center;">
