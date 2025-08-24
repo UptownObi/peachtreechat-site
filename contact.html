@@ -1,248 +1,253 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact • PeachtreeChat</title>
-  <meta name="description" content="Get in touch with PeachtreeChat — AI chatbots for salons, real estate and small businesses." />
-  <meta name="theme-color" content="#ff7a45" />
-  <link rel="icon" href="/favicon.png" type="image/png" />
+
+  <!-- SEO -->
+  <meta name="description" content="Contact PeachtreeChat — AI chatbots for salons, real estate, and small businesses. Book a demo, request pricing, or ask a question." />
+
+  <!-- Google Font: Poppins (matches your site) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+
   <style>
-    /* ===== Brand System (matches homepage) ===== */
+    /* ===== Base (match site look) ===== */
     :root{
-      --peach: #ff7a45; /* primary accent */
-      --peach-600:#ff6a2d;
-      --ink:#24262d;   /* body */
-      --muted:#6b7280; /* captions */
-      --paper:#fffaf5; /* subtle bg */
-      --card:#ffffff;  /* surfaces */
-      --line:#f2f2f3;  /* borders */
-      --ring: rgba(255,122,69,.35);
-      --shadow: 0 10px 18px rgba(21,23,28,.05), 0 2px 6px rgba(21,23,28,.04);
-      --radius-xl: 18px; --radius-lg: 14px; --radius: 12px;
+      --peach:#FF914D;      /* brand */
+      --peach-d:#e6762b;    /* hover */
+      --ink:#2e2e2e;        /* headings */
+      --muted:#555;         /* body */
+      --paper:#f9f9f9;      /* bg */
+      --card:#fff;          /* surfaces */
+      --line:#ddd;          /* borders */
+      --shadow:0 2px 12px rgba(0,0,0,.06);
+      --radius:12px;
     }
-    *{box-sizing:border-box}
     html,body{height:100%}
     body{
-      margin:0; color:var(--ink);
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Helvetica, Arial, sans-serif;
-      background: linear-gradient(180deg,#fffefd, var(--paper));
-      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+      font-family:'Poppins', Arial, sans-serif; background:var(--paper); color:var(--ink);
+      margin:0; padding:0; text-align:center;
     }
-    a{color:var(--peach-600); text-decoration:none}
-    a:hover{text-decoration:underline}
 
-    .container{max-width:1120px; margin:0 auto; padding:0 20px}
+    /* ===== Navbar (copied style) ===== */
+    nav{background:#fff; border-bottom:1px solid var(--line); padding:12px 20px; position:sticky; top:0; width:100%; z-index:999; box-shadow:var(--shadow)}
+    .nav-container{max-width:1000px; margin:auto; display:flex; justify-content:space-between; align-items:center; height:80px}
+    .nav-logo img{height:110px; object-fit:contain}
+    .nav-links a{margin-left:30px; text-decoration:none; color:var(--ink); font-weight:600; font-size:16px; transition:.3s ease}
+    .nav-links a:hover{color:var(--peach); transform:scale(1.05)}
+    .nav-links a.active{color:var(--peach)}
 
-    /* ===== Site Header (mirrors Home/About/Services/Pricing) ===== */
-    header{position:sticky; top:0; z-index:30; backdrop-filter:saturate(180%) blur(8px); background:rgba(255,255,255,.7); border-bottom:1px solid var(--line)}
-    .nav{display:flex; align-items:center; justify-content:space-between; height:58px}
-    .brand{display:flex; gap:10px; align-items:center; font-weight:800}
-    .brand .logo{width:26px; height:26px; border-radius:8px; background:var(--peach); display:grid; place-items:center; color:#fff; box-shadow:var(--shadow)}
-    .links{display:flex; gap:20px; font-size:14px}
-    .links a{color:#444}
-    .links a.active{color:var(--peach-600); font-weight:700}
-    .cta{appearance:none; border:none; border-radius:999px; background:var(--peach); color:#fff; padding:10px 14px; font-weight:700; box-shadow:0 6px 16px rgba(255,122,69,.3); cursor:pointer}
-    .cta:hover{filter:brightness(.98)}
+    /* ===== Page Enter Animations (copied) ===== */
+    .main{padding:60px 20px; opacity:0; transform:translateY(30px); animation:fadeIn 1s ease forwards}
+    @keyframes fadeIn{to{opacity:1; transform:translateY(0)}}
+    @keyframes slideUp{to{opacity:1; transform:translateY(0)}}
+    h1{font-size:40px; font-weight:700; color:var(--ink); margin-bottom:10px}
+    p{font-size:18px; color:var(--muted); margin:0 0 14px; opacity:0; transform:translateY(20px); animation:slideUp .8s ease forwards}
+    p.lead{animation-delay:.2s}
+    p.sub{animation-delay:.4s}
 
-    /* ===== Page Hero ===== */
-    .wrap{padding:28px 0 36px}
-    .hero{background: radial-gradient(900px 400px at 50% -200px, rgba(255,122,69,.12), transparent), var(--card); border:1px solid var(--line); border-radius:var(--radius-xl); padding:28px; box-shadow:var(--shadow)}
-    .hero h1{margin:0 0 6px; font-size:clamp(28px,3vw,36px)}
-    .hero p{margin:0; color:var(--muted)}
+    /* ===== Contact Layout ===== */
+    .wrap{max-width:1000px; margin:24px auto 0}
+    .grid{display:grid; grid-template-columns: 1.1fr .9fr; gap:24px; align-items:start}
+    .card{background:var(--card); border:1px solid var(--line); border-radius:10px; box-shadow:0 2px 5px rgba(0,0,0,0.1); text-align:left}
+    .card .hd{padding:18px 18px 0}
+    .card .bd{padding:18px}
 
-    /* ===== Layout ===== */
-    .grid{display:grid; grid-template-columns:1.15fr .85fr; gap:24px; margin-top:22px}
-    @media (max-width:980px){.grid{grid-template-columns:1fr}}
-
-    /* ===== Cards ===== */
-    .card{background:var(--card); border:1px solid var(--line); border-radius:var(--radius-xl); box-shadow:var(--shadow); overflow:hidden}
-    .card-body{padding:22px}
-
-    /* ===== Form ===== */
-    .row{display:grid; grid-template-columns:1fr 1fr; gap:14px}
-    @media (max-width:640px){.row{grid-template-columns:1fr}}
-    label{display:block; font-size:14px; color:#3a3d44; margin:10px 0 6px}
-    input,select,textarea{width:100%; padding:12px; border-radius:12px; border:1px solid #e6e7ea; background:#fff; color:var(--ink); font-size:16px; transition:border-color .15s, box-shadow .15s}
-    input:focus,select:focus,textarea:focus{outline:none; border-color:var(--peach); box-shadow:0 0 0 4px var(--ring)}
+    label{display:block; font-weight:600; margin:10px 0 6px}
+    input, select, textarea{width:100%; padding:12px; font-size:16px; border:1px solid #ccc; border-radius:5px; background:#fff}
     textarea{min-height:140px; resize:vertical}
-    .hint{font-size:12px; color:var(--muted); margin-top:6px}
-    .actions{display:flex; gap:12px; align-items:center; margin-top:16px}
-    .btn{appearance:none; border:none; border-radius:999px; background:var(--peach); color:#fff; padding:12px 16px; font-weight:700; cursor:pointer; box-shadow:0 6px 16px rgba(255,122,69,.3)}
-    .btn.secondary{background:#111827}
-    .msg{display:none; margin-top:12px; font-size:14px; padding:10px 12px; border-radius:12px}
-    .msg.ok{background:#ecfdf5; color:#065f46; border:1px solid #a7f3d0}
-    .msg.err{background:#fef2f2; color:#7f1d1d; border:1px solid #fecaca}
 
-    /* ===== Info Panel ===== */
-    .info-list{display:grid; gap:14px; margin-top:8px}
-    .item{display:flex; gap:12px; align-items:flex-start}
-    .icon{width:18px; height:18px; margin-top:3px; color:var(--peach-600)}
-    .muted{color:var(--muted)}
+    .actions{display:flex; gap:12px; align-items:center; margin-top:12px}
+    .cta{display:inline-block; background:var(--peach); color:#fff; padding:12px 24px; text-decoration:none; border-radius:8px; font-weight:600; transition:.3s ease; border:none; cursor:pointer}
+    .cta:hover{background:var(--peach-d); transform:translateY(-2px)}
+    .ghost{background:#2e2e2e}
+
+    .msg{display:none; margin-top:10px; padding:10px 12px; border-radius:8px; font-size:14px}
+    .ok{background:#ecfdf5; color:#065f46; border:1px solid #a7f3d0}
+    .err{background:#fef2f2; color:#7f1d1d; border:1px solid #fecaca}
+
+    .list{display:grid; gap:14px}
+    .row{display:flex; gap:10px; align-items:center}
+    .muted{color:#666}
     .hours{width:100%; border-collapse:collapse; font-size:14px}
     .hours td{padding:6px 0; border-bottom:1px dashed #eee}
-    .map{width:100%; height:280px; border:0; display:block}
+    iframe.map{width:100%; height:280px; border:0; display:block; border-radius:0 0 10px 10px}
 
-    footer{border-top:1px solid var(--line); margin-top:30px; padding:22px 0; color:var(--muted); font-size:14px}
+    /* leave space for chat launcher */
+    @media(min-width:900px){ .main{padding-bottom:120px} }
+    @media(max-width:760px){ .grid{grid-template-columns:1fr} h1{font-size:32px} .main{padding:32px 16px 96px} }
   </style>
 </head>
 <body>
-  <header>
-    <div class="container nav">
-      <div class="brand">
-        <div class="logo">🍑</div>
-        <span>PeachtreeChat</span>
+  <!-- ===== NAV ===== -->
+  <nav>
+    <div class="nav-container">
+      <div class="nav-logo">
+        <a href="index.html"><img src="peachtreechat-logo.png" alt="PeachtreeChat Logo" /></a>
       </div>
-      <nav class="links" aria-label="Primary">
-        <a href="/" >Home</a>
-        <a href="/about.html">About</a>
-        <a href="/services.html">Services</a>
-        <a href="/pricing.html">Pricing</a>
-        <a class="active" href="/contact.html">Contact</a>
-      </nav>
-      <button class="cta" onclick="window.location.href='/contact.html#contactForm'">Get Started</button>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="pricing.html">Pricing</a>
+        <a class="active" href="contact.html">Contact</a>
+      </div>
     </div>
-  </header>
+  </nav>
 
-  <main class="container wrap">
-    <section class="hero">
-      <h1>Contact PeachtreeChat</h1>
-      <p>AI chatbots for salons, real estate & SMBs. Send a note or book a quick intro — we reply within 1 business day.</p>
-    </section>
+  <!-- ===== MAIN ===== -->
+  <div class="main">
+    <h1>Contact PeachtreeChat</h1>
+    <p class="lead">AI-powered chatbots for salons, real estate, and small businesses.</p>
+    <p class="sub">Tell us what you need and we’ll reply within one business day.</p>
 
-    <section class="grid">
-      <!-- FORM -->
-      <div class="card">
-        <form id="contactForm" class="card-body" method="POST" action="https://formspree.io/f/your-id">
-          <h2 style="margin:0 0 14px; font-size:22px">Send us a message</h2>
-          <input type="hidden" name="_subject" value="New inquiry from peachtreechat.com" />
-          <div class="row">
-            <div>
-              <label for="name">Full name</label>
-              <input id="name" name="name" type="text" required placeholder="Jane Doe" />
-            </div>
-            <div>
-              <label for="email">Email</label>
-              <input id="email" name="email" type="email" required placeholder="you@company.com" />
-            </div>
+    <div class="wrap">
+      <div class="grid">
+        <!-- FORM CARD -->
+        <div class="card">
+          <div class="hd"><h2 style="color:var(--peach); margin:0">Send a message</h2></div>
+          <div class="bd">
+            <form id="contactForm" action="https://formspree.io/f/xzzvegwy" method="POST">
+              <div class="row" style="gap:12px; flex-wrap:wrap">
+                <div style="flex:1 1 260px">
+                  <label for="name">Full name</label>
+                  <input id="name" name="name" type="text" required placeholder="Jane Doe" />
+                </div>
+                <div style="flex:1 1 260px">
+                  <label for="email">Email</label>
+                  <input id="email" name="email" type="email" required placeholder="you@company.com" />
+                </div>
+              </div>
+
+              <div class="row" style="gap:12px; flex-wrap:wrap">
+                <div style="flex:1 1 260px">
+                  <label for="phone">Phone (optional)</label>
+                  <input id="phone" name="phone" type="tel" inputmode="tel" placeholder="(555) 555‑5555" />
+                </div>
+                <div style="flex:1 1 260px">
+                  <label for="company">Company (optional)</label>
+                  <input id="company" name="company" type="text" placeholder="Salon Mia" />
+                </div>
+              </div>
+
+              <div class="row" style="gap:12px; flex-wrap:wrap">
+                <div style="flex:1 1 260px">
+                  <label for="topic">Topic</label>
+                  <select id="topic" name="topic" required>
+                    <option value="" disabled selected>Select one…</option>
+                    <option>Book a 60‑second demo</option>
+                    <option>Start my chatbot</option>
+                    <option>Pricing & plans</option>
+                    <option>Partnership / Reseller</option>
+                    <option>Something else</option>
+                  </select>
+                </div>
+                <div style="flex:1 1 260px">
+                  <label for="budget">Estimated budget</label>
+                  <select id="budget" name="budget">
+                    <option value="" selected>Not sure yet</option>
+                    <option>Under $500</option>
+                    <option>$500 – $1,500</option>
+                    <option>$1,500 – $5,000</option>
+                    <option>$5,000+</option>
+                  </select>
+                </div>
+              </div>
+
+              <label for="message">Tell us a bit more</label>
+              <textarea id="message" name="message" required placeholder="What are you hoping to automate? Links or examples help."></textarea>
+
+              <!-- honeypot -->
+              <input type="text" name="bot-field" autocomplete="off" style="position:absolute; left:-9999px; opacity:0" tabindex="-1" aria-hidden="true" />
+
+              <div class="actions">
+                <button class="cta" type="submit">Send message</button>
+                <a class="cta ghost" href="https://calendly.com/your-handle/intro-15">Book 15‑min intro</a>
+              </div>
+
+              <div id="ok" class="msg ok">Thanks! Your message is on its way.</div>
+              <div id="er" class="msg err">Something went wrong. Please try again or email hello@peachtreechat.com.</div>
+            </form>
           </div>
-          <div class="row">
-            <div>
-              <label for="phone">Phone (optional)</label>
-              <input id="phone" name="phone" type="tel" inputmode="tel" placeholder="(555) 555‑5555" />
-            </div>
-            <div>
-              <label for="company">Company (optional)</label>
-              <input id="company" name="company" type="text" placeholder="Salon Mia" />
-            </div>
-          </div>
-          <div class="row">
-            <div>
-              <label for="topic">Topic</label>
-              <select id="topic" name="topic" required>
-                <option value="" disabled selected>Select one…</option>
-                <option>Book a 60‑second demo</option>
-                <option>Start my chatbot</option>
-                <option>Pricing & plans</option>
-                <option>Partnership / Reseller</option>
-                <option>Something else</option>
-              </select>
-            </div>
-            <div>
-              <label for="budget">Estimated budget</label>
-              <select id="budget" name="budget">
-                <option value="" selected>Not sure yet</option>
-                <option>Under $500</option>
-                <option>$500 – $1,500</option>
-                <option>$1,500 – $5,000</option>
-                <option>$5,000+</option>
-              </select>
-            </div>
-          </div>
-          <label for="message">Tell us a bit more</label>
-          <textarea id="message" name="message" required placeholder="What are you hoping to automate? Links or examples help."></textarea>
-          <div class="hint">For urgent help: <a href="mailto:hello@peachtreechat.com">hello@peachtreechat.com</a></div>
-
-          <!-- honeypot for spam bots -->
-          <input type="text" name="bot-field" autocomplete="off" style="position:absolute; left:-9999px; opacity:0" tabindex="-1" aria-hidden="true" />
-
-          <div class="actions">
-            <button class="btn" type="submit">Send message</button>
-            <button class="btn secondary" type="button" id="demoBtn">Book 15‑min intro</button>
-          </div>
-
-          <label class="hint" style="display:flex; gap:8px; align-items:flex-start; margin-top:10px">
-            <input type="checkbox" id="consent" style="width:18px; height:18px; margin-top:2px" required>
-            <span>I agree to be contacted about my inquiry and confirm I’ve read the Privacy Policy.</span>
-          </label>
-
-          <div id="formOk" class="msg ok">Thanks! Your message is on its way. We’ll be in touch soon.</div>
-          <div id="formErr" class="msg err">Hmm, something went wrong. Please try again or email <a href="mailto:hello@peachtreechat.com">hello@peachtreechat.com</a>.</div>
-        </form>
-      </div>
-
-      <!-- INFO / MAP -->
-      <div class="card">
-        <div class="card-body">
-          <h2 style="margin:0 0 10px; font-size:22px">How to reach us</h2>
-          <div class="info-list">
-            <div class="item">
-              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.86 19.86 0 0 1 2.09 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72 12.66 12.66 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11l-1.27 1.27a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.66 12.66 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              <div><strong>Call</strong><div class="muted">(470) 555‑0191</div></div>
-            </div>
-            <div class="item">
-              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg>
-              <div><strong>Email</strong><div><a href="mailto:hello@peachtreechat.com">hello@peachtreechat.com</a></div></div>
-            </div>
-            <div class="item">
-              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12S3 17 3 10a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              <div><strong>Location</strong><div class="muted">Atlanta, Georgia</div></div>
-            </div>
-          </div>
-
-          <h3 style="margin:18px 0 6px">Hours</h3>
-          <table class="hours"><tbody>
-            <tr><td>Mon–Fri</td><td>9:00 AM – 6:00 PM ET</td></tr>
-            <tr><td>Saturday</td><td>10:00 AM – 2:00 PM ET</td></tr>
-            <tr><td>Sunday</td><td>Closed</td></tr>
-          </tbody></table>
-
-          <h3 style="margin:18px 0 6px">FAQs</h3>
-          <details><summary>Do you offer a quick demo?</summary><div class="muted" style="margin-top:8px">Yes — click “Book 15‑min intro” or choose “Book a 60‑second demo” in the topic.</div></details>
-          <details><summary>Which industries do you support?</summary><div class="muted" style="margin-top:8px">Salons, real estate, legal intake, property management, and more SMB use‑cases. We can customize flows and APIs.</div></details>
         </div>
-        <iframe class="map" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13239.250838078091!2d-84.395!3d33.755"></iframe>
-      </div>
-    </section>
-  </main>
 
-  <footer>
-    <div class="container">© <span id="yr"></span> PeachtreeChat. All rights reserved.</div>
-  </footer>
+        <!-- INFO CARD -->
+        <div class="card">
+          <div class="hd"><h2 style="color:var(--peach); margin:0">How to reach us</h2></div>
+          <div class="bd">
+            <div class="list" style="text-align:left">
+              <div class="row"><strong style="min-width:86px">Email</strong> <a href="mailto:hello@peachtreechat.com">hello@peachtreechat.com</a></div>
+              <div class="row"><strong style="min-width:86px">Phone</strong> <span class="muted">(470) 555‑0191</span></div>
+              <div class="row"><strong style="min-width:86px">Location</strong> <span class="muted">Atlanta, Georgia</span></div>
+            </div>
+
+            <h3 style="color:var(--peach); margin:18px 0 8px">Hours</h3>
+            <table class="hours"><tbody>
+              <tr><td>Mon–Fri</td><td>9:00 AM – 6:00 PM ET</td></tr>
+              <tr><td>Saturday</td><td>10:00 AM – 2:00 PM ET</td></tr>
+              <tr><td>Sunday</td><td>Closed</td></tr>
+            </tbody></table>
+          </div>
+          <iframe class="map" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13239.250838078091!2d-84.395!3d33.755"></iframe>
+        </div>
+      </div>
+
+      <!-- FAQ (keeps your style) -->
+      <section style="background:#fff; padding:34px 20px; margin-top:24px; border:1px solid var(--line); border-radius:10px; box-shadow:0 2px 5px rgba(0,0,0,0.1); text-align:left">
+        <h2 style="color:var(--peach); text-align:center; margin-top:0">Frequently Asked Questions</h2>
+        <div style="max-width:900px; margin:0 auto">
+          <div style="margin-bottom:22px">
+            <h3 style="margin-bottom:10px">🤖 What industries do you support?</h3>
+            <p class="sub" style="opacity:1; transform:none">Salons, real estate, legal intake, property management, and more SMB use‑cases. We can customize flows and APIs.</p>
+          </div>
+          <div style="margin-bottom:22px">
+            <h3 style="margin-bottom:10px">💬 Can I customize the chatbot questions?</h3>
+            <p class="sub" style="opacity:1; transform:none">Absolutely. We tailor intents, messages, and logic to your business, including API hooks.</p>
+          </div>
+          <div style="margin-bottom:22px">
+            <h3 style="margin-bottom:10px">📲 Can I embed this on my website?</h3>
+            <p class="sub" style="opacity:1; transform:none">Yes—drop in one script tag to install PeachIQ on any page.</p>
+          </div>
+          <div>
+            <h3 style="margin-bottom:10px">📦 Do you offer a quick demo?</h3>
+            <p class="sub" style="opacity:1; transform:none">Choose “Book 15‑min intro” above or pick “Book a 60‑second demo” in the form’s topic.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div style="margin-top:48px; color:gray; font-size:14px"></div>
+  </div>
+
+  <!-- IBM Watsonx Assistant Chatbot Embed (same as your site) -->
+  <script>
+    window.watsonAssistantChatOptions = {
+      integrationID: "2a77a767-a4d1-4520-99d4-9bcf6d300a94",
+      region: "au-syd",
+      serviceInstanceID: "d849b711-b43c-4ded-b8f9-d942366c3ea2",
+      onLoad: async (instance) => { await instance.render(); }
+    };
+    setTimeout(function(){
+      const t=document.createElement('script');
+      t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+      document.head.appendChild(t);
+    });
+  </script>
 
   <script>
-    // keep identity consistent across pages
-    document.getElementById('yr').textContent = new Date().getFullYear();
-
-    // optional: route to Calendly
-    document.getElementById('demoBtn').addEventListener('click', ()=>{
-      window.location.href = 'https://calendly.com/your-handle/intro-15';
-    });
-
-    // ajax submit for Formspree
-    const form = document.getElementById('contactForm');
-    const ok = document.getElementById('formOk');
-    const err = document.getElementById('formErr');
-    form.addEventListener('submit', async (e)=>{
+    // tiny async submit UX to show status messages while using Formspree
+    const f=document.getElementById('contactForm');
+    const ok=document.getElementById('ok');
+    const er=document.getElementById('er');
+    f.addEventListener('submit', async (e)=>{
       e.preventDefault();
-      if(!document.getElementById('consent').checked){
-        err.style.display='block'; err.textContent='Please accept the consent to proceed.'; ok.style.display='none'; return;
-      }
+      ok.style.display='none'; er.style.display='none';
       try{
-        const res = await fetch(form.action,{method:'POST', body:new FormData(form), headers:{Accept:'application/json'}});
-        if(res.ok){ ok.style.display='block'; err.style.display='none'; form.reset(); }
-        else{ const out = await res.json().catch(()=>({})); err.style.display='block'; ok.style.display='none'; err.innerHTML = (out.errors?.length? out.errors.map(x=>x.message).join(', '): 'Submission failed. Please try again.'); }
-      }catch(_e){ err.style.display='block'; ok.style.display='none'; err.textContent='Network error — please try again.'; }
+        const res=await fetch(f.action,{method:'POST', body:new FormData(f), headers:{'Accept':'application/json'}});
+        if(res.ok){ ok.style.display='block'; f.reset(); }
+        else{ er.style.display='block'; }
+      }catch(_){ er.style.display='block'; }
     });
   </script>
 </body>
