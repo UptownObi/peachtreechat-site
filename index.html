@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>PeachtreeChat</title>
 
   <!-- SEO basics -->
@@ -12,237 +12,319 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
 
   <style>
-    body {
-      font-family: 'Poppins', Arial, sans-serif;
-      background: #f9f9f9;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-      color: #2e2e2e;
+    :root{
+      --ink:#2e2e2e;
+      --muted:#555;
+      --brand:#FF914D;
+      --brand-d:#e6762b;
+      --line:#ddd;
+      --paper:#f9f9f9;
+      --white:#fff;
+      --shadow:0 2px 12px rgba(0,0,0,.06);
+      --radius:12px;
     }
 
+    /* Base */
+    html, body { height: 100%; }
+    body {
+      font-family: 'Poppins', Arial, sans-serif;
+      background: var(--paper);
+      margin: 0;
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-align: center;
+    }
+
+    /* Navbar */
     nav {
-      background-color: #fff;
-      border-bottom: 1px solid #ddd;
-      padding: 12px 20px;
+      background-color: var(--white);
+      border-bottom: 1px solid var(--line);
+      padding: 10px 16px;
       position: sticky;
       top: 0;
       width: 100%;
       z-index: 999;
-      box-shadow: 0 2px 12px rgba(0,0,0,.06);
+      box-shadow: var(--shadow);
     }
-
     .nav-container {
       max-width: 1000px;
       margin: auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      height: 80px;
+      min-height: 64px;
+      gap: 8px;
     }
-
     .nav-logo img {
-      height: 110px;
+      height: 80px;                 /* smaller on mobile */
       object-fit: contain;
+      transition: height .2s ease;
     }
 
+    /* Hamburger */
+    .nav-toggle {
+      display: none;
+      background: transparent;
+      border: 0;
+      padding: 8px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .nav-toggle:focus { outline: 2px solid var(--brand); outline-offset: 2px; }
+    .nav-toggle svg { width: 28px; height: 28px; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
     .nav-links a {
-      margin-left: 30px;
       text-decoration: none;
-      color: #2e2e2e;
+      color: var(--ink);
       font-weight: 600;
-      font-size: 16px;
-      transition: all 0.3s ease;
+      font-size: 15px;
+      padding: 10px 6px;            /* bigger tap targets */
+      border-radius: 6px;
+      transition: color .2s ease, transform .2s ease, background .2s ease;
     }
+    .nav-links a:hover { color: var(--brand); transform: translateY(-1px); }
+    .nav-links a.active { color: var(--brand); }
 
-    .nav-links a:hover {
-      color: #FF914D;
-      transform: scale(1.05);
-    }
-
+    /* Main layout + animations */
     .main {
-      padding: 60px 20px;
+      padding: 40px 16px;
       opacity: 0;
-      transform: translateY(30px);
-      animation: fadeIn 1s ease forwards;
+      transform: translateY(24px);
+      animation: fadeIn 700ms ease forwards;
     }
-
-    @keyframes fadeIn {
-      to { opacity: 1; transform: translateY(0); }
-    }
+    @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
+    @keyframes slideUp { to { opacity: 1; transform: translateY(0); } }
 
     h1 {
-      font-size: 40px;
+      font-size: clamp(28px, 6vw, 40px);
       font-weight: 700;
-      color: #2e2e2e;
-      margin-bottom: 20px;
+      color: var(--ink);
+      margin: 6px 0 16px;
+      line-height: 1.15;
     }
-
-    h2, h3 {
-      color: #FF914D;
-      font-weight: 600;
-    }
-
+    h2, h3 { color: var(--brand); font-weight: 600; }
     p {
-      font-size: 18px;
-      color: #555;
-      margin-bottom: 15px;
+      font-size: clamp(16px, 3.8vw, 18px);
+      color: var(--muted);
+      margin: 0 0 14px;
       opacity: 0;
-      transform: translateY(20px);
-      animation: slideUp 0.8s ease forwards;
+      transform: translateY(18px);
+      animation: slideUp 600ms ease forwards;
     }
+    p:nth-of-type(1) { animation-delay: .15s; }
+    p:nth-of-type(2) { animation-delay: .3s; }
 
-    p:nth-of-type(1) { animation-delay: 0.2s; }
-    p:nth-of-type(2) { animation-delay: 0.4s; }
-
-    @keyframes slideUp {
-      to { opacity: 1; transform: translateY(0); }
-    }
-
+    /* CTAs */
     .cta {
-      margin: 20px 10px;
+      margin: 14px 8px;
       display: inline-block;
-      background-color: #FF914D;
+      background-color: var(--brand);
       color: white;
-      padding: 12px 24px;
+      padding: 12px 20px;
       text-decoration: none;
-      border-radius: 8px;
-      font-weight: 600;
-      transition: all 0.3s ease;
-    }
-
-    .cta:hover {
-      background-color: #e6762b;
-      transform: translateY(-2px);
-    }
-
-    .services {
-      margin-top: 60px;
-    }
-
-    .services h2 {
-      margin-bottom: 20px;
-    }
-
-    .service-card {
-      max-width: 250px;
-      background: #fff;
-      padding: 20px;
       border-radius: 10px;
+      font-weight: 600;
+      transition: background-color .2s ease, transform .2s ease, box-shadow .2s ease;
+      box-shadow: 0 6px 16px rgba(255,145,77,.25);
+      min-width: 160px;             /* nicer button width on mobile */
+    }
+    .cta:hover { background-color: var(--brand-d); transform: translateY(-2px); }
+
+    /* Responsive video wrapper (keeps 16:9 on any screen) */
+    .video-wrap {
+      position: relative;
+      width: 100%;
+      max-width: 1100px;
+      margin: 12px auto 0;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      background: #000;
+      aspect-ratio: 16 / 9;
+    }
+    .video-wrap video {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover;
+    }
+
+    /* Services */
+    .services { margin-top: 44px; }
+    .services h2 { margin-bottom: 18px; }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      max-width: 1100px;
+      margin: 20px auto 0;
+      padding: 0 8px;
+    }
+    .service-card {
+      background: var(--white);
+      padding: 18px;
+      border-radius: 12px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      opacity: 0;
-      transform: translateY(30px);
-      animation: slideUp 0.8s ease forwards;
+      transition: transform .25s ease, box-shadow .25s ease;
+      opacity: 0; transform: translateY(18px);
+      animation: slideUp 700ms ease forwards;
+      text-align: left;
     }
+    .service-card:hover { transform: translateY(-4px); box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); }
+    .service-card h3 { margin: 6px 0 8px; color: var(--brand); }
+    .service-card p { margin: 0; opacity: 1; transform: none; }
 
-    .service-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    /* Contact form block */
+    .contact-block {
+      text-align: center; padding: 32px 16px;
     }
-
-    .footer {
-      margin-top: 60px;
-      padding-bottom: 40px;
-      color: gray;
-      font-size: 14px;
+    .contact-form {
+      max-width: 600px;
+      margin: 0 auto;
+      display: grid;
+      gap: 12px;
+      text-align: left;
     }
-
-    input, textarea {
-      border: 1px solid #ccc;
-      border-radius: 5px;
+    .contact-form input, .contact-form textarea, .contact-form button {
+      font-family: inherit; font-size: 16px;
     }
-
-    button[type="submit"] {
-      background-color: #FF914D;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
+    .contact-form input, .contact-form textarea {
+      border: 1px solid #ccc; border-radius: 8px; padding: 12px;
+      width: 100%; background: #fff;
     }
-
-    button[type="submit"]:hover { background-color: #e6762b; }
-
-    /* Leave space for chat launcher on desktop */
-    @media (min-width: 900px){
-      .main { padding-bottom: 120px; }
+    .contact-form button {
+      background-color: var(--brand); color: #fff; border: none;
+      padding: 12px 20px; border-radius: 10px; cursor: pointer;
+      transition: background-color .2s ease, transform .2s ease;
     }
+    .contact-form button:hover { background-color: var(--brand-d); transform: translateY(-2px); }
 
-    @media (max-width: 600px) {
-      .nav-container { flex-direction: column; height: auto; }
-      .nav-links { margin-top: 10px; }
-      .nav-links a { display: block; margin: 10px 0; }
-      .main { padding: 32px 16px 96px; }
-      h1 { font-size: 32px; }
-      .cta { padding:10px 18px; }
-    }
-
-    /* Trusted by styles */
+    /* Trusted by */
+    .trusted { padding: 28px 0 8px; }
     .trust-logos{
-      display:flex; flex-wrap:wrap; justify-content:center; align-items:center;
-      gap:36px; max-width:1100px; margin:0 auto; padding:0 16px;
+      display:flex; flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling: touch;
+      gap:24px; max-width:1100px; margin:0 auto; padding:0 16px 6px;
+      scroll-snap-type: x mandatory;
     }
+    .trust-logos::-webkit-scrollbar{ height:8px; }
+    .trust-logos::-webkit-scrollbar-thumb{ background:#ddd; border-radius:8px; }
     .trust-logos svg{
-      height:44px; filter:grayscale(100%) opacity(.72); transition:.25s ease;
+      height:40px; min-width:180px; flex:0 0 auto; scroll-snap-align:center;
+      filter:grayscale(100%) opacity(.72); transition:.25s ease;
+      background:#f5f5f5; border-radius:10px;
     }
     .trust-logos svg:hover{ filter:grayscale(0%) opacity(1); }
-    .trust-logos text{
-      font-family:Poppins, Arial, sans-serif; font-weight:600; font-size:18px; fill:#444;
+    .trust-logos text{ font-family:Poppins, Arial, sans-serif; font-weight:600; font-size:18px; fill:#444; }
+
+    /* Footer */
+    .footer { margin-top: 52px; padding-bottom: 40px; color: gray; font-size: 14px; }
+
+    /* Desktop tweaks */
+    @media (min-width: 901px){
+      .main { padding: 56px 20px 120px; }
+      .nav-logo img { height: 110px; }
+    }
+
+    /* Tablet */
+    @media (max-width: 900px){
+      .cards { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* Mobile */
+    @media (max-width: 700px){
+      /* Hamburger visible */
+      .nav-toggle { display: inline-flex; align-items:center; justify-content:center; }
+      /* Collapse links by default */
+      .nav-links {
+        position: absolute; left: 0; right: 0; top: 64px;
+        background: var(--white);
+        display: grid;
+        gap: 6px;
+        padding: 10px 16px 14px;
+        border-bottom: 1px solid var(--line);
+        transform-origin: top;
+        transform: scaleY(0);
+        opacity: 0;
+        pointer-events: none;
+        transition: transform .2s ease, opacity .2s ease;
+      }
+      .nav-links a { text-align: left; padding: 12px 10px; border-radius: 8px; }
+      .nav-open .nav-links { transform: scaleY(1); opacity: 1; pointer-events: auto; }
+      .nav-container { min-height: 64px; }
+
+      .cards { grid-template-columns: 1fr; }
+    }
+
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      * { animation: none !important; transition: none !important; }
     }
   </style>
 </head>
 <body>
   <nav>
-    <div class="nav-container">
+    <div class="nav-container" id="nav">
       <div class="nav-logo">
         <a href="index.html">
           <img src="peachtreechat-logo.png" alt="PeachtreeChat Logo" />
         </a>
       </div>
-      <div class="nav-links">
-        <a href="index.html">Home</a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links" id="navToggle">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M3 6h18M3 12h18M3 18h18"/>
+        </svg>
+      </button>
+
+      <div class="nav-links" id="nav-links">
+        <a href="index.html" class="active">Home</a>
         <a href="about.html">About</a>
         <a href="services.html">Services</a>
         <a href="pricing.html">Pricing</a>
         <a href="contact.html">Contact</a>
-        <a href="salon-chatbots.html">Salon</a> 
+        <a href="salon-chatbots.html">Salon</a>
         <a href="real-estate-chatbots.html">Real Estate</a>
         <a href="legal-intake-bots.html">Legal</a>
       </div>
     </div>
   </nav>
 
-  <div class="main">
+  <main class="main">
     <h1>Welcome to PeachtreeChat</h1>
     <p>AI-powered chatbots for salons, real estate, and small businesses.</p>
     <p>Let us automate your bookings, FAQs, and leads — no code needed.</p>
 
-    <a href="mailto:info@peachtreechat.com" class="cta">Contact Us</a>
-    <a href="about.html" class="cta">About Us</a>
+    <div>
+      <a href="mailto:info@peachtreechat.com" class="cta">Contact Us</a>
+      <a href="about.html" class="cta">About Us</a>
+    </div>
 
-    <!-- Demo: Salon Chatbot (MP4 test) -->
-    <section style="max-width:1200px; margin:40px auto; text-align:center;">
-      <h2 style="color:#FF914D; margin-bottom:12px;">💇‍♀️ See PeachIQ Book a Salon Appointment</h2>
-      <p style="color:#555; margin:0 0 20px;">Watch how it books appointments, applies promos, and confirms in seconds — 24/7.</p>
+    <!-- Demo: Salon Chatbot -->
+    <section style="max-width:1100px; margin:28px auto 0; text-align:center;">
+      <h2 style="margin-bottom:8px;">💇‍♀️ See PeachIQ Book a Salon Appointment</h2>
+      <p class="sub" style="margin:0 0 14px; opacity:1; transform:none; color:var(--muted)">Watch how it books appointments, applies promos, and confirms in seconds — 24/7.</p>
 
-      <video
-        src="peachiq_salon_demo_iphone_sharp.mp4"
-        autoplay
-        muted
-        loop
-        playsinline
-        style="max-width:100%; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,0.08)">
-      </video>
+      <div class="video-wrap">
+        <video
+          src="peachiq_salon_demo_iphone_sharp.mp4"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          poster="video-poster.jpg">
+        </video>
+      </div>
     </section>
 
-    <!-- Trusted By (inline SVG — no external links) -->
-    <section style="padding:32px 0 10px; text-align:center;">
-      <h3 style="color:#333; margin-bottom:18px; letter-spacing:.2px;">
-        Trusted by Small Businesses Nationwide
-      </h3>
-      <div class="trust-logos">
+    <!-- Trusted By (mobile scrollable) -->
+    <section class="trusted">
+      <h3 style="color:#333; margin-bottom:12px; letter-spacing:.2px;">Trusted by Small Businesses Nationwide</h3>
+      <div class="trust-logos" aria-label="Trusted by logos">
         <!-- Salon Co -->
         <svg viewBox="0 0 180 60" role="img" aria-label="Salon Co">
           <rect x="0" y="0" width="180" height="60" rx="10" fill="#f5f5f5"/>
@@ -286,9 +368,10 @@
       </div>
     </section>
 
-    <div class="services">
+    <!-- Services -->
+    <section class="services">
       <h2>What We Offer</h2>
-      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-top: 30px;">
+      <div class="cards">
         <div class="service-card">
           <h3>Salon Chatbots</h3>
           <p>Automate appointment booking, common questions, and seasonal promotions for salons and spas.</p>
@@ -306,46 +389,65 @@
           <p>Connect to Google Forms, CRMs, booking systems, and more with custom chatbot workflows.</p>
         </div>
       </div>
-    </div>
+    </section>
 
-    <section style="text-align: center; padding: 40px 0;">
+    <!-- Contact form -->
+    <section class="contact-block">
       <h2>Contact Us</h2>
-      <form action="https://formspree.io/f/xzzvegwy" method="POST" style="max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px;">
-        <input type="email" name="email" placeholder="Your email" required style="padding: 10px; font-size: 16px;" />
-        <textarea name="message" placeholder="Your message" rows="5" required style="padding: 10px; font-size: 16px;"></textarea>
+      <form action="https://formspree.io/f/xzzvegwy" method="POST" class="contact-form">
+        <input type="email" name="email" placeholder="Your email" required />
+        <textarea name="message" placeholder="Your message" rows="5" required></textarea>
         <button type="submit">Send</button>
       </form>
     </section>
 
-    <!-- FAQ Section -->
-    <section style="background: #fff; padding: 50px 20px; margin-top: 40px;">
-      <h2 style="color: #FF914D; margin-bottom: 30px;">Frequently Asked Questions</h2>
+    <!-- FAQ -->
+    <section style="background: #fff; padding: 34px 16px; margin-top: 32px; border-top: 1px solid #eee;">
+      <h2 style="color: var(--brand); margin-bottom: 22px;">Frequently Asked Questions</h2>
       <div style="max-width: 900px; margin: auto; text-align: left;">
-        <div style="margin-bottom: 25px;">
-          <h3 style="margin-bottom: 10px;">🤖 What industries do you support?</h3>
-          <p>We support salons, real estate, legal firms, and custom setups for local businesses.</p>
+        <div style="margin-bottom: 18px;">
+          <h3 style="margin-bottom: 8px;">🤖 What industries do you support?</h3>
+          <p style="opacity:1; transform:none;">We support salons, real estate, legal firms, and custom setups for local businesses.</p>
         </div>
-        <div style="margin-bottom: 25px;">
-          <h3 style="margin-bottom: 10px;">💬 Can I customize the chatbot questions?</h3>
-          <p>Absolutely! You can fully customize your chatbot’s flow, messages, and logic to suit your business.</p>
+        <div style="margin-bottom: 18px;">
+          <h3 style="margin-bottom: 8px;">💬 Can I customize the chatbot questions?</h3>
+          <p style="opacity:1; transform:none;">Absolutely! You can fully customize your chatbot’s flow, messages, and logic to suit your business.</p>
         </div>
-        <div style="margin-bottom: 25px;">
-          <h3 style="margin-bottom: 10px;">📲 Can I embed this on my website?</h3>
-          <p>Yes! Our chatbots can be added to your site with just one line of code.</p>
+        <div style="margin-bottom: 18px;">
+          <h3 style="margin-bottom: 8px;">📲 Can I embed this on my website?</h3>
+          <p style="opacity:1; transform:none;">Yes! Our chatbots can be added to your site with just one line of code.</p>
         </div>
-        <div style="margin-bottom: 25px;">
-          <h3 style="margin-bottom: 10px;">📦 Is there a free trial or demo?</h3>
-          <p>You can request a walkthrough demo by contacting us via email.</p>
+        <div>
+          <h3 style="margin-bottom: 8px;">📦 Is there a free trial or demo?</h3>
+          <p style="opacity:1; transform:none;">You can request a walkthrough demo by contacting us via email.</p>
         </div>
       </div>
     </section>
 
-    <div class="footer">
-         </div>
-  </div>
+    <div class="footer"></div>
+  </main>
 
   <!-- IBM Watsonx Assistant Chatbot Embed -->
   <script>
+    // Mobile nav toggle
+    (function(){
+      const nav = document.getElementById('nav');
+      const btn = document.getElementById('navToggle');
+      const links = document.getElementById('nav-links');
+      btn.addEventListener('click', () => {
+        const open = nav.classList.toggle('nav-open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      // close menu on link tap (mobile)
+      links.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+          nav.classList.remove('nav-open');
+          btn.setAttribute('aria-expanded','false');
+        });
+      });
+    })();
+
+    // Watson Assistant
     window.watsonAssistantChatOptions = {
       integrationID: "2a77a767-a4d1-4520-99d4-9bcf6d300a94",
       region: "au-syd",
