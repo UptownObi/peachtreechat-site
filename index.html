@@ -56,13 +56,9 @@
       min-height: 64px;
       gap: 8px;
     }
-    .nav-logo img {
-      height: 80px;                 /* smaller on mobile */
-      object-fit: contain;
-      transition: height .2s ease;
-    }
+    .nav-logo img { height: 80px; object-fit: contain; transition: height .2s ease; }
 
-    /* Hamburger */
+    /* Hamburger button */
     .nav-toggle {
       display: none;
       background: transparent;
@@ -74,24 +70,20 @@
     .nav-toggle:focus { outline: 2px solid var(--brand); outline-offset: 2px; }
     .nav-toggle svg { width: 28px; height: 28px; }
 
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-    }
-    .nav-links a {
+    .nav-links { display: flex; align-items: center; gap: 18px; }
+    .nav-links a{
       text-decoration: none;
       color: var(--ink);
       font-weight: 600;
       font-size: 15px;
-      padding: 10px 6px;            /* bigger tap targets */
+      padding: 10px 6px;            /* larger tap targets */
       border-radius: 6px;
       transition: color .2s ease, transform .2s ease, background .2s ease;
     }
     .nav-links a:hover { color: var(--brand); transform: translateY(-1px); }
     .nav-links a.active { color: var(--brand); }
 
-    /* Main layout + animations */
+    /* Main + animations */
     .main {
       padding: 40px 16px;
       opacity: 0;
@@ -121,87 +113,35 @@
     p:nth-of-type(2) { animation-delay: .3s; }
 
     /* CTAs */
-    .cta {
-      margin: 14px 8px;
-      display: inline-block;
-      background-color: var(--brand);
-      color: white;
-      padding: 12px 20px;
-      text-decoration: none;
-      border-radius: 10px;
-      font-weight: 600;
+    .cta{
+      margin: 14px 8px; display:inline-block;
+      background: var(--brand); color:#fff;
+      padding: 12px 20px; border-radius: 10px; text-decoration: none;
+      font-weight: 600; min-width:160px;
       transition: background-color .2s ease, transform .2s ease, box-shadow .2s ease;
       box-shadow: 0 6px 16px rgba(255,145,77,.25);
-      min-width: 160px;             /* nicer button width on mobile */
     }
-    .cta:hover { background-color: var(--brand-d); transform: translateY(-2px); }
+    .cta:hover{ background:var(--brand-d); transform:translateY(-2px); }
 
-    /* Responsive video wrapper (keeps 16:9 on any screen) */
-    .video-wrap {
-      position: relative;
+    /* ---- PHONE DEMO: fixes cropping/scrollbars ---- */
+    .phone-wrap{
       width: 100%;
-      max-width: 1100px;
+      max-width: 420px;          /* nice size on desktop */
       margin: 12px auto 0;
-      border-radius: var(--radius);
+      border-radius: 22px;
       overflow: hidden;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
       background: #000;
-      aspect-ratio: 16 / 9;
+      box-shadow: 0 10px 24px rgba(0,0,0,.12);
+      aspect-ratio: 9 / 16;      /* tall phone ratio */
     }
-    .video-wrap video {
-      position: absolute; inset: 0; width: 100%; height: 100%;
-      object-fit: cover;
+    .phone-wrap > video,
+    .phone-wrap > img{
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;       /* show the whole phone, no crop */
     }
-
-    /* Services */
-    .services { margin-top: 44px; }
-    .services h2 { margin-bottom: 18px; }
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-      max-width: 1100px;
-      margin: 20px auto 0;
-      padding: 0 8px;
-    }
-    .service-card {
-      background: var(--white);
-      padding: 18px;
-      border-radius: 12px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      transition: transform .25s ease, box-shadow .25s ease;
-      opacity: 0; transform: translateY(18px);
-      animation: slideUp 700ms ease forwards;
-      text-align: left;
-    }
-    .service-card:hover { transform: translateY(-4px); box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); }
-    .service-card h3 { margin: 6px 0 8px; color: var(--brand); }
-    .service-card p { margin: 0; opacity: 1; transform: none; }
-
-    /* Contact form block */
-    .contact-block {
-      text-align: center; padding: 32px 16px;
-    }
-    .contact-form {
-      max-width: 600px;
-      margin: 0 auto;
-      display: grid;
-      gap: 12px;
-      text-align: left;
-    }
-    .contact-form input, .contact-form textarea, .contact-form button {
-      font-family: inherit; font-size: 16px;
-    }
-    .contact-form input, .contact-form textarea {
-      border: 1px solid #ccc; border-radius: 8px; padding: 12px;
-      width: 100%; background: #fff;
-    }
-    .contact-form button {
-      background-color: var(--brand); color: #fff; border: none;
-      padding: 12px 20px; border-radius: 10px; cursor: pointer;
-      transition: background-color .2s ease, transform .2s ease;
-    }
-    .contact-form button:hover { background-color: var(--brand-d); transform: translateY(-2px); }
+    img, video{ max-width:100%; height:auto; }
 
     /* Trusted by */
     .trusted { padding: 28px 0 8px; }
@@ -220,49 +160,66 @@
     .trust-logos svg:hover{ filter:grayscale(0%) opacity(1); }
     .trust-logos text{ font-family:Poppins, Arial, sans-serif; font-weight:600; font-size:18px; fill:#444; }
 
+    /* Services grid */
+    .services { margin-top: 44px; }
+    .services h2 { margin-bottom: 18px; }
+    .cards{
+      display:grid; grid-template-columns: repeat(4,1fr);
+      gap:18px; max-width:1100px; margin:20px auto 0; padding:0 8px;
+    }
+    .service-card{
+      background:#fff; padding:18px; border-radius:12px;
+      box-shadow:0 2px 5px rgba(0,0,0,0.1);
+      transition: transform .25s ease, box-shadow .25s ease;
+      opacity:0; transform:translateY(18px); animation:slideUp 700ms ease forwards;
+      text-align:left;
+    }
+    .service-card:hover{ transform:translateY(-4px); box-shadow:0 6px 15px rgba(0,0,0,0.1); }
+    .service-card h3{ margin:6px 0 8px; color:var(--brand); }
+    .service-card p{ margin:0; opacity:1; transform:none; }
+
+    /* Contact form block */
+    .contact-block{ text-align:center; padding:32px 16px; }
+    .contact-form{
+      max-width:600px; margin:0 auto; display:grid; gap:12px; text-align:left;
+    }
+    .contact-form input, .contact-form textarea{
+      border:1px solid #ccc; border-radius:8px; padding:12px; background:#fff; width:100%;
+      font: 16px/1.4 'Poppins', Arial, sans-serif;
+    }
+    .contact-form button{
+      background:var(--brand); color:#fff; border:0; padding:12px 20px;
+      border-radius:10px; cursor:pointer; transition:background .2s ease, transform .2s ease;
+      font-weight:600;
+    }
+    .contact-form button:hover{ background:var(--brand-d); transform:translateY(-2px); }
+
     /* Footer */
-    .footer { margin-top: 52px; padding-bottom: 40px; color: gray; font-size: 14px; }
+    .footer{ margin-top:52px; padding-bottom:40px; color:gray; font-size:14px; }
 
     /* Desktop tweaks */
     @media (min-width: 901px){
       .main { padding: 56px 20px 120px; }
       .nav-logo img { height: 110px; }
     }
-
     /* Tablet */
-    @media (max-width: 900px){
-      .cards { grid-template-columns: repeat(2, 1fr); }
-    }
-
+    @media (max-width: 900px){ .cards{ grid-template-columns: repeat(2,1fr); } }
     /* Mobile */
     @media (max-width: 700px){
-      /* Hamburger visible */
-      .nav-toggle { display: inline-flex; align-items:center; justify-content:center; }
-      /* Collapse links by default */
-      .nav-links {
-        position: absolute; left: 0; right: 0; top: 64px;
-        background: var(--white);
-        display: grid;
-        gap: 6px;
-        padding: 10px 16px 14px;
-        border-bottom: 1px solid var(--line);
-        transform-origin: top;
-        transform: scaleY(0);
-        opacity: 0;
-        pointer-events: none;
+      .nav-toggle { display:inline-flex; align-items:center; justify-content:center; }
+      .nav-links{
+        position:absolute; left:0; right:0; top:64px; background:var(--white);
+        display:grid; gap:6px; padding:10px 16px 14px; border-bottom:1px solid var(--line);
+        transform-origin: top; transform: scaleY(0); opacity:0; pointer-events:none;
         transition: transform .2s ease, opacity .2s ease;
       }
-      .nav-links a { text-align: left; padding: 12px 10px; border-radius: 8px; }
-      .nav-open .nav-links { transform: scaleY(1); opacity: 1; pointer-events: auto; }
-      .nav-container { min-height: 64px; }
-
-      .cards { grid-template-columns: 1fr; }
+      .nav-links a{ text-align:left; padding:12px 10px; border-radius:8px; }
+      .nav-open .nav-links{ transform:scaleY(1); opacity:1; pointer-events:auto; }
+      .nav-container{ min-height:64px; }
+      .cards{ grid-template-columns: 1fr; }
     }
-
     /* Respect reduced motion */
-    @media (prefers-reduced-motion: reduce){
-      * { animation: none !important; transition: none !important; }
-    }
+    @media (prefers-reduced-motion: reduce){ *{ animation:none !important; transition:none !important; } }
   </style>
 </head>
 <body>
@@ -303,12 +260,13 @@
       <a href="about.html" class="cta">About Us</a>
     </div>
 
-    <!-- Demo: Salon Chatbot -->
-    <section style="max-width:1100px; margin:28px auto 0; text-align:center;">
+    <!-- Demo: Salon Chatbot (fixed iPhone layout) -->
+    <section style="max-width:1200px; margin:28px auto 0; text-align:center;">
       <h2 style="margin-bottom:8px;">💇‍♀️ See PeachIQ Book a Salon Appointment</h2>
-      <p class="sub" style="margin:0 0 14px; opacity:1; transform:none; color:var(--muted)">Watch how it books appointments, applies promos, and confirms in seconds — 24/7.</p>
-
-      <div class="video-wrap">
+      <p class="sub" style="margin:0 0 14px; opacity:1; transform:none; color:var(--muted);">
+        Watch how it books appointments, applies promos, and confirms in seconds — 24/7.
+      </p>
+      <div class="phone-wrap">
         <video
           src="peachiq_salon_demo_iphone_sharp.mp4"
           autoplay
@@ -427,7 +385,7 @@
     <div class="footer"></div>
   </main>
 
-  <!-- IBM Watsonx Assistant Chatbot Embed -->
+  <!-- Scripts -->
   <script>
     // Mobile nav toggle
     (function(){
@@ -447,7 +405,7 @@
       });
     })();
 
-    // Watson Assistant
+    // IBM Watsonx Assistant Chatbot Embed
     window.watsonAssistantChatOptions = {
       integrationID: "2a77a767-a4d1-4520-99d4-9bcf6d300a94",
       region: "au-syd",
