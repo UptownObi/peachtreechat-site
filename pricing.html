@@ -2,232 +2,162 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  />
   <title>Pricing - PeachtreeChat</title>
+  <meta name="description" content="Simple pricing for PeachtreeChat AI chatbots. Start with what you need and scale—from Starter to Growth to Enterprise." />
 
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
 
   <style>
     :root{
-      --brand:#FF914D;
-      --brand-dark:#e6762b;
-      --text:#2e2e2e;
-      --muted:#555;
-      --card:#fff;
-      --bg:#f9f9f9;
+      --brand:#FF914D; --brand-dark:#e6762b;
+      --ink:#2e2e2e; --muted:#555;
+      --card:#fff; --bg:#f9f9f9; --line:#ddd; --border:#eee;
+      --shadow:0 2px 12px rgba(0,0,0,.06);
+      --max:1100px;
     }
-
     *{box-sizing:border-box}
-
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: var(--bg);
-      margin: 0;
-      padding: 0;
-      color: var(--text);
-      text-align: center;
+    html,body{height:100%}
+    body{
+      font-family:'Poppins',sans-serif;
+      background:var(--bg); margin:0; color:var(--ink); text-align:center;
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
     }
 
-    nav {
-      background-color: #fff;
-      border-bottom: 1px solid #ddd;
-      padding: 12px 20px;
-      position: sticky;
-      top: 0;
-      z-index: 999;
+    /* ===== NAV with Hamburger ===== */
+    nav{background:#fff;border-bottom:1px solid var(--line);padding:10px 16px;position:sticky;top:0;z-index:999;box-shadow:var(--shadow)}
+    .nav-container{max-width:var(--max);margin:auto;display:flex;justify-content:space-between;align-items:center;gap:8px;min-height:64px}
+    .nav-logo img{height:80px;object-fit:contain;transition:height .2s ease}
+
+    /* Show hamburger by default; hide on desktop */
+    .nav-toggle{
+      display:inline-flex; align-items:center; justify-content:center;
+      background:transparent; border:0; padding:8px; border-radius:8px; cursor:pointer;
+    }
+    .nav-toggle:focus{outline:2px solid var(--brand);outline-offset:2px}
+    .nav-toggle svg{width:28px;height:28px}
+
+    .nav-links{
+      display:flex; align-items:center; gap:18px;
+    }
+    .nav-links a{
+      text-decoration:none; color:var(--ink); font-weight:600; font-size:15px;
+      padding:10px 6px; border-radius:6px; transition:color .2s ease, transform .2s ease;
+    }
+    .nav-links a:hover{color:var(--brand); transform:translateY(-1px)}
+    .nav-links a.active{color:var(--brand)}
+
+    /* Mobile menu behavior */
+    @media (max-width:700px){
+      .nav-links{
+        position:absolute; left:0; right:0; top:64px; background:#fff;
+        display:grid; gap:6px; padding:10px 16px 14px; border-bottom:1px solid var(--line);
+        transform-origin:top; transform:scaleY(0); opacity:0; pointer-events:none;
+        transition:transform .2s ease, opacity .2s ease;
+      }
+      .nav-links a{ text-align:left; padding:12px 10px; border-radius:8px }
+      .nav-open .nav-links{ transform:scaleY(1); opacity:1; pointer-events:auto }
+    }
+    @media (min-width:701px){
+      .nav-toggle{ display:none } /* hide hamburger on desktop */
     }
 
-    .nav-container {
-      max-width: 1000px;
-      margin: auto;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
+    /* ===== MAIN ===== */
+    .main{
+      padding:56px 16px 96px; max-width:var(--max); margin:auto;
+      opacity:0; transform:translateY(24px); animation:fadeIn .7s ease forwards
     }
+    @keyframes fadeIn{to{opacity:1; transform:translateY(0)}}
 
-    .nav-logo img {
-      height: 80px;
-      object-fit: contain;
+    h1{font-size:clamp(28px,5.8vw,36px);margin:0 0 10px;color:var(--brand)}
+    p{font-size:clamp(16px,3.7vw,18px);color:var(--muted);margin:0}
+
+    /* ===== PRICING GRID ===== */
+    .pricing-container{
+      margin-top:32px; display:grid; gap:22px;
+      grid-template-columns:repeat(12,1fr);
     }
-
-    .nav-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-      margin-top: 10px;
+    .pricing-card{
+      grid-column:span 12;
+      position:relative; background:var(--card); border-radius:16px;
+      box-shadow:0 4px 10px rgba(0,0,0,0.08); padding:26px 22px;
+      border:1px solid var(--border); text-align:left;
+      transition:transform .25s ease, box-shadow .25s ease;
     }
+    .pricing-card:hover{transform:translateY(-4px); box-shadow:0 10px 22px rgba(0,0,0,0.15)}
+    .pricing-card h3{color:var(--ink); margin:0 0 6px; font-size:22px}
+    .price{font-size:30px; color:var(--brand); font-weight:700; margin:8px 0 4px}
+    .per{font-size:13px; color:#888; margin-left:4px}
 
-    .nav-links a {
-      text-decoration: none;
-      color: var(--text);
-      font-weight: 600;
-      font-size: 16px;
-      transition: color 0.2s ease;
-    }
-    .nav-links a:hover { color: var(--brand); }
+    .pricing-card ul{list-style:none; padding:0; margin:14px 0 0}
+    .pricing-card li{padding:10px 0; border-bottom:1px solid var(--border); font-size:15px; line-height:1.45; color:#444}
 
-    .main {
-      padding: 60px 20px;
-      max-width: 1100px;
-      margin: auto;
-    }
+    .cta{display:inline-block; margin-top:18px; background:var(--brand); color:#fff;
+      padding:12px 20px; border-radius:10px; text-decoration:none; font-weight:700;
+      transition:background .2s ease, transform .15s ease; text-align:center; box-shadow:0 6px 16px rgba(255,145,77,.25)}
+    .cta:hover{background:var(--brand-dark); transform:translateY(-1px)}
+    .pricing-card .cta-wrap{margin-top:14px; display:flex; justify-content:center}
 
-    h1 {
-      font-size: 36px;
-      margin-bottom: 10px;
-      color: var(--brand);
-    }
-
-    p {
-      font-size: 18px;
-      color: var(--muted);
-    }
-
-    .pricing-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 30px;
-      margin-top: 40px;
-    }
-
-    .pricing-card {
-      position: relative;
-      background: var(--card);
-      border-radius: 16px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-      padding: 30px;
-      width: 300px;
-      max-width: 90vw;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      border: 1px solid #eee;
-      text-align: left;
-    }
-
-    .pricing-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 22px rgba(0,0,0,0.15);
-    }
-
-    .pricing-card h3 {
-      color: var(--text);
-      margin: 0 0 10px;
-      font-size: 22px;
-      text-align:left;
-    }
-
-    .price {
-      font-size: 30px;
-      color: var(--brand);
-      font-weight: 700;
-      margin: 8px 0 4px;
-    }
-
-    .per {
-      font-size: 13px;
-      color: #888;
-      margin-bottom: 10px;
-      display:block;
-    }
-
-    ul {
-      list-style: none;
-      padding: 0;
-      margin: 18px 0 0;
-    }
-
-    ul li {
-      padding: 10px 0;
-      border-bottom: 1px solid #eee;
-      font-size: 15px;
-      line-height: 1.45;
-    }
-
-    .cta {
-      display: inline-block;
-      margin-top: 20px;
-      background-color: var(--brand);
-      color: white;
-      padding: 12px 20px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 700;
-      transition: background-color 0.2s ease, transform .15s ease;
-      text-align:center;
-    }
-    .cta:hover { background-color: var(--brand-dark); transform: translateY(-1px); }
-
-    /* FEATURED (Growth) */
+    /* Featured (Growth) */
     .pricing-card.featured{
-      border: 2px solid var(--brand);
-      background:
-        radial-gradient(120% 90% at 0% 0%, rgba(255,145,77,0.10), transparent 55%),
-        #ffffff;
-      box-shadow: 0 14px 30px rgba(255,145,77,0.25);
-      transform: translateY(-6px);
+      border:2px solid var(--brand);
+      background:radial-gradient(120% 90% at 0% 0%, rgba(255,145,77,0.10), transparent 55%), #fff;
+      box-shadow:0 14px 30px rgba(255,145,77,0.25);
+      transform:translateY(-6px);
     }
-    .pricing-card.featured:hover{
-      transform: translateY(-10px);
-    }
-
-    /* Ribbon */
+    .pricing-card.featured:hover{transform:translateY(-10px)}
     .ribbon{
-      position:absolute;
-      top:14px; right:-48px;
-      background: var(--brand);
-      color:#fff;
-      padding:8px 70px;
-      font-size:12px;
-      font-weight:800;
-      letter-spacing:.4px;
-      transform: rotate(45deg);
-      box-shadow: 0 6px 14px rgba(255,145,77,.35);
-      text-transform: uppercase;
+      position:absolute; top:14px; right:-48px; background:var(--brand); color:#fff;
+      padding:8px 70px; font-size:12px; font-weight:800; letter-spacing:.4px;
+      transform:rotate(45deg); box-shadow:0 6px 14px rgba(255,145,77,.35); text-transform:uppercase;
     }
 
-    /* Center CTAs inside cards */
-    .pricing-card .cta-wrap{
-      margin-top: 18px;
-      display:flex;
-      justify-content:center;
+    /* Responsive columns */
+    @media (min-width:700px){
+      .pricing-card{grid-column:span 6}
+      .pricing-card.featured{grid-column:span 12}
+    }
+    @media (min-width:980px){
+      .pricing-card{grid-column:span 4}
+      .pricing-card.featured{grid-column:span 4} /* equal widths on wide screens */
     }
 
-    .footer {
-      margin-top: 60px;
-      padding-bottom: 40px;
-      color: gray;
-      font-size: 14px;
-      text-align:center;
-    }
+    /* Footer */
+    .footer{margin:56px 0 40px; color:gray; font-size:14px; text-align:center}
 
-    @media (max-width: 600px) {
-      h1 { font-size: 28px; }
-      .pricing-card { padding: 22px; }
-      .nav-container { flex-direction: column; align-items: center; }
-      .nav-links { flex-direction: column; align-items: center; gap: 12px; margin-top: 10px; }
-      .nav-links a { font-size: 15px; }
-      .ribbon{ right:-58px; } /* keep ribbon visible on small screens */
-    }
+    /* Desktop tweaks */
+    @media (min-width:901px){ .nav-logo img{height:110px} .main{padding-bottom:120px} }
+
+    /* Prefer reduced motion */
+    @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important} }
   </style>
 </head>
 <body>
 
-  <!-- Navigation -->
+  <!-- ===== Navigation (Hamburger included) ===== -->
   <nav>
-    <div class="nav-container">
+    <div class="nav-container" id="nav">
       <div class="nav-logo">
-        <a href="index.html">
-          <img src="peachtreechat-logo.png" alt="PeachtreeChat Logo" />
-        </a>
+        <a href="index.html"><img src="peachtreechat-logo.png" alt="PeachtreeChat Logo" /></a>
       </div>
-      <div class="nav-links">
+
+      <!-- HAMBURGER BUTTON -->
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links" id="navToggle">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M3 6h18M3 12h18M3 18h18"/>
+        </svg>
+      </button>
+
+      <!-- COLLAPSIBLE LINKS -->
+      <div class="nav-links" id="nav-links">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="services.html">Services</a>
-        <a href="pricing.html" aria-current="page">Pricing</a> 
+        <a href="pricing.html" class="active" aria-current="page">Pricing</a>
         <a href="contact.html">Contact</a>
         <a href="salon-chatbots.html">Salon</a>
         <a href="real-estate-chatbots.html">Real Estate</a>
@@ -236,17 +166,17 @@
     </div>
   </nav>
 
-  <!-- Main -->
-  <div class="main">
+  <!-- ===== Main ===== -->
+  <main class="main">
     <h1>Simple Pricing</h1>
     <p>Start with what you need and grow as your business grows.</p>
 
-    <div class="pricing-container">
+    <section class="pricing-container">
 
       <!-- Starter Plan -->
-      <div class="pricing-card">
+      <article class="pricing-card">
         <h3>Starter</h3>
-        <div class="price">$99<span class="per">/mo</span></div>
+        <div class="price">$99 <span class="per">/mo</span></div>
         <ul>
           <li>Basic chatbot setup (no custom integrations)</li>
           <li>1 industry template</li>
@@ -256,50 +186,70 @@
         <div class="cta-wrap">
           <a href="mailto:info@peachtreechat.com" class="cta">Get Started</a>
         </div>
-      </div>
+      </article>
 
       <!-- Growth Plan (FEATURED) -->
-      <div class="pricing-card featured" aria-label="Most popular plan">
+      <article class="pricing-card featured" aria-label="Most popular plan">
         <div class="ribbon">Most Popular</div>
         <h3>Growth</h3>
-        <div class="price">$199<span class="per">/mo</span></div>
+        <div class="price">$199 <span class="per">/mo</span></div>
         <ul>
           <li>Advanced chatbot flows (multi-step, booking flows, FAQs)</li>
           <li>Advanced customization for your business</li>
-          <li>Live chat handoffs &amp; analytics dashboard (real-time handoff + performance tracking)</li>
+          <li>Live chat handoffs &amp; analytics dashboard</li>
           <li>Priority support (email &amp; chat)</li>
-          <li>Monthly optimization review (your team or ours handles tune-ups)</li>
+          <li>Monthly optimization review</li>
         </ul>
         <div class="cta-wrap">
           <a href="mailto:info@peachtreechat.com" class="cta">Upgrade</a>
         </div>
-      </div>
+      </article>
 
       <!-- Enterprise Plan -->
-      <div class="pricing-card">
+      <article class="pricing-card">
         <h3>Enterprise</h3>
         <div class="price">Custom</div>
         <ul>
-          <li>Custom chatbot strategy &amp; design (flows built for your business model)</li>
-          <li>CRM/API integrations (HubSpot, Salesforce, booking software, POS)</li>
-          <li>Multi-location support (chains or franchises; shared + location-specific bots)</li>
-          <li>White-glove onboarding (we set up everything; no DIY)</li>
-          <li>Dedicated account manager (single point of contact for support + strategy)</li>
-          <li>Advanced analytics &amp; reporting (custom KPIs, conversion tracking, monthly reports)</li>
-          <li>Priority 24/7 support (chat + phone; guaranteed response within 3 hours)</li>
+          <li>Custom chatbot strategy &amp; design</li>
+          <li>CRM/API integrations (HubSpot, Salesforce, booking, POS)</li>
+          <li>Multi-location support (chains or franchises)</li>
+          <li>White-glove onboarding</li>
+          <li>Dedicated account manager</li>
+          <li>Advanced analytics &amp; reporting</li>
+          <li>Priority 24/7 support (chat &amp; phone)</li>
         </ul>
         <div class="cta-wrap">
           <a href="mailto:info@peachtreechat.com" class="cta">Request Quote</a>
         </div>
-      </div>
+      </article>
 
+    </section>
+
+    <div class="footer">
+      <p>&copy; 2025 PeachtreeChat. All rights reserved.</p>
     </div>
-  </div>
+  </main>
 
-  <!-- Footer -->
-  <div class="footer">
-    <p>&copy; 2025 PeachtreeChat. All rights reserved.</p>
-  </div>
-
+  <!-- ===== Hamburger Toggle Script ===== -->
+  <script>
+    (function(){
+      const nav = document.getElementById('nav');
+      const btn = document.getElementById('navToggle');
+      const links = document.getElementById('nav-links');
+      if (btn && nav && links){
+        btn.addEventListener('click', () => {
+          const open = nav.classList.toggle('nav-open');
+          btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+        // Close menu after tapping a link (mobile)
+        links.querySelectorAll('a').forEach(a=>{
+          a.addEventListener('click',()=>{
+            nav.classList.remove('nav-open');
+            btn.setAttribute('aria-expanded','false');
+          });
+        });
+      }
+    })();
+  </script>
 </body>
 </html>
