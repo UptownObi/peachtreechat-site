@@ -8,90 +8,125 @@
   <!-- SEO -->
   <meta name="description" content="Contact PeachtreeChat — AI chatbots for salons, real estate, and small businesses. Book a demo, request pricing, or ask a question." />
 
-  <!-- Google Font: Poppins (matches your site) -->
+  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
 
   <style>
-    /* ===== Base (match site look) ===== */
+    /* ===== Base ===== */
     :root{
-      --peach:#FF914D;      /* brand */
-      --peach-d:#e6762b;    /* hover */
-      --ink:#2e2e2e;        /* headings */
-      --muted:#555;         /* body */
-      --paper:#f9f9f9;      /* bg */
-      --card:#fff;          /* surfaces */
-      --line:#ddd;          /* borders */
+      --peach:#FF914D; --peach-d:#e6762b;
+      --ink:#2e2e2e; --muted:#555;
+      --paper:#f9f9f9; --card:#fff; --line:#ddd;
       --shadow:0 2px 12px rgba(0,0,0,.06);
-      --radius:12px;
+      --radius:12px; --max:1000px;
     }
+    *{box-sizing:border-box}
     html,body{height:100%}
-    body{
-      font-family:'Poppins', Arial, sans-serif; background:var(--paper); color:var(--ink);
-      margin:0; padding:0; text-align:center;
-    }
+    body{font-family:'Poppins', Arial, sans-serif; background:var(--paper); color:var(--ink); margin:0; text-align:center}
 
-    /* ===== Navbar (copied style) ===== */
-    nav{background:#fff; border-bottom:1px solid var(--line); padding:12px 20px; position:sticky; top:0; width:100%; z-index:999; box-shadow:var(--shadow)}
-    .nav-container{max-width:1000px; margin:auto; display:flex; justify-content:space-between; align-items:center; height:80px}
-    .nav-logo img{height:110px; object-fit:contain}
-    .nav-links a{margin-left:30px; text-decoration:none; color:var(--ink); font-weight:600; font-size:16px; transition:.3s ease}
-    .nav-links a:hover{color:var(--peach); transform:scale(1.05)}
+    /* ===== Navbar (hamburger like your other pages) ===== */
+    nav{background:#fff;border-bottom:1px solid var(--line);padding:10px 16px;position:sticky;top:0;z-index:999;box-shadow:var(--shadow)}
+    .nav-container{max-width:var(--max);margin:auto;display:flex;justify-content:space-between;align-items:center;gap:8px;min-height:80px}
+    .nav-logo img{height:110px;object-fit:contain;transition:height .2s ease}
+
+    .nav-toggle{
+      display:none; /* shown on mobile in media query */
+      background:transparent;border:0;padding:8px;border-radius:8px;cursor:pointer
+    }
+    .nav-toggle:focus{outline:2px solid var(--peach);outline-offset:2px}
+    .nav-toggle svg{width:28px;height:28px}
+
+    .nav-links{display:flex;align-items:center;gap:20px;flex-wrap:wrap;justify-content:center}
+    .nav-links a{margin-left:0;text-decoration:none;color:var(--ink);font-weight:600;font-size:16px;transition:.2s}
+    .nav-links a:hover{color:var(--peach);transform:translateY(-1px)}
     .nav-links a.active{color:var(--peach)}
 
-    /* ===== Page Enter Animations (copied) ===== */
-    .main{padding:60px 20px; opacity:0; transform:translateY(30px); animation:fadeIn 1s ease forwards}
-    @keyframes fadeIn{to{opacity:1; transform:translateY(0)}}
-    @keyframes slideUp{to{opacity:1; transform:translateY(0)}}
-    h1{font-size:40px; font-weight:700; color:var(--ink); margin-bottom:10px}
-    p{font-size:18px; color:var(--muted); margin:0 0 14px; opacity:0; transform:translateY(20px); animation:slideUp .8s ease forwards}
+    /* Mobile menu behavior */
+    @media (max-width:700px){
+      .nav-logo img{height:80px}
+      .nav-toggle{display:inline-flex;align-items:center;justify-content:center}
+      .nav-links{
+        position:absolute;left:0;right:0;top:80px;background:#fff;
+        display:grid;gap:6px;padding:10px 16px 14px;border-bottom:1px solid var(--line);
+        transform-origin:top;transform:scaleY(0);opacity:0;pointer-events:none;
+        transition:transform .2s ease, opacity .2s ease;
+      }
+      .nav-links a{text-align:left;padding:12px 10px;border-radius:8px}
+      .nav-open .nav-links{transform:scaleY(1);opacity:1;pointer-events:auto}
+    }
+
+    /* ===== Page Intro ===== */
+    .main{padding:60px 20px;max-width:var(--max);margin:auto;opacity:0;transform:translateY(30px);animation:fadeIn 1s ease forwards}
+    @keyframes fadeIn{to{opacity:1;transform:translateY(0)}}
+    @keyframes slideUp{to{opacity:1;transform:translateY(0)}}
+    h1{font-size:40px;font-weight:700;color:var(--ink);margin-bottom:10px}
+    p{font-size:18px;color:var(--muted);margin:0 0 14px;opacity:0;transform:translateY(20px);animation:slideUp .8s ease forwards}
     p.lead{animation-delay:.2s}
     p.sub{animation-delay:.4s}
 
     /* ===== Contact Layout ===== */
-    .wrap{max-width:1000px; margin:24px auto 0}
-    .grid{display:grid; grid-template-columns: 1.1fr .9fr; gap:24px; align-items:start}
-    .card{background:var(--card); border:1px solid var(--line); border-radius:10px; box-shadow:0 2px 5px rgba(0,0,0,0.1); text-align:left}
+    .wrap{max-width:var(--max);margin:24px auto 0}
+    .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:start}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:10px;box-shadow:0 2px 5px rgba(0,0,0,0.1);text-align:left}
     .card .hd{padding:18px 18px 0}
     .card .bd{padding:18px}
 
-    label{display:block; font-weight:600; margin:10px 0 6px}
-    input, select, textarea{width:100%; padding:12px; font-size:16px; border:1px solid #ccc; border-radius:5px; background:#fff}
-    textarea{min-height:140px; resize:vertical}
+    label{display:block;font-weight:600;margin:10px 0 6px}
+    input, select, textarea{width:100%;padding:12px;font-size:16px;border:1px solid #ccc;border-radius:5px;background:#fff}
+    textarea{min-height:140px;resize:vertical}
 
-    .actions{display:flex; gap:12px; align-items:center; margin-top:12px}
-    .cta{display:inline-block; background:var(--peach); color:#fff; padding:12px 24px; text-decoration:none; border-radius:8px; font-weight:600; transition:.3s ease; border:none; cursor:pointer}
-    .cta:hover{background:var(--peach-d); transform:translateY(-2px)}
+    .actions{display:flex;gap:12px;align-items:center;margin-top:12px;flex-wrap:wrap}
+    .cta{display:inline-block;background:var(--peach);color:#fff;padding:12px 24px;text-decoration:none;border-radius:8px;font-weight:600;transition:.3s ease;border:none;cursor:pointer;box-shadow:0 6px 16px rgba(255,145,77,.25)}
+    .cta:hover{background:var(--peach-d);transform:translateY(-2px)}
     .ghost{background:#2e2e2e}
 
-    .msg{display:none; margin-top:10px; padding:10px 12px; border-radius:8px; font-size:14px}
-    .ok{background:#ecfdf5; color:#065f46; border:1px solid #a7f3d0}
-    .err{background:#fef2f2; color:#7f1d1d; border:1px solid #fecaca}
+    .msg{display:none;margin-top:10px;padding:10px 12px;border-radius:8px;font-size:14px}
+    .ok{background:#ecfdf5;color:#065f46;border:1px solid #a7f3d0}
+    .err{background:#fef2f2;color:#7f1d1d;border:1px solid #fecaca}
 
-    .list{display:grid; gap:14px}
-    .row{display:flex; gap:10px; align-items:center}
+    .list{display:grid;gap:14px}
+    .row{display:flex;gap:10px;align-items:center}
     .muted{color:#666}
-    .hours{width:100%; border-collapse:collapse; font-size:14px}
-    .hours td{padding:6px 0; border-bottom:1px dashed #eee}
-    iframe.map{width:100%; height:280px; border:0; display:block; border-radius:0 0 10px 10px}
+    .hours{width:100%;border-collapse:collapse;font-size:14px}
+    .hours td{padding:6px 0;border-bottom:1px dashed #eee}
+    iframe.map{width:100%;height:280px;border:0;display:block;border-radius:0 0 10px 10px}
 
-    /* leave space for chat launcher */
-    @media(min-width:900px){ .main{padding-bottom:120px} }
-    @media(max-width:760px){ .grid{grid-template-columns:1fr} h1{font-size:32px} .main{padding:32px 16px 96px} }
+    /* Leave space for chat launcher on desktop */
+    @media (min-width:900px){ .main{padding-bottom:120px} }
+
+    /* Mobile tweaks */
+    @media (max-width:760px){
+      h1{font-size:32px}
+      .main{padding:32px 16px 96px}
+      .grid{grid-template-columns:1fr}
+      .actions{justify-content:flex-start}
+    }
+
+    /* Reduce motion preference */
+    @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important} }
   </style>
 </head>
 <body>
-  <!-- ===== NAV ===== -->
+
+  <!-- ===== NAV (Hamburger included) ===== -->
   <nav>
-    <div class="nav-container">
+    <div class="nav-container" id="nav">
       <div class="nav-logo">
         <a href="index.html"><img src="peachtreechat-logo.png" alt="PeachtreeChat Logo" /></a>
       </div>
-      <div class="nav-links">
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links" id="navToggle">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M3 6h18M3 12h18M3 18h18"/>
+        </svg>
+      </button>
+
+      <div class="nav-links" id="nav-links">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="services.html">Services</a>
         <a href="pricing.html">Pricing</a>
-        <a class="active" href="contact.html">Contact</a>
+        <a class="active" href="contact.html" aria-current="page">Contact</a>
         <a href="salon-chatbots.html">Salon</a>
         <a href="real-estate-chatbots.html">Real Estate</a>
         <a href="legal-intake-bots.html">Legal</a>
@@ -126,7 +161,7 @@
               <div class="row" style="gap:12px; flex-wrap:wrap">
                 <div style="flex:1 1 260px">
                   <label for="phone">Phone (optional)</label>
-                  <input id="phone" name="phone" type="tel" inputmode="tel" placeholder="(555) 555‑5555" />
+                  <input id="phone" name="phone" type="tel" inputmode="tel" placeholder="(555) 555-5555" />
                 </div>
                 <div style="flex:1 1 260px">
                   <label for="company">Company (optional)</label>
@@ -139,7 +174,7 @@
                   <label for="topic">Topic</label>
                   <select id="topic" name="topic" required>
                     <option value="" disabled selected>Select one…</option>
-                    <option>Book a 60‑second demo</option>
+                    <option>Book a 60-second demo</option>
                     <option>Start my chatbot</option>
                     <option>Pricing & plans</option>
                     <option>Partnership / Reseller</option>
@@ -166,7 +201,7 @@
 
               <div class="actions">
                 <button class="cta" type="submit">Send message</button>
-                <a class="cta ghost" href="https://calendly.com/your-handle/intro-15">Book 15‑min intro</a>
+                <a class="cta ghost" href="https://calendly.com/your-handle/intro-15">Book 15-min intro</a>
               </div>
 
               <div id="ok" class="msg ok">Thanks! Your message is on its way.</div>
@@ -181,7 +216,7 @@
           <div class="bd">
             <div class="list" style="text-align:left">
               <div class="row"><strong style="min-width:86px">Email</strong> <a href="mailto:hello@peachtreechat.com">hello@peachtreechat.com</a></div>
-              <div class="row"><strong style="min-width:86px">Phone</strong> <span class="muted">(470) 555‑0191</span></div>
+              <div class="row"><strong style="min-width:86px">Phone</strong> <span class="muted">(470) 555-0191</span></div>
               <div class="row"><strong style="min-width:86px">Location</strong> <span class="muted">Atlanta, Georgia</span></div>
             </div>
 
@@ -196,13 +231,13 @@
         </div>
       </div>
 
-      <!-- FAQ (keeps your style) -->
+      <!-- FAQ -->
       <section style="background:#fff; padding:34px 20px; margin-top:24px; border:1px solid var(--line); border-radius:10px; box-shadow:0 2px 5px rgba(0,0,0,0.1); text-align:left">
         <h2 style="color:var(--peach); text-align:center; margin-top:0">Frequently Asked Questions</h2>
         <div style="max-width:900px; margin:0 auto">
           <div style="margin-bottom:22px">
             <h3 style="margin-bottom:10px">🤖 What industries do you support?</h3>
-            <p class="sub" style="opacity:1; transform:none">Salons, real estate, legal intake, property management, and more SMB use‑cases. We can customize flows and APIs.</p>
+            <p class="sub" style="opacity:1; transform:none">Salons, real estate, legal intake, property management, and more SMB use-cases. We can customize flows and APIs.</p>
           </div>
           <div style="margin-bottom:22px">
             <h3 style="margin-bottom:10px">💬 Can I customize the chatbot questions?</h3>
@@ -214,7 +249,7 @@
           </div>
           <div>
             <h3 style="margin-bottom:10px">📦 Do you offer a quick demo?</h3>
-            <p class="sub" style="opacity:1; transform:none">Choose “Book 15‑min intro” above or pick “Book a 60‑second demo” in the form’s topic.</p>
+            <p class="sub" style="opacity:1; transform:none">Choose “Book 15-min intro” above or pick “Book a 60-second demo” in the form’s topic.</p>
           </div>
         </div>
       </section>
@@ -223,7 +258,7 @@
     <div style="margin-top:48px; color:gray; font-size:14px"></div>
   </div>
 
-  <!-- IBM Watsonx Assistant Chatbot Embed (same as your site) -->
+  <!-- IBM Watsonx Assistant Chatbot Embed (unchanged) -->
   <script>
     window.watsonAssistantChatOptions = {
       integrationID: "2a77a767-a4d1-4520-99d4-9bcf6d300a94",
@@ -238,20 +273,38 @@
     });
   </script>
 
+  <!-- Formspree async submit UX + Mobile nav toggle -->
   <script>
-    // tiny async submit UX to show status messages while using Formspree
+    // Form submit
     const f=document.getElementById('contactForm');
     const ok=document.getElementById('ok');
     const er=document.getElementById('er');
     f.addEventListener('submit', async (e)=>{
-      e.preventDefault();
-      ok.style.display='none'; er.style.display='none';
+      e.preventDefault(); ok.style.display='none'; er.style.display='none';
       try{
         const res=await fetch(f.action,{method:'POST', body:new FormData(f), headers:{'Accept':'application/json'}});
-        if(res.ok){ ok.style.display='block'; f.reset(); }
-        else{ er.style.display='block'; }
+        if(res.ok){ ok.style.display='block'; f.reset(); } else { er.style.display='block'; }
       }catch(_){ er.style.display='block'; }
     });
+
+    // Hamburger toggle
+    (function(){
+      const nav = document.getElementById('nav');
+      const btn = document.getElementById('navToggle');
+      const links = document.getElementById('nav-links');
+      if(btn && nav && links){
+        btn.addEventListener('click', ()=>{
+          const open = nav.classList.toggle('nav-open');
+          btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+        links.querySelectorAll('a').forEach(a=>{
+          a.addEventListener('click',()=>{
+            nav.classList.remove('nav-open');
+            btn.setAttribute('aria-expanded','false');
+          });
+        });
+      }
+    })();
   </script>
 </body>
 </html>
