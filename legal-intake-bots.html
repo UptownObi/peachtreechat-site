@@ -2,65 +2,137 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Legal Intake Chatbots • PeachtreeChat</title>
 
   <!-- SEO -->
   <meta name="description" content="AI chatbots for law firms: qualify clients, collect case details, and schedule consultations 24/7 with PeachIQ." />
 
-  <!-- Google Font: Poppins -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
 
   <style>
-    body { font-family: 'Poppins', Arial, sans-serif; background: #f9f9f9; margin: 0; padding: 0; text-align: center; color: #2e2e2e; }
-    nav { background-color: #fff; border-bottom: 1px solid #ddd; padding: 12px 20px; position: sticky; top: 0; width: 100%; z-index: 999; box-shadow: 0 2px 12px rgba(0,0,0,.06); }
-    .nav-container { max-width: 1000px; margin: auto; display: flex; justify-content: space-between; align-items: center; height: 80px; }
-    .nav-logo img { height: 110px; object-fit: contain; }
-    .nav-links a { margin-left: 30px; text-decoration: none; color: #2e2e2e; font-weight: 600; font-size: 16px; transition: all 0.3s ease; }
-    .nav-links a:hover { color: #FF914D; transform: scale(1.05); }
-    .nav-links a.active { color: #FF914D; }
+    :root{
+      --brand:#FF914D; --brand-dark:#e6762b;
+      --ink:#2e2e2e; --muted:#555;
+      --bg:#f9f9f9; --card:#fff; --line:#ddd; --border:#eee;
+      --shadow:0 2px 12px rgba(0,0,0,.06);
+      --max:1100px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:'Poppins',Arial,sans-serif; margin:0; background:var(--bg); color:var(--ink); text-align:center;
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+    }
+    a{color:inherit;text-decoration:none}
 
-    .main { padding: 60px 20px; opacity: 0; transform: translateY(30px); animation: fadeIn 1s ease forwards; }
-    @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
+    /* ===== NAV (Hamburger) ===== */
+    nav{background:#fff;border-bottom:1px solid var(--line);padding:10px 16px;position:sticky;top:0;z-index:999;box-shadow:var(--shadow)}
+    .nav-container{max-width:var(--max);margin:auto;display:flex;justify-content:space-between;align-items:center;gap:8px;min-height:80px}
+    .nav-logo img{height:110px;object-fit:contain;transition:height .2s ease}
 
-    h1 { font-size: 40px; font-weight: 700; color: #2e2e2e; margin-bottom: 14px; }
-    h2, h3 { color: #FF914D; font-weight: 600; }
-    p { font-size: 18px; color: #555; margin-bottom: 15px; opacity: 0; transform: translateY(20px); animation: slideUp 0.8s ease forwards; }
-    p.lead { animation-delay: .2s; }
-    p.sub { animation-delay: .4s; }
-    @keyframes slideUp { to { opacity: 1; transform: translateY(0); } }
+    .nav-toggle{
+      display:none;background:transparent;border:0;padding:8px;border-radius:8px;cursor:pointer
+    }
+    .nav-toggle:focus{outline:2px solid var(--brand);outline-offset:2px}
+    .nav-toggle svg{width:28px;height:28px}
 
-    .cta { margin: 20px 10px; display: inline-block; background-color: #FF914D; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 600; transition: all 0.3s ease; }
-    .cta:hover { background-color: #e6762b; transform: translateY(-2px); }
+    .nav-links{display:flex;align-items:center;gap:20px;flex-wrap:wrap;justify-content:center}
+    .nav-links a{font-weight:600;font-size:16px;padding:10px 6px;border-radius:6px;transition:color .2s ease, transform .2s ease}
+    .nav-links a:hover{color:var(--brand);transform:translateY(-1px)}
+    .nav-links a.active{color:var(--brand)}
 
-    .section { max-width: 1100px; margin: 0 auto; }
-    .row { display:flex; flex-wrap:wrap; gap:22px; align-items:stretch; justify-content:center; max-width:1100px; margin:0 auto; }
-    .card { background:#fff; border-radius:10px; box-shadow:0 2px 5px rgba(0,0,0,0.1); padding:20px; text-align:left; flex:1 1 320px; min-width:300px; }
+    /* Mobile menu behavior */
+    @media (max-width:700px){
+      .nav-logo img{height:80px}
+      .nav-toggle{display:inline-flex;align-items:center;justify-content:center}
+      .nav-links{
+        position:absolute;left:0;right:0;top:80px;background:#fff;
+        display:grid;gap:6px;padding:10px 16px 14px;border-bottom:1px solid var(--line);
+        transform-origin:top;transform:scaleY(0);opacity:0;pointer-events:none;
+        transition:transform .2s ease, opacity .2s ease;
+      }
+      .nav-links a{text-align:left;padding:12px 10px}
+      .nav-open .nav-links{transform:scaleY(1);opacity:1;pointer-events:auto}
+    }
 
-    .features { display:flex; flex-wrap:wrap; justify-content:center; gap: 22px; margin-top: 16px; }
-    .feature { max-width: 300px; background:#fff; padding:20px; border-radius:10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); text-align:left; transition: transform .3s ease, box-shadow .3s ease; opacity:0; transform: translateY(30px); animation: slideUp .8s ease forwards; }
-    .feature:hover { transform: translateY(-5px); box-shadow: 0 6px 15px rgba(0,0,0,0.1); }
-    .feature h3 { margin: 6px 0 8px; color:#FF914D; }
-    .feature p { margin:0; opacity:1; transform:none; }
+    /* ===== MAIN ===== */
+    .main{max-width:var(--max);margin:auto;padding:56px 16px 96px;opacity:0;transform:translateY(24px);animation:fadeIn .7s ease forwards}
+    @keyframes fadeIn{to{opacity:1;transform:translateY(0)}}
 
-    .stat { background:#fff; border-radius:10px; padding:18px 22px; box-shadow:0 2px 5px rgba(0,0,0,0.08); display:inline-block; margin:8px; min-width:220px; }
-    .stat b { font-size:28px; color:#2e2e2e; display:block; }
-    .stat span { color:#666; font-size:14px; }
+    h1{font-size:clamp(28px,5.8vw,40px);margin:0 0 12px}
+    h2{color:var(--brand);font-size:clamp(20px,4.6vw,28px);margin:0}
+    h3{color:var(--brand);margin:0 0 6px}
+    p{color:#555;font-size:clamp(16px,3.7vw,18px);margin:10px 0}
 
-    .footer { margin-top: 60px; padding-bottom: 40px; color: gray; font-size: 14px; }
+    .cta{
+      display:inline-block;background:var(--brand);color:#fff;padding:12px 20px;border-radius:10px;
+      font-weight:700;transition:background .2s ease, transform .15s ease; margin:10px 8px; box-shadow:0 6px 16px rgba(255,145,77,.25)
+    }
+    .cta:hover{background:var(--brand-dark);transform:translateY(-1px)}
 
-    @media(min-width:900px){ .main{ padding-bottom:120px; } }
-    @media(max-width:600px){ .nav-container{flex-direction:column; height:auto;} .nav-links{margin-top:10px;} .nav-links a{display:block; margin:10px 0;} .main{ padding:32px 16px 96px;} h1{font-size:32px;} .cta{padding:10px 18px;} }
+    /* Sections / Cards */
+    .section{margin:0 auto;max-width:var(--max)}
+    .row{display:flex;flex-wrap:wrap;gap:22px;align-items:stretch;justify-content:center}
+    .card{
+      background:#fff;border:1px solid var(--border);border-radius:12px;box-shadow:0 2px 5px rgba(0,0,0,.08);
+      padding:20px;text-align:left;flex:1 1 320px;min-width:280px
+    }
+
+    /* Features grid */
+    .features{display:grid;gap:18px;grid-template-columns:repeat(12,1fr);margin-top:16px}
+    .feature{
+      grid-column:span 12;background:#fff;border:1px solid var(--border);border-radius:12px;box-shadow:0 2px 5px rgba(0,0,0,.08);
+      padding:18px;text-align:left;transition:transform .25s ease, box-shadow .25s ease
+    }
+    .feature:hover{transform:translateY(-3px);box-shadow:0 10px 22px rgba(0,0,0,.12)}
+    @media (min-width:720px){ .feature{grid-column:span 6} }
+    @media (min-width:980px){ .feature{grid-column:span 4} }
+
+    /* Stats */
+    .stats{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:18px}
+    .stat{background:#fff;border:1px solid var(--border);border-radius:12px;padding:16px 18px;box-shadow:0 2px 5px rgba(0,0,0,.08);min-width:220px}
+    .stat b{display:block;font-size:28px;color:#222}
+    .stat span{font-size:14px;color:#666}
+
+    /* Responsive video */
+    .video-wrap{position:relative;max-width:100%;border-radius:12px;overflow:hidden;box-shadow:0 6px 18px rgba(0,0,0,.08);margin-top:12px}
+    .video-wrap video{width:100%;height:auto;display:block}
+
+    /* Sticky Mobile CTA */
+    .sticky-cta{
+      display:none; position:fixed; left:0; right:0; bottom:0; background:#101010; color:#fff; z-index:998;
+      box-shadow:0 -8px 18px rgba(0,0,0,.28)
+    }
+    .sticky-cta .inner{max-width:var(--max);margin:auto;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+    .sticky-cta .btn{background:var(--brand);color:#fff;padding:10px 14px;border-radius:10px;font-weight:700}
+    @media (max-width:640px){ .sticky-cta{display:block} }
+
+    /* Desktop spacing for chat bubble */
+    @media (min-width:901px){ .main{padding-bottom:120px} }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important} }
   </style>
 </head>
 <body>
-  <!-- NAV -->
+
+  <!-- ===== NAV ===== -->
   <nav>
-    <div class="nav-container">
+    <div class="nav-container" id="nav">
       <div class="nav-logo">
-        <a href="index.html"><img src="peachtreechat-logo.png" alt="PeachtreeChat Logo" /></a>
+        <a href="index.html"><img src="peachtreechat-logo.png" alt="PeachtreeChat Logo"/></a>
       </div>
-      <div class="nav-links">
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links" id="navToggle">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M3 6h18M3 12h18M3 18h18"/>
+        </svg>
+      </button>
+
+      <div class="nav-links" id="nav-links">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="services.html">Services</a>
@@ -68,18 +140,18 @@
         <a href="contact.html">Contact</a>
         <a href="salon-chatbots.html">Salon</a>
         <a href="real-estate-chatbots.html">Real Estate</a>
-        <a class="active" href="legal-intake-bots.html">Legal</a>
+        <a href="legal-intake-bots.html" class="active" aria-current="page">Legal</a>
       </div>
     </div>
   </nav>
 
-  <!-- MAIN -->
-  <div class="main">
+  <!-- ===== MAIN ===== -->
+  <main class="main">
     <!-- HERO -->
     <section class="section" style="max-width:1000px;">
       <h1>Legal Intake Chatbots — Qualify Clients 24/7</h1>
-      <p class="lead">PeachIQ collects case details, screens for fit, and books consultations while you’re in court or with clients.</p>
-      <p class="sub">Ideal for personal injury, criminal defense, immigration, family law & more.</p>
+      <p>PeachIQ collects case details, screens for fit, and books consultations while you’re in court or with clients.</p>
+      <p>Ideal for personal injury, criminal defense, immigration, family law &amp; more.</p>
       <div>
         <a href="contact.html" class="cta">Start My Legal Bot</a>
         <a href="#demo" class="cta">Watch Demo</a>
@@ -87,90 +159,102 @@
     </section>
 
     <!-- DEMO VIDEO -->
-    <section id="demo" class="section" style="margin-top:36px;">
+    <section id="demo" class="section" style="margin-top:32px;">
       <h2>⚖️ See PeachIQ Pre-Screen a Legal Intake</h2>
-      <p class="sub" style="margin-top:6px;">Asks case type, timeline, location, and client details — then schedules consultation.</p>
-      <video src="peachiq_legal_demo.mp4" autoplay muted loop playsinline style="max-width:100%; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,0.08); margin-top:10px;"></video>
+      <p style="margin-top:6px;color:#555">Asks case type, timeline, location, and client details — then schedules a consultation.</p>
+      <div class="video-wrap">
+        <video src="peachiq_legal_demo.mp4" autoplay muted loop playsinline></video>
+      </div>
     </section>
 
     <!-- PAIN POINTS / WHAT IT DOES -->
-    <section class="section" style="margin-top:40px;">
+    <section class="section" style="margin-top:36px;">
       <div class="row">
-        <div class="card">
-          <h2 style="margin-top:0;">Why firms need this</h2>
-          <ul style="text-align:left; line-height:1.7; color:#555; padding-left:18px;">
+        <article class="card">
+          <h2 style="margin:0 0 6px">Why firms need this</h2>
+          <ul style="text-align:left; line-height:1.7; color:#555; padding-left:18px; margin:10px 0 0">
             <li>📞 Missed calls after hours or in court</li>
             <li>❌ Wasting time on unqualified prospects</li>
             <li>🕒 Intake staff overloaded with repetitive questions</li>
             <li>📄 Missed details lead to poor follow-up</li>
           </ul>
-          <p style="text-align:left;">PeachIQ ensures no lead slips through the cracks.</p>
-        </div>
-        <div class="card">
-          <h2 style="margin-top:0;">What it does</h2>
-          <ul style="text-align:left; line-height:1.7; color:#555; padding-left:18px;">
+          <p style="text-align:left;margin-top:8px">PeachIQ ensures no lead slips through the cracks.</p>
+        </article>
+        <article class="card">
+          <h2 style="margin:0 0 6px">What it does</h2>
+          <ul style="text-align:left; line-height:1.7; color:#555; padding-left:18px; margin:10px 0 0">
             <li>📋 Collects name, contact, case type, location, timeline</li>
             <li>✅ Screens out conflicts or irrelevant cases</li>
             <li>🗓️ Books consultations to your calendar</li>
             <li>💬 Answers FAQs (fees, languages, office hours)</li>
           </ul>
-          <p style="text-align:left;">Seamless handoff to your CRM, Google Sheets, or email inbox.</p>
-        </div>
+          <p style="text-align:left;margin-top:8px">Seamless handoff to your CRM, Google Sheets, or email inbox.</p>
+        </article>
       </div>
     </section>
 
     <!-- FEATURES GRID -->
-    <section class="section" style="margin-top:30px;">
+    <section class="section" style="margin-top:28px;">
       <h2>Legal-ready features</h2>
       <div class="features">
         <div class="feature"><h3>24/7 intake</h3><p>Capture client inquiries at night, weekends, or holidays.</p></div>
         <div class="feature"><h3>Smart screening</h3><p>Asks key questions (injury date, charges, immigration status, etc.).</p></div>
-        <div class="feature"><h3>Conflict check</h3><p>Prevents conflicts by collecting names and parties upfront.</p></div>
-        <div class="feature"><h3>Case routing</h3><p>Routes personal injury vs. immigration vs. family law to right team.</p></div>
+        <div class="feature"><h3>Conflict check</h3><p>Collects names/parties upfront to help you run conflicts.</p></div>
+        <div class="feature"><h3>Case routing</h3><p>Routes PI vs. immigration vs. family law to the right team.</p></div>
         <div class="feature"><h3>FAQ answers</h3><p>Shares fees, languages, location, and office hours instantly.</p></div>
-        <div class="feature"><h3>Human handoff</h3><p>Sends hot cases to your email/SMS for immediate follow-up.</p></div>
+        <div class="feature"><h3>Human handoff</h3><p>Sends hot cases to email/SMS for immediate follow-up.</p></div>
       </div>
     </section>
 
-    <!-- ROI / SOCIAL PROOF -->
-    <section class="section" style="margin-top:36px;">
-      <div class="stat"><b>+30–50%</b><span>more consultations booked</span></div>
-      <div class="stat"><b>↓40%</b><span>wasted time on unqualified cases</span></div>
-      <div class="stat"><b>24/7</b><span>availability for urgent clients</span></div>
+    <!-- STATS -->
+    <section class="section" style="margin-top:28px;">
+      <div class="stats">
+        <div class="stat"><b>+30–50%</b><span>more consultations booked</span></div>
+        <div class="stat"><b>↓40%</b><span>wasted time on unqualified cases</span></div>
+        <div class="stat"><b>24/7</b><span>availability for urgent clients</span></div>
+      </div>
     </section>
 
     <!-- CTA -->
-    <section class="section" style="margin-top:38px;">
+    <section class="section" style="margin-top:32px;">
       <h2>Ready to streamline your intake?</h2>
-      <p class="sub">We’ll tailor the bot to your practice areas and intake process.</p>
+      <p>We’ll tailor the bot to your practice areas and intake process.</p>
       <a href="contact.html" class="cta">Get My Legal Bot</a>
       <a href="pricing.html" class="cta">See Pricing</a>
     </section>
 
     <!-- FAQ -->
-    <section class="section" style="background:#fff; padding: 36px 20px; margin-top: 40px; border: 1px solid #eee; border-radius:10px; text-align:left;">
+    <section class="section" style="background:#fff; padding: 30px 20px; margin-top: 36px; border: 1px solid var(--border); border-radius:12px; text-align:left;">
       <h2 style="text-align:center; margin-top:0;">Legal Intake FAQ</h2>
       <div style="max-width:900px; margin: 0 auto;">
-        <div style="margin-bottom:18px;">
-          <h3 style="margin-bottom:6px;">What case types can it handle?</h3>
-          <p class="sub" style="opacity:1; transform:none;">Personal injury, criminal defense, immigration, family law, employment, and more.</p>
+        <div style="margin-bottom:16px;">
+          <h3>What case types can it handle?</h3>
+          <p>Personal injury, criminal defense, immigration, family law, employment, and more.</p>
         </div>
-        <div style="margin-bottom:18px;">
-          <h3 style="margin-bottom:6px;">Can it detect conflicts?</h3>
-          <p class="sub" style="opacity:1; transform:none;">Yes, it asks for opposing party names so you can run checks.</p>
+        <div style="margin-bottom:16px;">
+          <h3>Can it detect conflicts?</h3>
+          <p>Yes, it asks for opposing party names so you can run checks.</p>
         </div>
-        <div style="margin-bottom:18px;">
-          <h3 style="margin-bottom:6px;">Is client data secure?</h3>
-          <p class="sub" style="opacity:1; transform:none;">Yes, all submissions go securely to your chosen system (email, CRM, or Sheets).</p>
+        <div style="margin-bottom:16px;">
+          <h3>Is client data secure?</h3>
+          <p>Submissions are sent securely to your chosen system (email, CRM, or Sheets).</p>
         </div>
         <div>
-          <h3 style="margin-bottom:6px;">Can it schedule consultations?</h3>
-          <p class="sub" style="opacity:1; transform:none;">It can connect to your calendar or propose time slots for you to confirm.</p>
+          <h3>Can it schedule consultations?</h3>
+          <p>It can connect to your calendar or propose time slots for you to confirm.</p>
         </div>
       </div>
     </section>
 
-    <div class="footer"></div>
+    <div class="footer" style="margin-top:56px;color:gray;font-size:14px"></div>
+  </main>
+
+  <!-- Sticky Mobile CTA -->
+  <div class="sticky-cta" role="region" aria-label="Contact bar">
+    <div class="inner">
+      <span>Ready to automate your intake?</span>
+      <a class="btn" href="mailto:info@peachtreechat.com?subject=Legal%20Intake%20Chatbot%20Demo">Get a Demo</a>
+    </div>
   </div>
 
   <!-- IBM Watsonx Assistant Chatbot Embed -->
@@ -187,6 +271,33 @@
       document.head.appendChild(t);
     });
   </script>
+
+  <!-- Mobile nav toggle -->
+  <script>
+    (function(){
+      const nav = document.getElementById('nav');
+      const btn = document.getElementById('navToggle');
+      const links = document.getElementById('nav-links');
+      if (btn && nav && links){
+        btn.addEventListener('click', () => {
+          const open = nav.classList.toggle('nav-open');
+          btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+        links.querySelectorAll('a').forEach(a=>{
+          a.addEventListener('click',()=>{
+            nav.classList.remove('nav-open');
+            btn.setAttribute('aria-expanded','false');
+          });
+        });
+      }
+    })();
+  </script>
 </body>
 </html>
 
+
+
+
+
+
+Ask ChatGPT
