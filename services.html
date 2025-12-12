@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Our AI Agents | PeachtreeChat</title>
+  <meta name="description" content="Explore PeachtreeChat AI agents for salons, real estate, legal, and local businesses. Lead capture, booking, intake, and support agents that run 24/7."/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root{
+      --brand:#FF914D;
+      --brand-dark:#e6762b;
+      --ink:#142032;
+      --muted:#647083;
+      --bg-page:#f4f7fb;
+      --bg-band:#dbe6f5;
+      --bg-band-soft:#e3edf8;
+      --card:#ffffff;
+      --border:rgba(148,163,184,0.35);
+      --shadow-soft:0 10px 32px rgba(15,23,42,0.12);
+      --shadow-card:0 8px 22px rgba(15,23,42,0.10);
+      --max:1120px;
+      --radius-xl:28px;
+      --radius-lg:20px;
+      --radius-md:16px;
+      --radius-pill:999px;
+    }
+
+    *{box-sizing:border-box;}
+    html,body{margin:0;padding:0;height:100%;}
+    body{
+      font-family:'Poppins',Arial,sans-serif;
+      background:var(--bg-page);
+      color:var(--ink);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+    a{text-decoration:none;color:inherit;}
+
+    /* ===== NAVBAR ===== */
+    nav{
+      position:sticky;
+      top:0;
+      z-index:50;
+      background:#ffffff;
+      box-shadow:0 1px 0 rgba(15,23,42,0.04);
+    }
+    .nav-inner{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:10px 16px;
+      min-height:72px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .nav-logo img{
+      height:56px;
+      object-fit:contain;
+      transition:height .18s ease;
+    }
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:20px;
+      font-size:14px;
+      font-weight:500;
+    }
+    .nav-links a{
+      padding:8px 4px;
+      border-radius:8px;
+      color:var(--muted);
+      transition:color .18s ease, transform .18s ease;
+    }
+    .nav-links a:hover{
+      color:var(--brand);
+      transform:translateY(-1px);
+    }
+    .nav-links a.active{
+      color:var(--ink);
+      font-weight:600;
+    }
+    .nav-cta{
+      padding:9px 18px;
+      border-radius:var(--radius-pill);
+      background:var(--brand);
+      color:#fff;
+      font-size:14px;
+      font-weight:600;
+      box-shadow:0 10px 28px rgba(255,145,77,0.38);
+      transition:background .18s ease, transform .18s ease, box-shadow .18s ease;
+    }
+    .nav-cta:hover{
+      background:var(--brand-dark);
+      transform:translateY(-1px);
+      box-shadow:0 14px 36px rgba(255,145,77,0.5);
+    }
+    .nav-toggle{
+      display:none;
+      border:0;
+      background:transparent;
+      padding:8px;
+      border-radius:10px;
+      cursor:pointer;
+    }
+    .nav-toggle:focus-visible{
+      outline:2px solid var(--brand);
+      outline-offset:3px;
+    }
+    .nav-toggle svg{width:26px;height:26px;}
+
+    /* ===== PAGE LAYOUT ===== */
+    main{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:40px 16px 80px;
+    }
+    section{margin-bottom:72px;}
+    .section-header{
+      text-align:center;
+      max-width:760px;
+      margin:0 auto 32px;
+    }
+    .section-header h2{
+      margin:0 0 8px;
+      font-size:28px;
+      color:var(--ink);
+    }
+    .section-header p{
+      margin:0;
+      font-size:15px;
+      color:var(--muted);
+      line-height:1.7;
+    }
+
+    /* HERO */
+    .hero{
+      text-align:center;
+      padding:54px 26px 60px;
+      background:#ffffff;
+      border-radius:var(--radius-xl);
+      box-shadow:var(--shadow-soft);
+      margin-bottom:56px;
+    }
+    .hero h1{
+      margin:0 0 16px;
+      font-size:32px;
+      letter-spacing:.02em;
+    }
+    .hero p{
+      margin:0 auto;
+      max-width:780px;
+      color:var(--muted);
+      font-size:16px;
+      line-height:1.8;
+    }
+
+    /* AGENT GRID BAND */
+    .agents-band{
+      background:var(--bg-band);
+      border-radius:var(--radius-xl);
+      padding:40px 26px 34px;
+      margin-bottom:56px;
+    }
+    .agents-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:22px;
+      margin-top:26px;
+    }
+    .agent-card{
+      background:var(--card);
+      border-radius:var(--radius-lg);
+      padding:22px 20px 20px;
+      box-shadow:var(--shadow-card);
+      display:flex;
+      flex-direction:column;
+      text-align:left;
+    }
+    .agent-icon{
+      width:44px;
+      height:44px;
+      border-radius:18px;
+      background:#0f172a;
+      color:#e5e7eb;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:20px;
+      margin-bottom:14px;
+    }
+    .agent-card h3{
+      margin:0 0 6px;
+      font-size:17px;
+    }
+    .agent-card p{
+      margin:0 0 16px;
+      font-size:14px;
+      color:var(--muted);
+      line-height:1.7;
+      flex:1;
+    }
+    .agent-card a{
+      align-self:flex-start;
+      padding:9px 16px;
+      border-radius:var(--radius-pill);
+      background:#0f172a;
+      color:#f9fafb;
+      font-size:13px;
+      font-weight:500;
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      transition:background .18s ease, transform .18s ease;
+    }
+    .agent-card a span{
+      font-size:15px;
+    }
+    .agent-card a:hover{
+      background:#020617;
+      transform:translateY(-1px);
+    }
+
+    /* EXPLORE PANEL */
+    .explore-band{
+      background:var(--bg-band-soft);
+      border-radius:var(--radius-xl);
+      padding:40px 26px 46px;
+      text-align:center;
+      margin-bottom:56px;
+    }
+    .explore-panel{
+      max-width:820px;
+      margin:0 auto;
+      background:#ffffff;
+      border-radius:var(--radius-lg);
+      padding:32px 24px 30px;
+      box-shadow:var(--shadow-soft);
+    }
+    .explore-panel h2{
+      margin:0 0 10px;
+      font-size:24px;
+    }
+    .explore-panel p{
+      margin:0 0 18px;
+      font-size:14px;
+      color:var(--muted);
+      line-height:1.7;
+    }
+    .explore-arrow{
+      font-size:24px;
+      color:var(--muted);
+    }
+
+    /* CTA STRIP */
+    .cta-strip{
+      border-radius:var(--radius-xl);
+      padding:32px 26px 34px;
+      background:linear-gradient(135deg,#0f172a,#111827);
+      color:#f9fafb;
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+    }
+    .cta-strip h2{
+      margin:0 0 6px;
+      font-size:24px;
+    }
+    .cta-strip p{
+      margin:0;
+      font-size:14px;
+      color:#e5e7eb;
+      max-width:520px;
+    }
+    .btn-primary{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:13px 24px;
+      border-radius:var(--radius-pill);
+      background:var(--brand);
+      color:#ffffff;
+      font-weight:600;
+      font-size:15px;
+      border:0;
+      cursor:pointer;
+      box-shadow:0 16px 40px rgba(255,145,77,0.55);
+      transition:background .18s ease, transform .18s ease, box-shadow .18s ease;
+      margin-right:10px;
+    }
+    .btn-primary:hover{
+      background:var(--brand-dark);
+      transform:translateY(-1px);
+      box-shadow:0 18px 44px rgba(255,145,77,0.62);
+    }
+    .btn-secondary{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:11px 22px;
+      border-radius:var(--radius-pill);
+      border:1px solid rgba(148,163,184,0.7);
+      background:transparent;
+      color:#e5e7eb;
+      font-size:14px;
+      font-weight:500;
+      cursor:pointer;
+      transition:background .18s ease, border-color .18s ease, transform .18s ease;
+    }
+    .btn-secondary:hover{
+      background:rgba(15,23,42,0.65);
+      border-color:#ffffff;
+      transform:translateY(-1px);
+    }
+
+    /* FOOTER */
+    footer{
+      border-top:1px solid var(--border);
+      padding:28px 0 16px;
+      margin-top:42px;
+    }
+    .footer-grid{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:0 16px;
+      display:grid;
+      grid-template-columns:2fr 1fr 1fr;
+      gap:26px;
+      font-size:13px;
+      color:var(--muted);
+    }
+    .footer-title{
+      font-weight:600;
+      margin-bottom:6px;
+      color:var(--ink);
+    }
+    .footer-links{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+    }
+    .footer-links a{
+      font-size:13px;
+      color:var(--muted);
+      transition:color .16s ease;
+    }
+    .footer-links a:hover{color:var(--brand);}
+    .footer-bottom{
+      max-width:var(--max);
+      margin:14px auto 0;
+      padding:0 16px;
+      font-size:12px;
+      color:#9ca3af;
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    /* RESPONSIVE */
+    @media (min-width:960px){
+      .nav-logo img{height:68px;}
+    }
+    @media (max-width:960px){
+      .agents-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+      .footer-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+    }
+    @media (max-width:720px){
+      .nav-links{
+        position:absolute;
+        inset:72px 0 auto 0;
+        padding:10px 16px 14px;
+        background:#ffffff;
+        flex-direction:column;
+        align-items:flex-start;
+        gap:8px;
+        border-bottom:1px solid var(--border);
+        transform-origin:top;
+        transform:scaleY(0);
+        opacity:0;
+        pointer-events:none;
+        transition:transform .18s ease, opacity .18s ease;
+      }
+      .nav-open .nav-links{
+        transform:scaleY(1);
+        opacity:1;
+        pointer-events:auto;
+      }
+      .nav-toggle{display:inline-flex;}
+      .nav-inner{min-height:68px;}
+      main{padding-top:30px;}
+      .agents-grid{grid-template-columns:minmax(0,1fr);}
+      .footer-grid{grid-template-columns:minmax(0,1fr);}
+    }
+    @media (prefers-reduced-motion: reduce){
+      *{transition:none !important;animation:none !important;}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="nav-inner" id="navRoot">
+      <div class="nav-logo">
+        <a href="index.html">
+          <img src="peachtreechat-logo.png" alt="PeachtreeChat Logo">
+        </a>
+      </div>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 6h18M3 12h18M3 18h18"/>
+        </svg>
+      </button>
+
+      <div class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html" class="active" aria-current="page">Agents</a>
+        <a href="contact.html">Contact</a>
+        <a href="salon-chatbots.html">Salon</a>
+        <a href="real-estate-chatbots.html">Real Estate</a>
+        <a href="legal-intake-bots.html">Legal</a>
+        <a href="contact.html" class="nav-cta">Book a Demo</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <h1>Our AI Agents</h1>
+      <p>
+        Discover PeachtreeChat’s suite of specialized AI agents built for real businesses—salons,
+        real estate teams, legal practices, and local service brands. Each agent is designed to
+        streamline operations, capture more revenue, and give your team time back.
+      </p>
+    </section>
+
+    <!-- AGENT GRID -->
+    <section class="agents-band">
+      <div class="section-header" style="margin-bottom:18px;">
+        <h2>Agent Categories</h2>
+        <p>Choose the agents that match how your business runs today—and how you want it to run tomorrow.</p>
+      </div>
+
+      <div class="agents-grid">
+        <div class="agent-card">
+          <div class="agent-icon">💬</div>
+          <h3>Lead Capture Agents</h3>
+          <p>
+            Turn website visitors and social media clicks into real leads with agents that ask the
+            right questions and send details straight to your inbox or CRM.
+          </p>
+          <a href="contact.html">Learn More <span>→</span></a>
+        </div>
+
+        <div class="agent-card">
+          <div class="agent-icon">📅</div>
+          <h3>Booking & Scheduling Agents</h3>
+          <p>
+            Perfect for salons and service businesses. Let clients book, reschedule, and confirm
+            appointments 24/7 without tying up your phone lines.
+          </p>
+          <a href="contact.html">Learn More <span>→</span></a>
+        </div>
+
+        <div class="agent-card">
+          <div class="agent-icon">📚</div>
+          <h3>FAQ & Support Agents</h3>
+          <p>
+            Answer common questions instantly—policies, pricing ranges, hours, directions, and more—
+            so your staff can focus on higher-value conversations.
+          </p>
+          <a href="contact.html">Learn More <span>→</span></a>
+        </div>
+
+        <div class="agent-card">
+          <div class="agent-icon">🏡</div>
+          <h3>Real Estate Lead Agents</h3>
+          <p>
+            Capture buyers and sellers from property pages, open house signs, and QR codes. Qualify
+            motivation, budget, and timeline before your team reaches out.
+          </p>
+          <a href="contact.html">Learn More <span>→</span></a>
+        </div>
+
+        <div class="agent-card">
+          <div class="agent-icon">⚖️</div>
+          <h3>Legal Intake Agents</h3>
+          <p>
+            For law firms that need better intake. Collect case details, conflicts info, and contact
+            data securely before a human ever joins the call.
+          </p>
+          <a href="contact.html">Learn More <span>→</span></a>
+        </div>
+
+        <div class="agent-card">
+          <div class="agent-icon">💸</div>
+          <h3>Payment & Billing Agents</h3>
+          <p>
+            Send reminders, share payment links, and gather billing questions so your team spends
+            less time chasing invoices and more time serving clients.
+          </p>
+          <a href="contact.html">Learn More <span>→</span></a>
+        </div>
+
+        <div class="agent-card">
+          <div class="agent-icon">📈</div>
+          <h3>Follow-Up & Nurture Agents</h3>
+          <p>
+            Automatically follow up with leads who didn’t book, request, or sign—keeping your brand
+            top of mind without manual check-ins.
+          </p>
+          <a href="contact.html">Learn More <span>→</span></a>
+        </div>
+
+        <div class="agent-card">
+          <div class="agent-icon">🧩</div>
+          <h3>Operations & Admin Agents</h3>
+          <p>
+            Internal helpers that log issues, collect forms, route tasks, and keep your team organized
+            behind the scenes.
+          </p>
+          <a href="contact.html">Learn More <span>→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPLORE PANEL -->
+    <section class="explore-band">
+      <div class="explore-panel">
+        <h2>Explore Our AI Agents</h2>
+        <p>
+          Use the categories above as a starting point. Most businesses mix two or three agents to
+          cover lead capture, booking, and ongoing support—all running under one PeachtreeChat brain.
+        </p>
+        <div class="explore-arrow">⬇</div>
+      </div>
+    </section>
+
+    <!-- CTA STRIP -->
+    <section class="cta-strip">
+      <div>
+        <h2>Not sure which agent you need?</h2>
+        <p>
+          We’ll help you select and customize the right combination of agents for your workflows.
+          Share how your business runs today, and we’ll show you what AI can handle tomorrow.
+        </p>
+      </div>
+      <div>
+        <a href="contact.html" class="btn-primary">Talk to an Expert</a>
+        <a href="index.html#demo" class="btn-secondary">Try Live Demo →</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-title">PeachtreeChat</div>
+        <p>The AI agency that takes care of business—starting with your conversations.</p>
+      </div>
+      <div>
+        <div class="footer-title">Company</div>
+        <div class="footer-links">
+          <a href="about.html">About</a>
+          <a href="services.html">Agents</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-title">Legal</div>
+        <div class="footer-links">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> PeachtreeChat. All rights reserved.</span>
+      <span>Atlanta, Georgia</span>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script>
+    // Mobile nav toggle
+    (function () {
+      const navRoot = document.getElementById('navRoot');
+      const toggle = document.getElementById('navToggle');
+      const links = document.getElementById('navLinks');
+
+      toggle.addEventListener('click', () => {
+        const open = navRoot.classList.toggle('nav-open');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+
+      links.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+          navRoot.classList.remove('nav-open');
+          toggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    })();
+
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // IBM Watsonx Assistant Chatbot Embed
+    window.watsonAssistantChatOptions = {
+      integrationID: "2a77a767-a4d1-4520-99d4-9bcf6d300a94",
+      region: "au-syd",
+      serviceInstanceID: "d849b711-b43c-4ded-b8f9-d942366c3ea2",
+      onLoad: async (instance) => { await instance.render(); }
+    };
+    setTimeout(function () {
+      const t = document.createElement('script');
+      t.src =
+        "https://web-chat.global.assistant.watson.appdomain.cloud/versions/" +
+        (window.watsonAssistantChatOptions.clientVersion || "latest") +
+        "/WatsonAssistantChatEntry.js";
+      document.head.appendChild(t);
+    });
+  </script>
+</body>
+</html>
