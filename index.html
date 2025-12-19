@@ -246,7 +246,7 @@
       padding: 11px 22px;
       border-radius: var(--radius-pill);
       background: #ffffff;
-      color: var(--ink);
+      color: #142032;
       font-weight: 500;
       font-size: 14px;
       border: 1px solid rgba(148,163,184,0.45);
@@ -673,6 +673,132 @@
         animation: none !important;
       }
     }
+
+    /* === Email Popup === */
+    .email-popup {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      max-width: 360px;
+      width: 100%;
+      background: #ffffff;
+      border-radius: 18px;
+      box-shadow: 0 18px 48px rgba(15,23,42,0.25);
+      padding: 18px 18px 16px;
+      font-family: inherit;
+      text-align: left;
+      border: 1px solid rgba(148,163,184,0.4);
+      transform: translateY(140%);
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 0.25s ease-out, opacity 0.25s ease-out;
+      z-index: 70;
+    }
+
+    .email-popup-visible {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .email-popup h3 {
+      margin: 0 0 6px;
+      font-size: 17px;
+      color: #111827;
+    }
+
+    .email-popup p {
+      margin: 0 0 10px;
+      font-size: 13px;
+      color: #6b7280;
+      line-height: 1.5;
+    }
+
+    .email-popup form {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .email-popup input[type="email"] {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.8);
+      font-size: 14px;
+      outline: none;
+    }
+
+    .email-popup input[type="email"]:focus {
+      border-color: var(--brand, #FF914D);
+      box-shadow: 0 0 0 1px rgba(255,145,77,0.45);
+    }
+
+    .email-popup button[type="submit"] {
+      border: 0;
+      border-radius: 999px;
+      padding: 10px 16px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      background: var(--brand, #FF914D);
+      color: #ffffff;
+      box-shadow: 0 10px 26px rgba(255,145,77,0.45);
+      transition: background 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .email-popup button[type="submit"]:hover {
+      background: var(--brand-dark, #e6762b);
+      transform: translateY(-1px);
+      box-shadow: 0 14px 34px rgba(255,145,77,0.55);
+    }
+
+    .email-popup-close {
+      position: absolute;
+      top: 8px;
+      right: 10px;
+      border: 0;
+      background: transparent;
+      font-size: 18px;
+      line-height: 1;
+      cursor: pointer;
+      color: #9ca3af;
+    }
+
+    .email-popup-close:hover {
+      color: #4b5563;
+    }
+
+    .email-popup-note {
+      font-size: 12px;
+      color: #9ca3af;
+      margin-top: 2px;
+    }
+
+    .email-popup-success,
+    .email-popup-error {
+      display: none;
+      font-size: 12px;
+      margin-top: 2px;
+    }
+
+    .email-popup-success {
+      color: #16a34a;
+    }
+
+    .email-popup-error {
+      color: #b91c1c;
+    }
+
+    /* Mobile: full-width at bottom */
+    @media (max-width: 640px) {
+      .email-popup {
+        left: 12px;
+        right: 12px;
+        bottom: 16px;
+        max-width: none;
+      }
+    }
   </style>
 </head>
 <body>
@@ -945,6 +1071,33 @@
     </div>
   </footer>
 
+  <!-- Email Signup Popup -->
+  <div class="email-popup" id="emailPopup">
+    <button class="email-popup-close" type="button" aria-label="Close signup popup">&times;</button>
+    <h3>Get the 7 Automation Plays for 2025</h3>
+    <p>
+      Drop your email to get our free guide:
+      <strong>“The 7 Automations Every Small Business Needs in 2025.”</strong>
+    </p>
+
+    <form id="emailPopupForm" action="https://formspree.io/f/mnjaqrjw" method="POST">
+      <input
+        type="email"
+        name="email"
+        required
+        placeholder="you@business.com"
+      />
+      <button type="submit">Send me the guide</button>
+      <p class="email-popup-note">No spam. Just one powerful playbook.</p>
+      <p class="email-popup-success" id="emailPopupSuccess">
+        Thanks! Check your inbox in a few minutes.
+      </p>
+      <p class="email-popup-error" id="emailPopupError">
+        Something went wrong. Please try again.
+      </p>
+    </form>
+  </div>
+
   <!-- SCRIPTS -->
   <script>
     // Mobile nav toggle
@@ -984,6 +1137,87 @@
         "/WatsonAssistantChatEntry.js";
       document.head.appendChild(t);
     });
+
+    // Email popup logic
+    (function () {
+      // Don't show on contact or dedicated demo pages
+      var path = window.location.pathname || "";
+      if (path.indexOf("contact.html") !== -1 || path.indexOf("demo.html") !== -1) {
+        return;
+      }
+
+      var popup = document.getElementById("emailPopup");
+      if (!popup) return;
+
+      var form = document.getElementById("emailPopupForm");
+      var closeBtn = popup.querySelector(".email-popup-close");
+      var successMsg = document.getElementById("emailPopupSuccess");
+      var errorMsg = document.getElementById("emailPopupError");
+
+      var STORAGE_KEY = "ptc_email_popup_dismissed_at";
+      var DISMISS_HOURS = 24;
+      var now = Date.now();
+
+      // Respect 24h cooldown
+      try {
+        var last = parseInt(localStorage.getItem(STORAGE_KEY) || "0", 10);
+        if (!isNaN(last)) {
+          var diffHours = (now - last) / (1000 * 60 * 60);
+          if (diffHours < DISMISS_HOURS) {
+            return;
+          }
+        }
+      } catch (e) {
+        // ignore storage errors
+      }
+
+      function showPopup() {
+        // If user is already on demo anchor, skip
+        if (window.location.hash === "#demo") return;
+        popup.classList.add("email-popup-visible");
+      }
+
+      function hidePopup() {
+        popup.classList.remove("email-popup-visible");
+        try {
+          localStorage.setItem(STORAGE_KEY, String(Date.now()));
+        } catch (e) {}
+      }
+
+      // Show after 7 seconds on homepage
+      setTimeout(showPopup, 7000);
+
+      if (closeBtn) {
+        closeBtn.addEventListener("click", hidePopup);
+      }
+
+      // Form submit via AJAX to Formspree
+      if (form) {
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          successMsg.style.display = "none";
+          errorMsg.style.display = "none";
+
+          fetch(form.action, {
+            method: "POST",
+            body: new FormData(form),
+            headers: { "Accept": "application/json" }
+          })
+            .then(function (res) {
+              if (res.ok) {
+                form.reset();
+                successMsg.style.display = "block";
+                hidePopup();
+              } else {
+                errorMsg.style.display = "block";
+              }
+            })
+            .catch(function () {
+              errorMsg.style.display = "block";
+            });
+        });
+      }
+    })();
   </script>
 </body>
 </html>
