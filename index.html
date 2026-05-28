@@ -2,1235 +2,423 @@
 <html lang="en">
 <head>
 
-<!-- Google tag (gtag.js) -->
+<!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-59PG3Q6N6W"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-59PG3Q6N6W');
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-59PG3Q6N6W');
 </script>
 
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PeachtreeChat</title>
-
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HXTGDECE7Y"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-HXTGDECE7Y');
-  </script>
-
-  <!-- SEO basics -->
-  <meta name="description" content="PeachtreeChat is your AI automation partner. Deploy AI agents to capture leads, book appointments, and handle customer questions across your business.">
-
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
-
-  <style>
-    :root {
-      --brand: #FF914D;
-      --brand-dark: #e6762b;
-      --ink: #142032;
-      --muted: #647083;
-      --bg-page: #f4f7fb;
-      --bg-soft: #fdf6f1;
-      --bg-alt: #e8f2ff;
-      --card-bg: #ffffff;
-      --shadow-soft: 0 14px 40px rgba(15, 23, 42, 0.08);
-      --radius-lg: 20px;
-      --radius-md: 14px;
-      --radius-pill: 999px;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-    }
-
-    body {
-      font-family: 'Poppins', Arial, sans-serif;
-      background: var(--bg-page);
-      color: var(--ink);
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    /* NAVBAR */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: #ffffff;
-      box-shadow: 0 1px 0 rgba(15, 23, 42, 0.04);
-    }
-
-    .nav-inner {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 10px 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      min-height: 72px;
-    }
-
-    .nav-logo img {
-      height: 84px;
-      object-fit: contain;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      font-size: 14px;
-      font-weight: 500;
-    }
-
-    .nav-links a {
-      padding: 8px 4px;
-      border-radius: 8px;
-      color: var(--muted);
-      transition: color 0.18s ease, transform 0.18s ease;
-    }
-
-    .nav-links a:hover {
-      color: var(--brand);
-      transform: translateY(-1px);
-    }
-
-    .nav-links a.active {
-      color: var(--ink);
-      font-weight: 600;
-    }
-
-    .nav-cta {
-      padding: 9px 18px;
-      border-radius: var(--radius-pill);
-      background: var(--brand);
-      color: #fff;
-      font-size: 14px;
-      font-weight: 600;
-      box-shadow: 0 10px 28px rgba(255,145,77,0.38);
-      transition: background 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
-    }
-
-    .nav-cta:hover {
-      background: var(--brand-dark);
-      transform: translateY(-1px);
-      box-shadow: 0 14px 36px rgba(255,145,77,0.5);
-    }
-
-    .nav-toggle {
-      display: none;
-      border: 0;
-      background: transparent;
-      padding: 8px;
-      border-radius: 10px;
-      cursor: pointer;
-    }
-
-    .nav-toggle:focus-visible {
-      outline: 2px solid var(--brand);
-      outline-offset: 3px;
-    }
-
-    .nav-toggle svg {
-      width: 26px;
-      height: 26px;
-    }
-
-    /* MAIN LAYOUT WRAPPER */
-    main {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 40px 16px 72px;
-    }
-
-    section {
-      margin-bottom: 64px;
-    }
-
-    /* HERO */
-    .hero {
-      display: grid;
-      grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
-      gap: 40px;
-      align-items: center;
-      background: radial-gradient(circle at top left, #ffe1cc 0, #fdf6f1 36%, #ffffff 80%);
-      border-radius: 32px;
-      padding: 54px 40px 52px;
-      box-shadow: var(--shadow-soft);
-    }
-
-    .hero-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 4px 12px;
-      border-radius: var(--radius-pill);
-      background: rgba(255,145,77,0.12);
-      color: var(--brand-dark);
-      font-size: 12px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 18px;
-    }
-
-    .hero-label span.dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: var(--brand);
-    }
-
-    .hero h1 {
-      font-size: clamp(32px, 4.6vw, 44px);
-      line-height: 1.08;
-      margin: 0 0 16px;
-      font-weight: 700;
-      color: var(--ink);
-    }
-
-    .hero h1 span {
-      color: var(--brand);
-    }
-
-    .hero-sub {
-      font-size: 16px;
-      line-height: 1.6;
-      color: var(--muted);
-      margin-bottom: 26px;
-      max-width: 460px;
-    }
-
-    .hero-cta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      align-items: center;
-    }
-
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 13px 24px;
-      border-radius: var(--radius-pill);
-      background: var(--brand);
-      color: #ffffff;
-      font-weight: 600;
-      font-size: 15px;
-      border: 0;
-      box-shadow: 0 14px 32px rgba(255,145,77,0.45);
-      cursor: pointer;
-      transition: background 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
-    }
-
-    .btn-primary:hover {
-      background: var(--brand-dark);
-      transform: translateY(-1px);
-      box-shadow: 0 18px 40px rgba(255,145,77,0.55);
-    }
-
-    .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 11px 22px;
-      border-radius: var(--radius-pill);
-      background: #ffffff;
-      color: #142032;
-      font-weight: 500;
-      font-size: 14px;
-      border: 1px solid rgba(148,163,184,0.45);
-      cursor: pointer;
-      transition: border-color 0.18s ease, background 0.18s ease, transform 0.18s ease;
-    }
-
-    .btn-secondary:hover {
-      background: #f9fafb;
-      border-color: rgba(15,23,42,0.5);
-      transform: translateY(-1px);
-    }
-
-    .hero-note {
-      margin-top: 14px;
-      font-size: 13px;
-      color: var(--muted);
-    }
-
-    .hero-media {
-      justify-self: center;
-    }
-
-    .hero-card {
-      background: #0f172a;
-      color: #e5e7eb;
-      border-radius: 32px;
-      padding: 24px 22px;
-      max-width: 360px;
-      box-shadow: 0 28px 70px rgba(15, 23, 42, 0.85);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-card-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 4px 11px;
-      border-radius: var(--radius-pill);
-      background: rgba(148,163,184,0.15);
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: #e5e7eb;
-      margin-bottom: 10px;
-    }
-
-    .hero-card h2 {
-      font-size: 18px;
-      margin: 0 0 10px;
-      color: #f9fafb;
-    }
-
-    .hero-card p {
-      font-size: 13px;
-      line-height: 1.6;
-      margin: 0 0 16px;
-      color: #cbd5f5;
-    }
-
-    .hero-metrics {
-      display: flex;
-      gap: 18px;
-      margin-top: 6px;
-    }
-
-    .hero-metric {
-      font-size: 13px;
-    }
-
-    .hero-metric strong {
-      display: block;
-      font-size: 18px;
-      color: #facc15;
-    }
-
-    .hero-orbit {
-      position: absolute;
-      right: -40px;
-      bottom: -40px;
-      width: 150px;
-      height: 150px;
-      border-radius: 999px;
-      border: 1px dashed rgba(148,163,184,0.4);
-      opacity: 0.6;
-    }
-
-    /* INTRO STRIP */
-    .intro-strip {
-      margin-top: 42px;
-      border-radius: 24px;
-      padding: 26px 26px;
-      background: var(--bg-alt);
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
-
-    .intro-strip h2 {
-      margin: 0 0 6px;
-      font-size: 22px;
-      color: var(--ink);
-    }
-
-    .intro-strip p {
-      margin: 0;
-      font-size: 14px;
-      color: var(--muted);
-    }
-
-    .intro-strip a {
-      font-size: 14px;
-      font-weight: 500;
-      padding: 10px 20px;
-      border-radius: var(--radius-pill);
-      border: 1px solid rgba(148,163,184,0.6);
-      background: #ffffff;
-      color: var(--ink);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: background 0.18s ease, transform 0.18s ease;
-    }
-
-    .intro-strip a:hover {
-      background: #f9fafb;
-      transform: translateY(-1px);
-    }
-
-    /* FEATURES (Agents) */
-    .section-header {
-      max-width: 640px;
-      text-align: center;
-      margin: 0 auto 28px;
-    }
-
-    .section-header h2 {
-      margin: 0 0 8px;
-      font-size: 26px;
-      color: var(--ink);
-    }
-
-    .section-header p {
-      margin: 0;
-      font-size: 15px;
-      color: var(--muted);
-    }
-
-    .cards-4 {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .card {
-      background: var(--card-bg);
-      border-radius: var(--radius-md);
-      padding: 20px 18px 22px;
-      box-shadow: 0 4px 16px rgba(15,23,42,0.06);
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .card-icon {
-      width: 36px;
-      height: 36px;
-      border-radius: 12px;
-      background: rgba(255,145,77,0.12);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-    }
-
-    .card h3 {
-      margin: 4px 0 4px;
-      font-size: 16px;
-      color: var(--ink);
-    }
-
-    .card p {
-      margin: 0;
-      font-size: 14px;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    /* INDUSTRIES */
-    .cards-2x2 {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .industry-card {
-      background: var(--card-bg);
-      border-radius: var(--radius-md);
-      padding: 20px 20px 22px;
-      box-shadow: 0 4px 16px rgba(15,23,42,0.06);
-    }
-
-    .industry-card h3 {
-      margin: 0 0 4px;
-      font-size: 16px;
-    }
-
-    .industry-card p {
-      margin: 0 0 8px;
-      font-size: 14px;
-      color: var(--muted);
-    }
-
-    .industry-card ul {
-      margin: 0;
-      padding-left: 20px;
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    /* WHY SECTION */
-    .why-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .why-card {
-      background: #0f172a;
-      color: #e5e7eb;
-      border-radius: var(--radius-md);
-      padding: 22px 20px 20px;
-    }
-
-    .why-label {
-      font-size: 13px;
-      font-weight: 600;
-      margin-bottom: 6px;
-    }
-
-    .why-card p {
-      margin: 0;
-      font-size: 13px;
-      line-height: 1.7;
-      color: #cbd5f5;
-    }
-
-    /* CTA STRIP */
-    .cta-strip {
-      margin-top: 24px;
-      border-radius: 24px;
-      padding: 30px 26px 32px;
-      background: linear-gradient(135deg, #0f172a, #111827);
-      color: #f9fafb;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-    }
-
-    .cta-strip h2 {
-      margin: 0 0 6px;
-      font-size: 24px;
-    }
-
-    .cta-strip p {
-      margin: 0;
-      font-size: 14px;
-      color: #e5e7eb;
-    }
-
-    .cta-strip .btn-primary {
-      box-shadow: 0 18px 42px rgba(255,145,77,0.58);
-    }
-
-    /* FOOTER */
-    footer {
-      border-top: 1px solid rgba(148,163,184,0.35);
-      padding: 28px 0 16px;
-      margin-top: 40px;
-    }
-
-    .footer-grid {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 0 16px;
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-      gap: 26px;
-      font-size: 13px;
-      color: var(--muted);
-    }
-
-    .footer-brand-title {
-      font-weight: 600;
-      margin-bottom: 6px;
-      color: var(--ink);
-    }
-
-    .footer-links {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .footer-links a {
-      font-size: 13px;
-      color: var(--muted);
-      transition: color 0.16s ease;
-    }
-
-    .footer-links a:hover {
-      color: var(--brand);
-    }
-
-    .footer-bottom {
-      max-width: 1120px;
-      margin: 14px auto 0;
-      padding: 0 16px;
-      font-size: 12px;
-      color: #9ca3af;
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 960px) {
-      .hero {
-        grid-template-columns: minmax(0, 1fr);
-        padding: 38px 26px 40px;
-      }
-
-      .hero-media {
-        order: -1;
-        justify-self: stretch;
-      }
-
-      .hero-card {
-        max-width: 100%;
-      }
-
-      .cards-4 {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .why-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .footer-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 720px) {
-      .nav-links {
-        position: absolute;
-        inset: 72px 0 auto 0;
-        padding: 10px 16px 14px;
-        background: #ffffff;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-        border-bottom: 1px solid rgba(148,163,184,0.35);
-        transform-origin: top;
-        transform: scaleY(0);
-        opacity: 0;
-        pointer-events: none;
-        transition: transform 0.18s ease, opacity 0.18s ease;
-      }
-
-      .nav-open .nav-links {
-        transform: scaleY(1);
-        opacity: 1;
-        pointer-events: auto;
-      }
-
-      .nav-toggle {
-        display: inline-flex;
-      }
-
-      .nav-inner {
-        min-height: 68px;
-      }
-
-      main {
-        padding-top: 30px;
-      }
-
-      .intro-strip,
-      .cta-strip {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .cards-4 {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .cards-2x2 {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .why-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .footer-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      * {
-        scroll-behavior: auto !important;
-        transition: none !important;
-        animation: none !important;
-      }
-    }
-
-    /* === Email Popup === */
-    .email-popup {
-      position: fixed;
-      right: 24px;
-      bottom: 24px;
-      max-width: 360px;
-      width: 100%;
-      background: #ffffff;
-      border-radius: 18px;
-      box-shadow: 0 18px 48px rgba(15,23,42,0.25);
-      padding: 18px 18px 16px;
-      font-family: inherit;
-      text-align: left;
-      border: 1px solid rgba(148,163,184,0.4);
-      transform: translateY(140%);
-      opacity: 0;
-      pointer-events: none;
-      transition: transform 0.25s ease-out, opacity 0.25s ease-out;
-      z-index: 70;
-    }
-
-    .email-popup-visible {
-      transform: translateY(0);
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .email-popup h3 {
-      margin: 0 0 6px;
-      font-size: 17px;
-      color: #111827;
-    }
-
-    .email-popup p {
-      margin: 0 0 10px;
-      font-size: 13px;
-      color: #6b7280;
-      line-height: 1.5;
-    }
-
-    .email-popup form {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .email-popup input[type="email"] {
-      width: 100%;
-      padding: 10px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(148,163,184,0.8);
-      font-size: 14px;
-      outline: none;
-    }
-
-    .email-popup input[type="email"]:focus {
-      border-color: var(--brand, #FF914D);
-      box-shadow: 0 0 0 1px rgba(255,145,77,0.45);
-    }
-
-    .email-popup button[type="submit"] {
-      border: 0;
-      border-radius: 999px;
-      padding: 10px 16px;
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-      background: var(--brand, #FF914D);
-      color: #ffffff;
-      box-shadow: 0 10px 26px rgba(255,145,77,0.45);
-      transition: background 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
-    }
-
-    .email-popup button[type="submit"]:hover {
-      background: var(--brand-dark, #e6762b);
-      transform: translateY(-1px);
-      box-shadow: 0 14px 34px rgba(255,145,77,0.55);
-    }
-
-    .email-popup-close {
-      position: absolute;
-      top: 8px;
-      right: 10px;
-      border: 0;
-      background: transparent;
-      font-size: 18px;
-      line-height: 1;
-      cursor: pointer;
-      color: #9ca3af;
-    }
-
-    .email-popup-close:hover {
-      color: #4b5563;
-    }
-
-    .email-popup-note {
-      font-size: 12px;
-      color: #9ca3af;
-      margin-top: 2px;
-    }
-
-    .email-popup-success,
-    .email-popup-error {
-      display: none;
-      font-size: 12px;
-      margin-top: 2px;
-    }
-
-    .email-popup-success {
-      color: #16a34a;
-    }
-
-    .email-popup-error {
-      color: #b91c1c;
-    }
-
-    /* Mobile: full-width at bottom */
-    @media (max-width: 640px) {
-      .email-popup {
-        left: 12px;
-        right: 12px;
-        bottom: 16px;
-        max-width: none;
-      }
-    }
-  </style>
-<script id="vtag-ai-js" async src="https://r2.leadsy.ai/tag.js" data-pid="L2OSIuFJIp4Ln82m" data-version="062024"></script>
-
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>AI Receptionist & Chatbot Services in Atlanta | PeachtreeChat</title>
+
+<meta
+  name="description"
+  content="PeachtreeChat provides AI receptionists, website chatbots, and AI appointment booking systems for Atlanta small businesses. Capture leads 24/7, automate customer conversations, and book more appointments automatically."
+/>
+
+<meta
+  name="keywords"
+  content="AI receptionist Atlanta, chatbot Atlanta, AI chatbot for small business, Atlanta AI agency, website chatbot Atlanta, AI answering service Atlanta, appointment booking chatbot, AI customer support Atlanta, AI automation Atlanta, lead capture chatbot"
+/>
+
+<meta name="robots" content="index, follow" />
+
+<link rel="canonical" href="https://peachtreechat.com/" />
+
+<meta property="og:title" content="AI Receptionist & Chatbot Services in Atlanta | PeachtreeChat" />
+<meta property="og:description" content="AI chatbots and AI receptionists for Atlanta small businesses. Capture leads, answer questions, and automate appointments 24/7." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://peachtreechat.com/" />
+<meta property="og:image" content="https://peachtreechat.com/peachtreechat-logo.png" />
+
+<!-- LOCAL SEO SCHEMA -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "PeachtreeChat",
+  "url": "https://peachtreechat.com",
+  "logo": "https://peachtreechat.com/peachtreechat-logo.png",
+  "description": "Atlanta AI receptionist and chatbot company helping small businesses automate customer conversations and lead capture.",
+  "areaServed": {
+    "@type": "City",
+    "name": "Atlanta"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Atlanta",
+    "addressRegion": "GA",
+    "addressCountry": "US"
+  },
+  "sameAs": [
+    "https://www.linkedin.com/company/peachtreechat"
+  ]
+}
+</script>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+
+body{
+font-family:'Poppins',sans-serif;
+background:#f4f7fb;
+margin:0;
+padding:0;
+color:#142032;
+}
+
+main{
+max-width:1120px;
+margin:auto;
+padding:40px 16px;
+}
+
+.hero{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+align-items:center;
+background:#fff;
+padding:50px;
+border-radius:30px;
+box-shadow:0 14px 40px rgba(0,0,0,0.08);
+}
+
+.hero-label{
+display:inline-block;
+background:#ffe8da;
+padding:8px 14px;
+border-radius:999px;
+font-size:12px;
+font-weight:600;
+margin-bottom:20px;
+color:#e6762b;
+text-transform:uppercase;
+}
+
+.hero h1{
+font-size:52px;
+line-height:1.1;
+margin-bottom:20px;
+}
+
+.hero h1 span{
+color:#FF914D;
+}
+
+.hero-sub{
+font-size:18px;
+line-height:1.7;
+color:#647083;
+margin-bottom:28px;
+}
+
+.hero-note{
+margin-top:18px;
+font-size:14px;
+color:#647083;
+}
+
+.btn-primary{
+display:inline-block;
+background:#FF914D;
+color:#fff;
+padding:14px 26px;
+border-radius:999px;
+font-weight:600;
+text-decoration:none;
+margin-right:14px;
+}
+
+.btn-secondary{
+display:inline-block;
+border:1px solid #ccc;
+padding:14px 26px;
+border-radius:999px;
+text-decoration:none;
+color:#142032;
+font-weight:500;
+}
+
+.hero-card{
+background:#0f172a;
+color:white;
+padding:30px;
+border-radius:30px;
+}
+
+.hero-card h2{
+font-size:28px;
+margin-bottom:16px;
+}
+
+.hero-card p{
+line-height:1.7;
+color:#dbe3f0;
+}
+
+.hero-metrics{
+display:flex;
+gap:30px;
+margin-top:25px;
+}
+
+.hero-metric strong{
+display:block;
+font-size:28px;
+color:#facc15;
+}
+
+.section-header{
+text-align:center;
+max-width:800px;
+margin:80px auto 40px;
+}
+
+.section-header h2{
+font-size:40px;
+margin-bottom:16px;
+}
+
+.section-header p{
+font-size:18px;
+line-height:1.7;
+color:#647083;
+}
+
+.cards-2x2{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:24px;
+}
+
+.industry-card{
+background:#fff;
+padding:28px;
+border-radius:20px;
+box-shadow:0 4px 16px rgba(0,0,0,0.06);
+}
+
+.industry-card h3{
+font-size:24px;
+margin-bottom:14px;
+}
+
+.industry-card p{
+color:#647083;
+line-height:1.7;
+}
+
+footer{
+margin-top:80px;
+padding:40px;
+text-align:center;
+font-size:14px;
+color:#647083;
+}
+
+@media(max-width:900px){
+
+.hero{
+grid-template-columns:1fr;
+}
+
+.cards-2x2{
+grid-template-columns:1fr;
+}
+
+.hero h1{
+font-size:42px;
+}
+
+}
+
+</style>
 </head>
+
 <body>
 
-  <!-- NAVBAR -->
-  <nav>
-    <div class="nav-inner" id="navRoot">
-      <div class="nav-logo">
-        <a href="index.html">
-          <img src="peachtreechat-logo.png" alt="PeachtreeChat Logo">
-        </a>
-      </div>
+<main>
 
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M3 6h18M3 12h18M3 18h18" />
-        </svg>
-      </button>
+<!-- HERO -->
+<section class="hero">
 
-      <div class="nav-links" id="navLinks">
-        <a href="index.html" class="active">Home</a>
-        <a href="about.html">About</a>
-        <a href="services.html">Agents</a>
-        <a href="contact.html">Contact</a>
-        <a href="contact.html" class="nav-cta">Book a Demo</a>
-      </div>
-    </div>
-  </nav>
+<div>
 
-  <main>
-    <!-- HERO -->
-    <section class="hero">
-      <div>
-        <div class="hero-label">
-          <span class="dot"></span>
-          AI agents for small & medium businesses
-        </div>
-        <h1>Work <span>Less</span>. Grow <span>More</span>.</h1>
-        <p class="hero-sub">
-          PeachtreeChat gives you AI agents that handle conversations, follow-ups,
-          and routine tasks, so your team can focus on the work that actually moves
-          the business forward.
-        </p>
-        <div class="hero-cta-row">
-          <a href="contact.html" class="btn-primary">Activate PeachtreeChat</a>
-          <a href="services.html" class="btn-secondary">Explore Our Agents →</a>
-        </div>
-        <p class="hero-note">
-          Built for busy local businesses, service providers, and growing teams.
-        </p>
-      </div>
+<div class="hero-label">
+Atlanta AI Receptionist & Chatbot Solutions
+</div>
 
-      <div class="hero-media">
-        <div class="hero-card">
-          <div class="hero-card-pill">
-            <span style="width:8px;height:8px;border-radius:999px;background:#22c55e;"></span>
-            Live conversations · 24/7
-          </div>
-          <h2>Your AI operations assistant</h2>
-          <p>
-            New leads, missed calls, and website visitors are instantly routed to a
-            PeachtreeChat agent that can answer questions, capture details, and book
-            appointments on autopilot.
-          </p>
-          <div class="hero-metrics">
-            <div class="hero-metric">
-              <strong>3x</strong>
-              more conversations captured
-            </div>
-            <div class="hero-metric">
-              <strong>24/7</strong>
-              always on for your customers
-            </div>
-          </div>
-          <div class="hero-orbit"></div>
-        </div>
-      </div>
-    </section>
+<h1>
+Atlanta AI <span>Receptionists</span> &
+Business <span>Chatbots</span>
+</h1>
 
-    <!-- INTRO STRIP -->
-    <section class="intro-strip">
-      <div>
-        <h2>The AI agency for everyday businesses</h2>
-        <p>
-          From salons and spas to real estate and home services, PeachtreeChat acts
-          like a full-time team member that’s always online.
-        </p>
-      </div>
-      <a href="about.html">
-        Learn how it works
-        <span>→</span>
-      </a>
-    </section>
+<p class="hero-sub">
+PeachtreeChat helps Atlanta businesses automate lead capture,
+customer support, appointment booking, and missed call follow-up
+with AI receptionists and website chatbots that work 24/7.
+</p>
 
-    <!-- AGENTS / FEATURES -->
-    <section>
-      <div class="section-header">
-        <h2>Powerful AI agents, ready on day one</h2>
-        <p>
-          Start with prebuilt agents for your workflows, then customize every step
-          to match how your business actually runs.
-        </p>
-      </div>
+<a href="contact.html" class="btn-primary">
+Book Your Free Demo
+</a>
 
-      <div class="cards-4">
-        <div class="card">
-          <div class="card-icon">💬</div>
-          <h3>Lead Capture Agent</h3>
-          <p>
-            Instantly greet visitors, answer common questions, and collect contact
-            details before they leave your site or DMs.
-          </p>
-        </div>
-        <div class="card">
-          <div class="card-icon">📅</div>
-          <h3>Booking & Scheduling</h3>
-          <p>
-            Let your agent manage appointments, reschedules, and reminders without
-            your team lifting a finger.
-          </p>
-        </div>
-        <div class="card">
-          <div class="card-icon">📨</div>
-          <h3>Follow-Up & Nurture</h3>
-          <p>
-            Automatically follow up with warm leads, send updates, and keep
-            conversations alive until they’re ready to buy.
-          </p>
-        </div>
-        <div class="card">
-          <div class="card-icon">⚙️</div>
-          <h3>Custom Workflows</h3>
-          <p>
-            Build flows for intake, FAQs, and operations that plug into the tools
-            you already use today.
-          </p>
-        </div>
-      </div>
-    </section>
+<a href="services.html" class="btn-secondary">
+Explore AI Solutions →
+</a>
 
-    <!-- INDUSTRIES -->
-    <section>
-      <div class="section-header">
-        <h2>Solutions for every industry</h2>
-        <p>
-          Whether you run a local service business or a growing team, PeachtreeChat
-          adapts to your clients, offers, and processes.
-        </p>
-      </div>
+<p class="hero-note">
+Serving Atlanta, Gwinnett, Duluth,
+Peachtree Corners, Alpharetta,
+and surrounding Georgia businesses.
+</p>
 
-      <div class="cards-2x2">
-        <div class="industry-card">
-          <h3>Salons & Spas</h3>
-          <p>Turn website visitors and Instagram DMs into booked appointments.</p>
-          <ul>
-            <li>24/7 booking and rescheduling</li>
-            <li>Service menus and pricing on demand</li>
-            <li>Automated reminders and follow-ups</li>
-          </ul>
-        </div>
+</div>
 
-        <div class="industry-card">
-          <h3>Real Estate</h3>
-          <p>Give buyers and sellers instant answers and a direct path to you.</p>
-          <ul>
-            <li>Property info and qualification questions</li>
-            <li>Open house and showing scheduling</li>
-            <li>Lead handoff to your CRM or inbox</li>
-          </ul>
-        </div>
+<div class="hero-card">
 
-        <div class="industry-card">
-          <h3>Legal & Professional Services</h3>
-          <p>Screen inquiries and collect the details you need before a consult.</p>
-          <ul>
-            <li>Automated intake questionnaires</li>
-            <li>Conflict checks & basic routing</li>
-            <li>Warm handoff to your team</li>
-          </ul>
-        </div>
+<h2>Never miss another lead</h2>
 
-        <div class="industry-card">
-          <h3>Home & Local Services</h3>
-          <p>Never miss a quote request, even when you’re on the job.</p>
-          <ul>
-            <li>Job details captured in seconds</li>
-            <li>Service area and pricing FAQs</li>
-            <li>Instant notifications to your phone</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+<p>
+Our Atlanta AI chatbots instantly answer customer questions,
+qualify leads, schedule appointments, and follow up automatically
+while your team focuses on running the business.
+</p>
 
-    <!-- WHY PEACHTREECHAT -->
-    <section>
-      <div class="section-header">
-        <h2>Why teams choose PeachtreeChat</h2>
-        <p>
-          We combine modern AI with simple, practical workflows so you can launch
-          in days—not months.
-        </p>
-      </div>
+<div class="hero-metrics">
 
-      <div class="why-grid">
-        <div class="why-card">
-          <div class="why-label">Intelligent Automation</div>
-          <p>
-            Eliminate repetitive back-and-forth with agents that learn from your
-            business and respond in natural language.
-          </p>
-        </div>
-        <div class="why-card">
-          <div class="why-label">Secure & Reliable</div>
-          <p>
-            Enterprise-grade infrastructure, uptime monitoring, and access controls
-            keep your conversations and data protected.
-          </p>
-        </div>
-        <div class="why-card">
-          <div class="why-label">Everything in One Place</div>
-          <p>
-            Manage agents, flows, and channels from a single dashboard that grows
-            alongside your team and your clients.
-          </p>
-        </div>
-      </div>
-    </section>
+<div class="hero-metric">
+<strong>24/7</strong>
+Lead capture
+</div>
 
-    <!-- CTA STRIP -->
-    <section class="cta-strip">
-      <div>
-        <h2>Ready to transform how your business communicates?</h2>
-        <p>
-          See how PeachtreeChat can capture more leads, book more appointments, and
-          give your clients instant answers—without adding headcount.
-        </p>
-      </div>
-      <div>
-        <a href="contact.html" class="btn-primary">Schedule a walkthrough</a>
-      </div>
-    </section>
-  </main>
+<div class="hero-metric">
+<strong>3x</strong>
+More booked conversations
+</div>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-grid">
-      <div>
-        <div class="footer-brand-title">PeachtreeChat</div>
-        <p>The AI agency that takes care of business, starting with your conversations.</p>
-      </div>
-      <div>
-        <div class="footer-brand-title">Company</div>
-        <div class="footer-links">
-          <a href="about.html">About</a>
-          <a href="services.html">Agents</a>
-          <a href="contact.html">Contact</a>
-        </div>
-      </div>
-      <div>
-        <div class="footer-brand-title">Legal</div>
-        <div class="footer-links">
-          <a href="privacy.html">Privacy Policy</a>
-          <a href="terms.html">Terms of Service</a>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>© <span id="year"></span> PeachtreeChat. All rights reserved.</span>
-      <span>Atlanta, Georgia</span>
-    </div>
-  </footer>
+</div>
 
-  <!-- Email Signup Popup -->
-  <div class="email-popup" id="emailPopup">
-    <button class="email-popup-close" type="button" aria-label="Close signup popup">&times;</button>
-    <h3>Get the 7 Automation Plays for 2025</h3>
-    <p>
-      Drop your email to get our free guide:
-      <strong>“The 7 Automations Every Small Business Needs in 2025.”</strong>
-    </p>
+</div>
 
-    <form id="emailPopupForm" action="https://formspree.io/f/mnjaqrjw" method="POST">
-      <input
-        type="email"
-        name="email"
-        required
-        placeholder="you@business.com"
-      />
-      <button type="submit">Send me the guide</button>
-      <p class="email-popup-note">No spam. Just one powerful playbook.</p>
-      <p class="email-popup-success" id="emailPopupSuccess">
-        Thanks! Check your inbox in a few minutes.
-      </p>
-      <p class="email-popup-error" id="emailPopupError">
-        Something went wrong. Please try again.
-      </p>
-    </form>
-  </div>
+</section>
 
-  <!-- SCRIPTS -->
-  <script>
-    // Mobile nav toggle
-    (function () {
-      const navRoot = document.getElementById('navRoot');
-      const toggle = document.getElementById('navToggle');
-      const links = document.getElementById('navLinks');
+<!-- SEO SERVICES -->
+<section>
 
-      toggle.addEventListener('click', () => {
-        const open = navRoot.classList.toggle('nav-open');
-        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-      });
+<div class="section-header">
 
-      links.querySelectorAll('a').forEach(a => {
-        a.addEventListener('click', () => {
-          navRoot.classList.remove('nav-open');
-          toggle.setAttribute('aria-expanded', 'false');
-        });
-      });
-    })();
+<h2>
+AI Receptionists for Atlanta Small Businesses
+</h2>
 
-    // Footer year
-    document.getElementById('year').textContent = new Date().getFullYear();
+<p>
+PeachtreeChat helps businesses across Atlanta automate customer
+communication with AI chatbots, AI receptionists, and lead capture
+systems designed for local service businesses.
+</p>
 
-    // IBM Watsonx Assistant Chatbot Embed (unchanged)
-    window.watsonAssistantChatOptions = {
-      integrationID: "2a77a767-a4d1-4520-99d4-9bcf6d300a94",
-      region: "au-syd",
-      serviceInstanceID: "d849b711-b43c-4ded-b8f9-d942366c3ea2",
-      onLoad: async (instance) => { await instance.render(); }
-    };
-    setTimeout(function () {
-      const t = document.createElement('script');
-      t.src =
-        "https://web-chat.global.assistant.watson.appdomain.cloud/versions/" +
-        (window.watsonAssistantChatOptions.clientVersion || "latest") +
-        "/WatsonAssistantChatEntry.js";
-      document.head.appendChild(t);
-    });
+</div>
 
-    // Email popup logic
-    (function () {
-      // Don't show on contact or dedicated demo pages
-      var path = window.location.pathname || "";
-      if (path.indexOf("contact.html") !== -1 || path.indexOf("demo.html") !== -1) {
-        return;
-      }
+<div class="cards-2x2">
 
-      var popup = document.getElementById("emailPopup");
-      if (!popup) return;
+<div class="industry-card">
+<h3>AI Receptionist for Salons</h3>
+<p>
+Automatically answer questions, book appointments,
+and follow up with salon clients 24/7.
+</p>
+</div>
 
-      var form = document.getElementById("emailPopupForm");
-      var closeBtn = popup.querySelector(".email-popup-close");
-      var successMsg = document.getElementById("emailPopupSuccess");
-      var errorMsg = document.getElementById("emailPopupError");
+<div class="industry-card">
+<h3>AI Chatbots for Real Estate</h3>
+<p>
+Capture buyer and seller leads instantly with AI-powered
+property inquiry automation.
+</p>
+</div>
 
-      var STORAGE_KEY = "ptc_email_popup_dismissed_at";
-      var DISMISS_HOURS = 24;
-      var now = Date.now();
+<div class="industry-card">
+<h3>AI Automation for Home Services</h3>
+<p>
+Never miss a quote request from roofing, plumbing,
+HVAC, painting, or pressure washing customers.
+</p>
+</div>
 
-      // Respect 24h cooldown
-      try {
-        var last = parseInt(localStorage.getItem(STORAGE_KEY) || "0", 10);
-        if (!isNaN(last)) {
-          var diffHours = (now - last) / (1000 * 60 * 60);
-          if (diffHours < DISMISS_HOURS) {
-            return;
-          }
-        }
-      } catch (e) {
-        // ignore storage errors
-      }
+<div class="industry-card">
+<h3>AI Intake for Law Firms</h3>
+<p>
+Qualify legal leads automatically and capture intake
+information before consultations.
+</p>
+</div>
 
-      function showPopup() {
-        // If user is already on demo anchor, skip
-        if (window.location.hash === "#demo") return;
-        popup.classList.add("email-popup-visible");
-      }
+</div>
 
-      function hidePopup() {
-        popup.classList.remove("email-popup-visible");
-        try {
-          localStorage.setItem(STORAGE_KEY, String(Date.now()));
-        } catch (e) {}
-      }
+</section>
 
-      // Show after 7 seconds on homepage
-      setTimeout(showPopup, 7000);
+<!-- FAQ -->
+<section>
 
-      if (closeBtn) {
-        closeBtn.addEventListener("click", hidePopup);
-      }
+<div class="section-header">
+<h2>Frequently Asked Questions</h2>
+</div>
 
-      // Form submit via AJAX to Formspree
-      if (form) {
-        form.addEventListener("submit", function (e) {
-          e.preventDefault();
-          successMsg.style.display = "none";
-          errorMsg.style.display = "none";
+<div class="cards-2x2">
 
-          fetch(form.action, {
-            method: "POST",
-            body: new FormData(form),
-            headers: { "Accept": "application/json" }
-          })
-            .then(function (res) {
-              if (res.ok) {
-                form.reset();
-                successMsg.style.display = "block";
-                hidePopup();
-              } else {
-                errorMsg.style.display = "block";
-              }
-            })
-            .catch(function () {
-              errorMsg.style.display = "block";
-            });
-        });
-      }
-    })();
-  </script>
+<div class="industry-card">
+<h3>What does an AI receptionist do?</h3>
+<p>
+An AI receptionist answers customer questions,
+books appointments, captures leads, and responds
+to website visitors automatically 24/7.
+</p>
+</div>
+
+<div class="industry-card">
+<h3>Can a chatbot help my Atlanta business?</h3>
+<p>
+Yes. AI chatbots help Atlanta businesses capture
+more leads, respond faster, and automate customer
+support without hiring additional staff.
+</p>
+</div>
+
+<div class="industry-card">
+<h3>What industries work best with AI chatbots?</h3>
+<p>
+Salons, real estate agents, home services,
+attorneys, medical spas, and contractors
+benefit heavily from AI chatbot automation.
+</p>
+</div>
+
+<div class="industry-card">
+<h3>Does PeachtreeChat serve businesses outside Atlanta?</h3>
+<p>
+Yes. While based in Atlanta, PeachtreeChat can
+build AI chatbot systems for businesses across
+the United States.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<footer>
+© 2026 PeachtreeChat — Atlanta AI Receptionists & Chatbot Solutions
+</footer>
+
+</main>
+
 </body>
 </html>
