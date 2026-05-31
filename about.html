@@ -2,757 +2,393 @@
 <html lang="en">
 <head>
 
-<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-59PG3Q6N6W"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-59PG3Q6N6W');
 </script>
 
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>About PeachtreeChat | AI Agents for Local Businesses</title>
-  <meta name="description" content="Learn about PeachtreeChat, an Atlanta-based AI agency helping salons, real estate teams, legal practices, and local businesses automate conversations with AI agents."/>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-
-  <style>
-    :root{
-      --brand:#FF914D;
-      --brand-dark:#e6762b;
-      --ink:#142032;
-      --muted:#647083;
-      --bg-page:#f4f7fb;
-      --bg-soft:#e2edff;
-      --bg-soft-alt:#dbe6f5;
-      --card:#ffffff;
-      --border:rgba(148,163,184,0.35);
-      --shadow-soft:0 10px 32px rgba(15,23,42,0.12);
-      --radius-lg:24px;
-      --radius-md:16px;
-      --radius-sm:10px;
-      --max:1120px;
-    }
-
-    *{box-sizing:border-box;}
-
-    html,body{
-      margin:0;
-      padding:0;
-      height:100%;
-    }
-
-    body{
-      font-family:'Poppins',Arial,sans-serif;
-      background:var(--bg-page);
-      color:var(--ink);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-    }
-
-    a{
-      text-decoration:none;
-      color:inherit;
-    }
-
-    /* NAVBAR (same style as homepage) */
-    nav{
-      position:sticky;
-      top:0;
-      z-index:50;
-      background:#ffffff;
-      box-shadow:0 1px 0 rgba(15,23,42,0.04);
-    }
-
-    .nav-inner{
-      max-width:var(--max);
-      margin:0 auto;
-      padding:10px 16px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      min-height:72px;
-    }
-
-    .nav-logo img{
-      height:84px;
-      object-fit:contain;
-      transition:height .18s ease;
-    }
-
-    .nav-links{
-      display:flex;
-      align-items:center;
-      gap:20px;
-      font-size:14px;
-      font-weight:500;
-    }
-
-    .nav-links a{
-      padding:8px 4px;
-      border-radius:8px;
-      color:var(--muted);
-      transition:color .18s ease, transform .18s ease;
-    }
-
-    .nav-links a:hover{
-      color:var(--brand);
-      transform:translateY(-1px);
-    }
-
-    .nav-links a.active{
-      color:var(--ink);
-      font-weight:600;
-    }
-
-    .nav-cta{
-      padding:9px 18px;
-      border-radius:999px;
-      background:var(--brand);
-      color:#fff;
-      font-size:14px;
-      font-weight:600;
-      box-shadow:0 10px 28px rgba(255,145,77,0.38);
-      transition:background .18s ease, transform .18s ease, box-shadow .18s ease;
-    }
-
-    .nav-cta:hover{
-      background:var(--brand-dark);
-      transform:translateY(-1px);
-      box-shadow:0 14px 36px rgba(255,145,77,0.5);
-    }
-
-    .nav-toggle{
-      display:none;
-      border:0;
-      background:transparent;
-      padding:8px;
-      border-radius:10px;
-      cursor:pointer;
-    }
-
-    .nav-toggle:focus-visible{
-      outline:2px solid var(--brand);
-      outline-offset:3px;
-    }
-
-    .nav-toggle svg{
-      width:26px;
-      height:26px;
-    }
-
-    /* MAIN WRAPPER */
-    main{
-      max-width:var(--max);
-      margin:0 auto;
-      padding:40px 16px 80px;
-    }
-
-    section{
-      margin-bottom:72px;
-    }
-
-    .section-header{
-      text-align:center;
-      max-width:720px;
-      margin:0 auto 32px;
-    }
-
-    .section-header h2{
-      margin:0 0 8px;
-      font-size:28px;
-      color:var(--ink);
-    }
-
-    .section-header p{
-      margin:0;
-      font-size:15px;
-      color:var(--muted);
-      line-height:1.7;
-    }
-
-    /* HERO ABOUT BLOCK */
-    .about-hero{
-      text-align:center;
-      padding:54px 24px 60px;
-      background:#ffffff;
-      border-radius:32px;
-      box-shadow:var(--shadow-soft);
-      margin-bottom:60px;
-    }
-
-    .about-hero h1{
-      margin:0 0 18px;
-      font-size:32px;
-      letter-spacing:.02em;
-    }
-
-    .about-hero p{
-      margin:0 auto;
-      max-width:760px;
-      color:var(--muted);
-      font-size:16px;
-      line-height:1.8;
-    }
-
-    .about-hero p + p{
-      margin-top:12px;
-    }
-
-    /* VISION BAND */
-    .band{
-      border-radius:var(--radius-lg);
-      padding:40px 26px 34px;
-      background:var(--bg-soft-alt);
-    }
-
-    .vision-cards{
-      display:grid;
-      grid-template-columns:repeat(3,minmax(0,1fr));
-      gap:18px;
-      margin-top:24px;
-    }
-
-    .vision-card{
-      background:#ffffff;
-      border-radius:18px;
-      padding:20px 20px 22px;
-      box-shadow:0 6px 18px rgba(15,23,42,0.08);
-      text-align:left;
-    }
-
-    .vision-icon{
-      width:40px;
-      height:40px;
-      border-radius:14px;
-      background:rgba(255,145,77,0.14);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      margin-bottom:12px;
-      font-size:20px;
-    }
-
-    .vision-card h3{
-      margin:0 0 6px;
-      font-size:17px;
-    }
-
-    .vision-card p{
-      margin:0;
-      font-size:14px;
-      color:var(--muted);
-      line-height:1.7;
-    }
-
-    /* APPROACH */
-    .approach{
-      text-align:center;
-    }
-
-    .approach-text{
-      max-width:840px;
-      margin:0 auto;
-      background:#ffffff;
-      border-radius:var(--radius-lg);
-      padding:30px 26px;
-      box-shadow:var(--shadow-soft);
-      font-size:15px;
-      color:var(--muted);
-      line-height:1.9;
-    }
-
-    /* WHAT WE OFFER BAND */
-    .offer-band{
-      border-radius:var(--radius-lg);
-      padding:40px 26px;
-      background:var(--bg-soft);
-    }
-
-    .offer-rows{
-      display:grid;
-      grid-template-columns:1.15fr 1.15fr;
-      gap:24px;
-      margin-top:26px;
-    }
-
-    .offer-row{
-      display:grid;
-      grid-template-columns:auto 1fr;
-      gap:14px;
-      align-items:flex-start;
-    }
-
-    .offer-icon{
-      width:40px;
-      height:40px;
-      border-radius:14px;
-      background:#0f172a;
-      color:#e5e7eb;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:18px;
-    }
-
-    .offer-row h3{
-      margin:0 0 6px;
-      font-size:16px;
-    }
-
-    .offer-row p{
-      margin:0;
-      font-size:14px;
-      color:var(--muted);
-      line-height:1.7;
-    }
-
-    /* WHY CHOOSE */
-    .why-grid{
-      display:grid;
-      grid-template-columns:repeat(3,minmax(0,1fr));
-      gap:18px;
-    }
-
-    .why-card{
-      background:#ffffff;
-      border-radius:var(--radius-md);
-      padding:22px 20px 20px;
-      box-shadow:0 6px 16px rgba(15,23,42,0.06);
-    }
-
-    .why-card h3{
-      margin:0 0 8px;
-      font-size:16px;
-    }
-
-    .why-card p{
-      margin:0;
-      font-size:14px;
-      color:var(--muted);
-      line-height:1.7;
-    }
-
-    /* CTA STRIP */
-    .cta-strip{
-      margin-top:10px;
-      border-radius:var(--radius-lg);
-      padding:32px 26px 34px;
-      background:linear-gradient(135deg,#0f172a,#111827);
-      color:#f9fafb;
-      display:flex;
-      flex-wrap:wrap;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
-    }
-
-    .cta-strip h2{
-      margin:0 0 6px;
-      font-size:24px;
-    }
-
-    .cta-strip p{
-      margin:0;
-      font-size:14px;
-      color:#e5e7eb;
-      max-width:520px;
-    }
-
-    .btn-primary{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:13px 24px;
-      border-radius:999px;
-      background:var(--brand);
-      color:#ffffff;
-      font-weight:600;
-      font-size:15px;
-      border:0;
-      cursor:pointer;
-      box-shadow:0 16px 40px rgba(255,145,77,0.55);
-      transition:background .18s ease, transform .18s ease, box-shadow .18s ease;
-    }
-
-    .btn-primary:hover{
-      background:var(--brand-dark);
-      transform:translateY(-1px);
-      box-shadow:0 18px 44px rgba(255,145,77,0.62);
-    }
-
-    .btn-secondary{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:11px 22px;
-      border-radius:999px;
-      border:1px solid rgba(148,163,184,0.7);
-      background:transparent;
-      color:#e5e7eb;
-      font-size:14px;
-      font-weight:500;
-      cursor:pointer;
-      transition:background .18s ease, border-color .18s ease, transform .18s ease;
-      margin-left:10px;
-    }
-
-    .btn-secondary:hover{
-      background:rgba(15,23,42,0.65);
-      border-color:#ffffff;
-      transform:translateY(-1px);
-    }
-
-    /* FOOTER */
-    footer{
-      border-top:1px solid var(--border);
-      padding:28px 0 16px;
-      margin-top:42px;
-    }
-
-    .footer-grid{
-      max-width:var(--max);
-      margin:0 auto;
-      padding:0 16px;
-      display:grid;
-      grid-template-columns:2fr 1fr 1fr;
-      gap:26px;
-      font-size:13px;
-      color:var(--muted);
-    }
-
-    .footer-title{
-      font-weight:600;
-      margin-bottom:6px;
-      color:var(--ink);
-    }
-
-    .footer-links{
-      display:flex;
-      flex-direction:column;
-      gap:6px;
-    }
-
-    .footer-links a{
-      font-size:13px;
-      color:var(--muted);
-      transition:color .16s ease;
-    }
-
-    .footer-links a:hover{
-      color:var(--brand);
-    }
-
-    .footer-bottom{
-      max-width:var(--max);
-      margin:14px auto 0;
-      padding:0 16px;
-      font-size:12px;
-      color:#9ca3af;
-      display:flex;
-      justify-content:space-between;
-      gap:10px;
-      flex-wrap:wrap;
-    }
-
-    /* RESPONSIVE */
-    @media (min-width:960px){
-      .nav-logo img{height:68px;}
-    }
-
-    @media (max-width:960px){
-      .vision-cards{grid-template-columns:repeat(2,minmax(0,1fr));}
-      .offer-rows{grid-template-columns:minmax(0,1fr);}
-      .why-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
-      .footer-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
-    }
-
-    @media (max-width:720px){
-      .nav-links{
-        position:absolute;
-        inset:72px 0 auto 0;
-        padding:10px 16px 14px;
-        background:#ffffff;
-        flex-direction:column;
-        align-items:flex-start;
-        gap:8px;
-        border-bottom:1px solid var(--border);
-        transform-origin:top;
-        transform:scaleY(0);
-        opacity:0;
-        pointer-events:none;
-        transition:transform .18s ease, opacity .18s ease;
-      }
-
-      .nav-open .nav-links{
-        transform:scaleY(1);
-        opacity:1;
-        pointer-events:auto;
-      }
-
-      .nav-toggle{display:inline-flex;}
-      .nav-inner{min-height:68px;}
-
-      main{padding-top:30px;}
-      .vision-cards{grid-template-columns:minmax(0,1fr);}
-      .why-grid{grid-template-columns:minmax(0,1fr);}
-      .footer-grid{grid-template-columns:minmax(0,1fr);}
-    }
-
-    @media (prefers-reduced-motion: reduce){
-      *{transition:none !important; animation:none !important;}
-    }
-  </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>About PeachtreeChat | Atlanta AI Chatbots, AI Assistants & AI Receptionists</title>
+<meta name="description" content="PeachtreeChat is an Atlanta AI agency helping local businesses use AI chatbots, AI assistants, and AI receptionists for lead capture, booking, intake, customer support, and follow-up automation."/>
+<meta name="keywords" content="AI chatbot Atlanta, AI assistant Atlanta, AI receptionist Atlanta, Atlanta chatbot agency, AI automation Atlanta, AI agents Atlanta, chatbot for small business Atlanta, virtual receptionist Atlanta, lead capture chatbot, appointment booking chatbot, customer service chatbot, Gwinnett AI chatbot, PeachtreeChat"/>
+<link rel="canonical" href="https://peachtreechat.com/about.html"/>
+
+<meta property="og:title" content="About PeachtreeChat | Atlanta AI Chatbots & AI Receptionists"/>
+<meta property="og:description" content="Atlanta AI chatbot and AI receptionist solutions for small businesses, salons, law firms, real estate teams, and service companies."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://peachtreechat.com/about.html"/>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+
+<style>
+:root{
+--brand:#FF914D;--brand-dark:#e6762b;--ink:#142032;--muted:#647083;--bg-page:#f4f7fb;--bg-soft:#e2edff;--bg-soft-alt:#dbe6f5;--border:rgba(148,163,184,.35);--shadow-soft:0 10px 32px rgba(15,23,42,.12);--radius-lg:24px;--radius-md:16px;--max:1120px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;height:100%}
+body{font-family:'Poppins',Arial,sans-serif;background:var(--bg-page);color:var(--ink);-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+
+nav{position:sticky;top:0;z-index:50;background:#fff;box-shadow:0 1px 0 rgba(15,23,42,.04)}
+.nav-inner{max-width:var(--max);margin:0 auto;padding:10px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:72px}
+.nav-logo img{height:84px;object-fit:contain}
+.nav-links{display:flex;align-items:center;gap:20px;font-size:14px;font-weight:500}
+.nav-links a{padding:8px 4px;border-radius:8px;color:var(--muted);transition:.18s}
+.nav-links a:hover{color:var(--brand);transform:translateY(-1px)}
+.nav-links a.active{color:var(--ink);font-weight:600}
+.nav-cta{padding:9px 18px;border-radius:999px;background:var(--brand);color:#fff!important;font-weight:600;box-shadow:0 10px 28px rgba(255,145,77,.38)}
+.nav-cta:hover{background:var(--brand-dark);box-shadow:0 14px 36px rgba(255,145,77,.5)}
+.nav-toggle{display:none;border:0;background:transparent;padding:8px;border-radius:10px;cursor:pointer}
+.nav-toggle svg{width:26px;height:26px}
+
+main{max-width:var(--max);margin:0 auto;padding:40px 16px 80px}
+section{margin-bottom:72px}
+.section-header{text-align:center;max-width:720px;margin:0 auto 32px}
+.section-header h2{margin:0 0 8px;font-size:28px;color:var(--ink)}
+.section-header p{margin:0;font-size:15px;color:var(--muted);line-height:1.7}
+
+.about-hero{text-align:center;padding:54px 24px 60px;background:#fff;border-radius:32px;box-shadow:var(--shadow-soft);margin-bottom:60px}
+.about-hero h1{margin:0 0 18px;font-size:32px;letter-spacing:.02em}
+.about-hero p{margin:0 auto;max-width:760px;color:var(--muted);font-size:16px;line-height:1.8}
+.about-hero p+p{margin-top:12px}
+
+.band{border-radius:var(--radius-lg);padding:40px 26px 34px;background:var(--bg-soft-alt)}
+.vision-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:24px}
+.vision-card{background:#fff;border-radius:18px;padding:20px 20px 22px;box-shadow:0 6px 18px rgba(15,23,42,.08)}
+.vision-icon{width:40px;height:40px;border-radius:14px;background:rgba(255,145,77,.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;font-size:20px}
+.vision-card h3{margin:0 0 6px;font-size:17px}
+.vision-card p{margin:0;font-size:14px;color:var(--muted);line-height:1.7}
+
+.approach{text-align:center}
+.approach-text{max-width:840px;margin:0 auto;background:#fff;border-radius:var(--radius-lg);padding:30px 26px;box-shadow:var(--shadow-soft);font-size:15px;color:var(--muted);line-height:1.9}
+
+.offer-band{border-radius:var(--radius-lg);padding:40px 26px;background:var(--bg-soft)}
+.offer-rows{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:26px}
+.offer-row{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:flex-start}
+.offer-icon{width:40px;height:40px;border-radius:14px;background:#0f172a;color:#e5e7eb;display:flex;align-items:center;justify-content:center;font-size:18px}
+.offer-row h3{margin:0 0 6px;font-size:16px}
+.offer-row p{margin:0;font-size:14px;color:var(--muted);line-height:1.7}
+
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.why-card{background:#fff;border-radius:var(--radius-md);padding:22px 20px 20px;box-shadow:0 6px 16px rgba(15,23,42,.06)}
+.why-card h3{margin:0 0 8px;font-size:16px}
+.why-card p{margin:0;font-size:14px;color:var(--muted);line-height:1.7}
+
+.cta-strip{margin-top:10px;border-radius:var(--radius-lg);padding:32px 26px 34px;background:linear-gradient(135deg,#0f172a,#111827);color:#f9fafb;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px}
+.cta-strip h2{margin:0 0 6px;font-size:24px}
+.cta-strip p{margin:0;font-size:14px;color:#e5e7eb;max-width:520px}
+.btn-primary{display:inline-flex;align-items:center;justify-content:center;padding:13px 24px;border-radius:999px;background:var(--brand);color:#fff;font-weight:600;font-size:15px;box-shadow:0 16px 40px rgba(255,145,77,.55)}
+.btn-primary:hover{background:var(--brand-dark)}
+.btn-secondary{display:inline-flex;align-items:center;justify-content:center;padding:11px 22px;border-radius:999px;border:1px solid rgba(148,163,184,.7);color:#e5e7eb;font-size:14px;font-weight:500;margin-left:10px}
+
+footer{border-top:1px solid var(--border);padding:28px 0 16px;margin-top:42px}
+.footer-grid{max-width:var(--max);margin:0 auto;padding:0 16px;display:grid;grid-template-columns:2fr 1fr 1fr;gap:26px;font-size:13px;color:var(--muted)}
+.footer-title{font-weight:600;margin-bottom:6px;color:var(--ink)}
+.footer-links{display:flex;flex-direction:column;gap:6px}
+.footer-links a{font-size:13px;color:var(--muted)}
+.footer-links a:hover{color:var(--brand)}
+.footer-bottom{max-width:var(--max);margin:14px auto 0;padding:0 16px;font-size:12px;color:#9ca3af;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+
+@media(min-width:960px){.nav-logo img{height:68px}}
+@media(max-width:960px){
+.vision-cards,.why-grid{grid-template-columns:repeat(2,1fr)}
+.offer-rows{grid-template-columns:1fr}
+.footer-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:720px){
+.nav-links{position:absolute;inset:72px 0 auto 0;padding:10px 16px 14px;background:#fff;flex-direction:column;align-items:flex-start;gap:8px;border-bottom:1px solid var(--border);transform-origin:top;transform:scaleY(0);opacity:0;pointer-events:none;transition:.18s}
+.nav-open .nav-links{transform:scaleY(1);opacity:1;pointer-events:auto}
+.nav-toggle{display:inline-flex}
+.nav-inner{min-height:68px}
+main{padding-top:30px}
+.vision-cards,.why-grid,.footer-grid{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"LocalBusiness",
+  "name":"PeachtreeChat",
+  "url":"https://peachtreechat.com",
+  "description":"Atlanta AI chatbot agency providing AI assistants, AI receptionists, lead capture chatbots, appointment booking automation, intake automation, and customer support automation for local businesses.",
+  "address":{
+    "@type":"PostalAddress",
+    "addressLocality":"Atlanta",
+    "addressRegion":"GA",
+    "addressCountry":"US"
+  },
+  "areaServed":[
+    "Atlanta, GA",
+    "Gwinnett County, GA",
+    "Lilburn, GA",
+    "Norcross, GA",
+    "Duluth, GA",
+    "Lawrenceville, GA",
+    "Suwanee, GA"
+  ],
+  "serviceType":[
+    "AI Chatbots",
+    "AI Assistants",
+    "AI Receptionists",
+    "Business Automation",
+    "Lead Capture Automation",
+    "Appointment Booking Automation"
+  ]
+}
+</script>
+
 </head>
 <body>
 
-  <!-- NAVBAR -->
-  <nav>
-    <div class="nav-inner" id="navRoot">
-      <div class="nav-logo">
-        <a href="index.html">
-          <img src="peachtreechat-logo.png" alt="PeachtreeChat Logo">
-        </a>
+<nav>
+  <div class="nav-inner" id="navRoot">
+    <div class="nav-logo">
+      <a href="index.html">
+        <img src="peachtreechat-logo.png" alt="PeachtreeChat Atlanta AI chatbot and AI receptionist agency logo">
+      </a>
+    </div>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 6h18M3 12h18M3 18h18"/>
+      </svg>
+    </button>
+
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="about.html" class="active" aria-current="page">About</a>
+      <a href="services.html">Agents</a>
+      <a href="contact.html">Contact</a>
+      <a href="contact.html" class="nav-cta">Book a Demo</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+<section class="about-hero">
+  <h1>About PeachtreeChat</h1>
+  <p>
+    PeachtreeChat is an Atlanta-based AI agency that helps local business owners use AI chatbots,
+    AI assistants, and AI receptionists to capture leads, answer questions, book appointments,
+    handle intake, and follow up with customers faster.
+  </p>
+  <p>
+    We build practical automation for salons, law firms, real estate teams, home service companies,
+    and small businesses across Atlanta and Gwinnett County that want better customer response
+    without hiring a full-time tech team.
+  </p>
+</section>
+
+<section class="band">
+  <div class="section-header">
+    <h2>Our Vision</h2>
+    <p>
+      We envision a future where every Atlanta salon, law office, real estate team, contractor,
+      and local business can use AI automation to respond faster, serve customers better,
+      and compete with larger companies.
+    </p>
+  </div>
+
+  <div class="vision-cards">
+    <div class="vision-card">
+      <div class="vision-icon">🌐</div>
+      <h3>Make AI Accessible</h3>
+      <p>
+        Bring powerful AI chatbots and AI receptionist tools to Atlanta small businesses—not just
+        large companies with deep pockets or in-house engineering teams.
+      </p>
+    </div>
+
+    <div class="vision-card">
+      <div class="vision-icon">⚡</div>
+      <h3>Simplify Complexity</h3>
+      <p>
+        Turn complex AI tools into simple, ready-to-use assistants for lead capture, appointment
+        booking, customer support, intake forms, and FAQs.
+      </p>
+    </div>
+
+    <div class="vision-card">
+      <div class="vision-icon">⏱</div>
+      <h3>Give Time Back</h3>
+      <p>
+        Reduce repetitive calls, messages, and follow-ups so owners and teams can focus on clients,
+        sales, and the work that actually grows the business.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="approach">
+  <div class="section-header">
+    <h2>Our Approach</h2>
+  </div>
+  <div class="approach-text">
+    We help Atlanta businesses adopt AI without expensive software projects or complicated deployments.
+    Our AI chatbots, AI assistants, and AI receptionists can help with website lead capture,
+    appointment scheduling, customer questions, intake forms, quote requests, and follow-up.
+    The goal is simple: help your business respond faster, save time, and turn more visitors
+    into booked clients.
+  </div>
+</section>
+
+<section class="offer-band">
+  <div class="section-header">
+    <h2>What We Offer</h2>
+  </div>
+
+  <div class="offer-rows">
+    <div class="offer-row">
+      <div class="offer-icon">🤖</div>
+      <div>
+        <h3>Pre-built AI Chatbots</h3>
+        <p>
+          Start fast with AI chatbots built for common small business workflows like lead capture,
+          appointment scheduling, quote requests, client intake, and FAQs.
+        </p>
       </div>
+    </div>
 
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M3 6h18M3 12h18M3 18h18"/>
-        </svg>
-      </button>
+    <div class="offer-row">
+      <div class="offer-icon">🎯</div>
+      <div>
+        <h3>Custom AI Assistants</h3>
+        <p>
+          When your workflow is unique, we design custom AI assistants that match your services,
+          forms, tone, and process so the automation feels like part of your team.
+        </p>
+      </div>
+    </div>
 
-      <div class="nav-links" id="navLinks">
-        <a href="index.html">Home</a>
-        <a href="about.html" class="active" aria-current="page">About</a>
+    <div class="offer-row">
+      <div class="offer-icon">🔗</div>
+      <div>
+        <h3>Simple Website Integration</h3>
+        <p>
+          We connect AI assistants to your website, contact forms, booking links, and business tools
+          so customers can reach you faster and your team can stay organized.
+        </p>
+      </div>
+    </div>
+
+    <div class="offer-row">
+      <div class="offer-icon">📈</div>
+      <div>
+        <h3>Ongoing AI Improvement</h3>
+        <p>
+          As your business changes, your AI assistant can improve with new services, better answers,
+          stronger lead capture, and updated customer workflows.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-header">
+    <h2>Why Choose PeachtreeChat?</h2>
+  </div>
+
+  <div class="why-grid">
+    <div class="why-card">
+      <h3>AI Receptionist for Local Business</h3>
+      <p>
+        Think of your AI receptionist as a dependable digital team member that can answer questions,
+        collect lead details, and help customers even when you are busy.
+      </p>
+    </div>
+
+    <div class="why-card">
+      <h3>Built for Atlanta Small Businesses</h3>
+      <p>
+        Whether you run a solo service business, salon, law firm, real estate team, or multi-location
+        company, PeachtreeChat can scale with your workflow.
+      </p>
+    </div>
+
+    <div class="why-card">
+      <h3>Human Support Behind the AI</h3>
+      <p>
+        You are not left alone with software. We work directly with owners and teams to design,
+        launch, and refine AI assistants that fit how the business actually operates.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="cta-strip">
+  <div>
+    <h2>Atlanta businesses deserve faster customer response.</h2>
+    <p>
+      Let’s build an AI chatbot, AI assistant, or AI receptionist that helps your business capture
+      more leads, book more appointments, and serve customers 24/7.
+    </p>
+  </div>
+  <div>
+    <a href="contact.html" class="btn-primary">Book an AI Demo</a>
+    <a href="services.html" class="btn-secondary">Explore AI Agents →</a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-title">PeachtreeChat</div>
+      <p>Atlanta AI chatbots, AI assistants, and AI receptionists for local businesses.</p>
+    </div>
+    <div>
+      <div class="footer-title">Company</div>
+      <div class="footer-links">
+        <a href="about.html">About</a>
         <a href="services.html">Agents</a>
         <a href="contact.html">Contact</a>
-        <a href="contact.html" class="nav-cta">Book a Demo</a>
       </div>
     </div>
-  </nav>
-
-  <main>
-    <!-- HERO / INTRO -->
-    <section class="about-hero">
-      <h1>About PeachtreeChat</h1>
-      <p>
-        Welcome to PeachtreeChat, where practical automation meets modern AI. We’re an AI agency
-        focused on helping real-world businesses use AI agents as part of their everyday team.
-      </p>
-      <p>
-        Just like your staff, our AI agents are built to work alongside you, learn from your
-        workflows, and grow with your business over time.
-      </p>
-    </section>
-
-    <!-- OUR VISION -->
-    <section class="band">
-      <div class="section-header">
-        <h2>Our Vision</h2>
-        <p>
-          We envision a world where every salon, real estate team, law office, and local business
-          can harness advanced AI to serve customers better, without needing a full-time tech team.
-        </p>
-      </div>
-
-      <div class="vision-cards">
-        <div class="vision-card">
-          <div class="vision-icon">🌐</div>
-          <h3>Make AI Accessible</h3>
-          <p>
-            Bring powerful AI agents to businesses of all sizes—not just enterprises with deep pockets
-            or in-house engineering teams.
-          </p>
-        </div>
-
-        <div class="vision-card">
-          <div class="vision-icon">⚡</div>
-          <h3>Simplify Complexity</h3>
-          <p>
-            Turn complex AI tools into simple, ready-to-use solutions that plug directly into your
-            existing workflows and tools.
-          </p>
-        </div>
-
-        <div class="vision-card">
-          <div class="vision-icon">⏱</div>
-          <h3>Give Time Back</h3>
-          <p>
-            Eliminate repetitive tasks so owners and teams can focus on growth, clients, and the work
-            that actually matters.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- OUR APPROACH -->
-    <section class="approach">
-      <div class="section-header">
-        <h2>Our Approach</h2>
-      </div>
-      <div class="approach-text">
-        We’ve reimagined how local businesses adopt AI. Instead of long projects and one-time
-        deployments, we deliver AI agents that integrate into your day-to-day operations as naturally
-        as your newest hire. Our focus isn’t just on the technology—it’s on partnership. As you invest
-        in your team each month, you also invest in AI agents that continuously evolve with your
-        business, without massive upfront costs or complex system overhauls.
-      </div>
-    </section>
-
-    <!-- WHAT WE OFFER -->
-    <section class="offer-band">
-      <div class="section-header">
-        <h2>What We Offer</h2>
-      </div>
-
-      <div class="offer-rows">
-        <div class="offer-row">
-          <div class="offer-icon">🤖</div>
-          <div>
-            <h3>Pre-built AI Agents</h3>
-            <p>
-              Start fast with agents built for common workflows like lead capture, appointment
-              scheduling, intake, and FAQs across multiple industries.
-            </p>
-          </div>
-        </div>
-
-        <div class="offer-row">
-          <div class="offer-icon">🎯</div>
-          <div>
-            <h3>Custom AI Solutions</h3>
-            <p>
-              When your workflows are unique, we design custom agents that match your language,
-              forms, and processes—so they feel like part of your team.
-            </p>
-          </div>
-        </div>
-
-        <div class="offer-row">
-          <div class="offer-icon">🔗</div>
-          <div>
-            <h3>Effortless Integration</h3>
-            <p>
-              Our agents connect with your existing tools and systems to keep operations smooth, not
-              disruptive. Ready in days, not months.
-            </p>
-          </div>
-        </div>
-
-        <div class="offer-row">
-          <div class="offer-icon">📈</div>
-          <div>
-            <h3>Continual Improvement</h3>
-            <p>
-              As your business changes, your agents adapt. We ship updates and improvements so your
-              automation keeps getting smarter over time.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- WHY CHOOSE -->
-    <section>
-      <div class="section-header">
-        <h2>Why Choose PeachtreeChat?</h2>
-      </div>
-
-      <div class="why-grid">
-        <div class="why-card">
-          <h3>Digital Workforce, Simplified</h3>
-          <p>
-            Think of our AI agents as dependable team members—always on, always consistent, and
-            focused on the tasks humans shouldn’t have to repeat.
-          </p>
-        </div>
-
-        <div class="why-card">
-          <h3>Flexible & Scalable</h3>
-          <p>
-            Whether you need one agent or an entire digital team, we scale with you—from solo
-            operators to multi-location businesses.
-          </p>
-        </div>
-
-        <div class="why-card">
-          <h3>Human-Centric Support</h3>
-          <p>
-            You’re never on your own. We work directly with owners and teams to design, launch, and
-            refine agents that actually fit how you run your business.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA STRIP -->
-    <section class="cta-strip">
-      <div>
-        <h2>At PeachtreeChat, we’re building the future of local work.</h2>
-        <p>
-          Let’s create a smarter, more efficient, and more responsive way to serve your clients—with
-          AI agents that feel like part of your staff.
-        </p>
-      </div>
-      <div>
-        <a href="contact.html" class="btn-primary">Activate PeachtreeChat</a>
-        <a href="services.html" class="btn-secondary">Explore Our Agents →</a>
-      </div>
-    </section>
-  </main>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-grid">
-      <div>
-        <div class="footer-title">PeachtreeChat</div>
-        <p>The AI agency that takes care of business—starting with your conversations.</p>
-      </div>
-      <div>
-        <div class="footer-title">Company</div>
-        <div class="footer-links">
-          <a href="about.html">About</a>
-          <a href="services.html">Agents</a>
-          <a href="contact.html">Contact</a>
-        </div>
-      </div>
-      <div>
-        <div class="footer-title">Legal</div>
-        <div class="footer-links">
-          <a href="privacy.html">Privacy Policy</a>
-          <a href="terms.html">Terms of Service</a>
-        </div>
+    <div>
+      <div class="footer-title">Legal</div>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
       </div>
     </div>
-    <div class="footer-bottom">
-      <span>© <span id="year"></span> PeachtreeChat. All rights reserved.</span>
-      <span>Atlanta, Georgia</span>
-    </div>
-  </footer>
+  </div>
+  <div class="footer-bottom">
+    <span>© <span id="year"></span> PeachtreeChat. All rights reserved.</span>
+    <span>Atlanta, Georgia</span>
+  </div>
+</footer>
 
-  <!-- SCRIPTS -->
-  <script>
-    // Mobile nav toggle
-    (function () {
-      const navRoot = document.getElementById('navRoot');
-      const toggle = document.getElementById('navToggle');
-      const links = document.getElementById('navLinks');
+<script>
+(function(){
+  const navRoot=document.getElementById('navRoot');
+  const toggle=document.getElementById('navToggle');
+  const links=document.getElementById('navLinks');
 
-      toggle.addEventListener('click', () => {
-        const open = navRoot.classList.toggle('nav-open');
-        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-      });
+  toggle.addEventListener('click',()=>{
+    const open=navRoot.classList.toggle('nav-open');
+    toggle.setAttribute('aria-expanded',open?'true':'false');
+  });
 
-      links.querySelectorAll('a').forEach(a => {
-        a.addEventListener('click', () => {
-          navRoot.classList.remove('nav-open');
-          toggle.setAttribute('aria-expanded', 'false');
-        });
-      });
-    })();
+  links.querySelectorAll('a').forEach(a=>{
+    a.addEventListener('click',()=>{
+      navRoot.classList.remove('nav-open');
+      toggle.setAttribute('aria-expanded','false');
+    });
+  });
+})();
 
-    // Footer year
-    document.getElementById('ye
+document.getElementById('year').textContent=new Date().getFullYear();
+</script>
+
+</body>
+</html>
